@@ -73,6 +73,15 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+    			<groupId>org.springframework.boot</groupId>
+    			<artifactId>spring-boot-maven-plugin</artifactId>
+    			<configuration>
+        			<mainClass>com.app.pyme_go.PymeGoApplication</mainClass>
+    			</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
