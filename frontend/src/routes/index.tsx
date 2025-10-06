@@ -6,10 +6,9 @@ import Milogin from "../pages/Milogin";
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path='/' element={<>test</>} />
+      <Route path='/' element={<Milogin />} />
       <Route path='/register' element={<Register />} />
       <Route path='/registerFlow' element={<RegisterFlow />} />
-      <Route path='/milogin' element={<Milogin/>} />
     </Routes>
   );
 }
