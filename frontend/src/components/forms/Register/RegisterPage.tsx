@@ -72,12 +72,12 @@ export default function RegisterPage() {
           y privacidad.
         </span>
       </div>
-      <button
+      <div
         onClick={() => navigate("/registerFlow")}
-        className='bg-primary text-white px-6 py-3 rounded-lg shadow hover:bg-blue-800 transition'
+        className='bg-primary text-white px-6 py-3 rounded-lg shadow cursor-pointer hover:bg-blue-800 transition'
       >
         Comenzar registro →
-      </button>
+      </div>
       ;
     </div>
   );
