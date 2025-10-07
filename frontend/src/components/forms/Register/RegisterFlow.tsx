@@ -21,30 +21,33 @@ export default function RegisterFlow() {
         <div className='bg-white shadow-lg rounded-lg p-8 w-full max-w-lg'>
           {/* Step indicators */}
           <div className='flex justify-between mb-4 relative'>
-            {["Company", "Representative", "Security", "Documents"].map(
-              (label, index) => (
+            {[
+              "Datos empresa",
+              "Representante",
+              "Seguridad",
+              "Documentacion",
+            ].map((label, index) => (
+              <div
+                key={index}
+                className={`flex flex-col items-center text-sm ${
+                  step === index + 1
+                    ? "text-primary font-semibold"
+                    : "text-gray-400"
+                }`}
+              >
+                {/* Step number circle */}
                 <div
-                  key={index}
-                  className={`flex flex-col items-center text-sm ${
-                    step === index + 1
-                      ? "text-primary font-semibold"
-                      : "text-gray-400"
+                  className={`w-8 h-8 flex items-center justify-center rounded-full border-2 ${
+                    step >= index + 1
+                      ? "bg-primary text-white"
+                      : "border-gray-300"
                   }`}
                 >
-                  {/* Step number circle */}
-                  <div
-                    className={`w-8 h-8 flex items-center justify-center rounded-full border-2 ${
-                      step >= index + 1
-                        ? "bg-primary text-white"
-                        : "border-gray-300"
-                    }`}
-                  >
-                    {index + 1}
-                  </div>
-                  <span className='mt-2'>{label}</span>
+                  {index + 1}
                 </div>
-              )
-            )}
+                <span className='mt-2'>{label}</span>
+              </div>
+            ))}
           </div>
 
           {/* Progress bar */}
@@ -64,30 +67,30 @@ export default function RegisterFlow() {
           {/* Navigation buttons */}
           <div className='flex justify-between mt-6'>
             {step > 1 ? (
-              <button
+              <div
                 onClick={prevStep}
-                className='px-4 py-2 border rounded-md text-gray-600 hover:bg-gray-100'
+                className='px-4 py-2 cursor-pointer border rounded-md text-gray-600 hover:bg-gray-100'
               >
                 ← Anterior
-              </button>
+              </div>
             ) : (
               <div />
             )}
 
             {step < 4 ? (
-              <button
+              <div
                 onClick={nextStep}
-                className='px-4 py-2 bg-secondary text-white rounded-md hover:bg-primary'
+                className='px-4 py-2 cursor-pointer bg-secondary text-white rounded-md hover:bg-primary'
               >
                 Siguiente →
-              </button>
+              </div>
             ) : (
-              <button
+              <div
                 onClick={() => alert("Registration completed ✅")}
                 className='px-4 py-2 bg-secondary text-white rounded-md hover:bg-primary'
               >
                 Completar registro
-              </button>
+              </div>
             )}
           </div>
         </div>
