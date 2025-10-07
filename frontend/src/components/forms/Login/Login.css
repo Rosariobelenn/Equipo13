@@ -146,6 +146,60 @@ button {
 }
 
 
+/* Contenedor que ubica el toggle al borde derecho */
+.toggle-container {
+  position: absolute;
+  top: 20px;      /* distancia desde la parte superior del formulario */
+  left: 40px;    /* pegado al borde derecho del formulario */
+}
+
+/* Tu estilo existente (sin modificar tus colores) */
+.user-toggle {
+  display: flex;
+  background-color: #a2b4da;
+  border-radius: 40px;
+  margin-bottom: 40px;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  color: #000;
+  padding: 8px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.toggle-btn.active {
+  background-color: white;
+  color: #14233b;
+}
+
+
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+ /* width: 100%;*/
+  padding-right: 40px; /* espacio para el ícono */
+}
+
+.show-password-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
 
 
 
@@ -153,21 +207,24 @@ button {
   /* Ocupa la mitad superior de la pantalla */
 .login-form {
   position: fixed;         /* se fija en la pantalla */
-  top: 0;                  /* pegado arriba */
+  top: 0;                 /* pegado arriba */
   left: 0;                 /* desde el borde izquierdo */
   right: 0;                /* hasta el borde derecho */
   height: 50vh;            /* ocupa la mitad del alto de la pantalla */
   width: 100%;
   background-color:#001f3f;
   margin: 0;               /* sin margen */
-  padding: 0;              /* sin padding */
+  margin-bottom: 60vh;
+  padding-bottom: 70vh; 
+  padding-top: 30vh;             /* sin padding */
   
 }
 
 
 .login-container2 {
   position: fixed;
-  top: 50vh;               /* empieza desde la mitad de la pantalla */
+  top: 70vh; 
+  bottom: 60vh;              /* empieza desde la mitad de la pantalla */
   left: 0;
   right: 0;
   height: 50vh;            /* ocupa la mitad inferior */
@@ -175,11 +232,22 @@ button {
   background-color: rgb(23, 108, 165);
   margin: 0;
   padding: 0;
+  margin-bottom: 20px;
+  gap: 20px;
 }
 
 .input-group input {
   width: 400px; /* o el tamaño que quieras */
+   max-width: 400px; /* límite de ancho */
 }
+
+.conteinertituloform{
+  margin-top: 120px;
+  
+}
+
+
+
 
 
 

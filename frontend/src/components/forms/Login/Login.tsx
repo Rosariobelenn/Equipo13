@@ -1,78 +1,120 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [rememberMe, setRememberMe] = useState<boolean>(false); // nuevo estado
+  const [rememberMe, setRememberMe] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<string>("cliente");
+  const [showPassword, setShowPassword] = useState<boolean>(false); // <-- estado nuevo
+  
   const navigate = useNavigate();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Aquí puedes hacer la lógica de login
     alert(
       `Email: ${email}\nPassword: ${password}\nRecordarme: ${
         rememberMe ? "Sí" : "No"
-      }`
+      }\nModo: ${activeTab}`
     );
   };
 
   return (
-    <div className='login-container'>
-      <form className='login-form' onSubmit={handleSubmit}>
-        <div className='conteinertituloform'>
-          <h2 className='tituloform'>Bienvenido</h2>
-          <h4 className='subtituloform'>
+    <>
+      {/* Mitad izquierda (color celeste) */}
+      <div className="login-container2">
+
+      {/* Mitad derecha (formulario azul oscuro) */}
+      <form className="login-form" onSubmit={handleSubmit}>
+        <div className="toggle-container">
+        {/* Toggle “Soy cliente / Soy operador” */}
+        <div className="user-toggle">
+          <button
+            type="button"
+            className={`toggle-btn ${activeTab === "cliente" ? "active" : ""}`}
+            onClick={() => setActiveTab("cliente")}
+          >
+            Soy cliente
+          </button>
+          <button
+            type="button"
+            className={`toggle-btn ${activeTab === "operador" ? "active" : ""}`}
+            onClick={() => setActiveTab("operador")}
+          >
+            Soy operador
+          </button>
+        </div>
+</div>
+        {/* Título y subtítulo */}
+        <div className="conteinertituloform">
+          <h2 className="tituloform">Bienvenido</h2>
+          <h4 className="subtituloform">
             Accede a tu cuenta o registra tu empresa
           </h4>
         </div>
 
-        <div className='input-group'>
-          <label className='label1'>Correo Electronico</label>
+        {/* Input Correo */}
+        <div className="input-group">
+          <label className="label1">Correo electrónico</label>
           <input
-            type='email'
-            placeholder='Ingresa tu correo corporativo'
+            type="email"
+            placeholder="Ingresa tu correo corporativo"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
 
-        <div className='input-group'>
-          <label className='label1'>Contraseña</label>
-          <input
-            type='password'
-            placeholder='Ingresa tu contraseña'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+{/* Input Contraseña */}
+<div className="input-group password-group">
+  <label className="label1">Contraseña</label>
+  <div className="password-wrapper">
+    <input
+      type={showPassword ? "text" : "password"}
+      placeholder="Ingresa tu contraseña"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      required
+    />
+    <span
+      className="show-password-icon"
+      onClick={() => setShowPassword(!showPassword)}
+    >
+      {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+    </span>
+  </div>
+</div>
+
 
         {/* Checkbox Recordarme */}
-        <div className='remember-me'>
+        <div className="remember-me">
           <input
-            type='checkbox'
-            id='rememberMe'
+            type="checkbox"
+            id="rememberMe"
             checked={rememberMe}
             onChange={(e) => setRememberMe(e.target.checked)}
           />
-          <label htmlFor='rememberMe' className='label2'>
-            {" "}
-            Recordarme{" "}
+          <label htmlFor="rememberMe" className="label2">
+            Recordarme
           </label>
         </div>
 
-        <button type='submit'>Ingresar</button>
+        {/* Botón Ingresar */}
+        <button type="submit">Ingresar</button>
 
-        <p className='register-text'>
-          ¿No tenes cuenta?
+        {/* Enlace de registro */}
+        <p className="register-text">
+          ¿No tenes cuenta?{" "}
           <strong>
             <a onClick={() => navigate("/register")}>Regístrate acá</a>
           </strong>
         </p>
       </form>
-    </div>
+      </div>
+    </>
   );
 };
 
