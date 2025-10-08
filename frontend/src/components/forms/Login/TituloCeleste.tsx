@@ -13,13 +13,13 @@ const TituloCeleste: React.FC<TituloCelesteProps> = () => {
 
      <div className="pymego-container">
       <div className="logo">
-    <img src={rocketIcon} alt="Logo"  style={{ width: "150px", height: "auto", borderRadius: "10px" }} />
+    <img className="imagee" src={rocketIcon} alt="Logo"  style={{ width: "150px", height: "auto", borderRadius: "10px" }} />
 
       </div>
       <div className="dots">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span className="spacio"></span>
+        <span className="spacio"></span>
+        <span className="spacio"></span>
       </div>
       <h1 className="title">PYME GO</h1>
       <p className="subtitle">
@@ -36,11 +36,11 @@ const TituloCeleste: React.FC<TituloCelesteProps> = () => {
           Seguro
         </div>
         <div className="feature">
-          <span className="icon">📄</span>
+          <span  className="icon spacio">📄</span>
           Digital
         </div>
         <div className="feature">
-          <span className="icon">👥</span>
+          <span className="icon spacio">👥</span>
           Para PYMEs
         </div>
       </div>
