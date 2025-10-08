@@ -42,7 +42,7 @@
   padding-right: 320px;
 }
 
-.remember-me input[type="checkbox"] {
+.remember-me .botton[type="checkbox"] {
   width: 16px;
   height: 16px;
   cursor: pointer;
@@ -67,9 +67,9 @@
   color: #b0b0b0;
 }
 
-.input-group input {
+.input-group .botton {
   padding: 15px;
-  width: 400px; /* o el tamaño que quieras */
+  width: 400px; /* o el tamaño que quierass */
   border-radius: 8px;
   border: none;
   background-color: #f5f5f5;
@@ -77,11 +77,11 @@
   color: #000;
 }
 
-.input-group input::placeholder {
+.input-group .botton::placeholder {
   color: #a0a0a0;
 }
 
-button {
+.extra-clase {
   padding: 12px;
   border: none;
   border-radius: 5px;
@@ -93,6 +93,9 @@ button {
   font-weight: bold; 
 }
 
+.extra-clase:hover{
+  background-color: #0b5e80;
+}
 
 .register-text {
   text-align: center;
@@ -103,13 +106,13 @@ button {
   
 }
 
-.register-text strong {
+.register-text .strg {
   color: white;
 }
 
 
 
-.register-text a {
+.register-text .texxto {
   /*color: #007bff;*/
   color: #b0b0b0;
   text-decoration: none;
@@ -117,7 +120,7 @@ button {
   cursor: pointer;
 }
 
-.register-text a:hover {
+.register-text .texxto:hover {
   text-decoration: underline;
 }
 
@@ -186,7 +189,7 @@ button {
   align-items: center;
 }
 
-.password-wrapper input {
+.password-wrapper .botton {
  /* width: 100%;*/
   padding-right: 40px; /* espacio para el ícono */
 }
@@ -236,7 +239,7 @@ button {
   gap: 20px;
 }
 
-.input-group input {
+.input-group .botton {
   width: 400px; /* o el tamaño que quieras */
    max-width: 400px; /* límite de ancho */
 }

@@ -33,15 +33,16 @@ const Login: React.FC = () => {
         {/* Toggle “Soy cliente / Soy operador” */}
         <div className="user-toggle">
           <button
+            
             type="button"
-            className={`toggle-btn ${activeTab === "cliente" ? "active" : ""}`}
+            className={`toggle-btn ${activeTab === "cliente" ? "active extra-clase" : ""}`}
             onClick={() => setActiveTab("cliente")}
           >
             Soy cliente
           </button>
           <button
             type="button"
-            className={`toggle-btn ${activeTab === "operador" ? "active" : ""}`}
+            className={`toggle-btn ${activeTab === "operador" ? "active extra-clase" : ""}`}
             onClick={() => setActiveTab("operador")}
           >
             Soy operador
@@ -60,6 +61,7 @@ const Login: React.FC = () => {
         <div className="input-group">
           <label className="label1">Correo electrónico</label>
           <input
+            className="botton"
             type="email"
             placeholder="Ingresa tu correo corporativo"
             value={email}
@@ -73,6 +75,7 @@ const Login: React.FC = () => {
   <label className="label1">Contraseña</label>
   <div className="password-wrapper">
     <input
+      className="botton"
       type={showPassword ? "text" : "password"}
       placeholder="Ingresa tu contraseña"
       value={password}
@@ -92,6 +95,7 @@ const Login: React.FC = () => {
         {/* Checkbox Recordarme */}
         <div className="remember-me">
           <input
+            className="botton"
             type="checkbox"
             id="rememberMe"
             checked={rememberMe}
@@ -103,13 +107,13 @@ const Login: React.FC = () => {
         </div>
 
         {/* Botón Ingresar */}
-        <button type="submit">Ingresar</button>
+        <button type="submit" className="extra-clase">Ingresar</button>
 
         {/* Enlace de registro */}
         <p className="register-text">
           ¿No tenes cuenta?{" "}
-          <strong>
-            <a onClick={() => navigate("/register")}>Regístrate acá</a>
+          <strong className="strg">
+            <a className="texxto" onClick={() => navigate("/register")}>Regístrate acá</a>
           </strong>
         </p>
       </form>
