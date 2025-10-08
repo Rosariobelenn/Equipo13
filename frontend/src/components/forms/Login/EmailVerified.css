@@ -1,0 +1,96 @@
+.verified-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fafafa;
+  font-family: "Inter", sans-serif;
+}
+
+.verified-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  width: 500px;
+  text-align: center;
+}
+
+.icon-circle.success {
+  background-color: #e6f9ed;
+  color: #1a9c46;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 16px auto;
+  font-size: 32px;
+}
+
+.letrra {
+  font-size: 22px;
+  margin-bottom: 28px;
+  color: #111;
+}
+
+.parr {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 54px;
+}
+
+.verified-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e9fbe7;
+  border: 1px solid #b2e3a7;
+  border-radius: 8px;
+  padding: 32px;
+  color: #117a37;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.email {
+  font-weight: 500;
+  color: #117a37;
+}
+
+.access-btn {
+  width: 100%;
+  background-color: #1a3f8b;
+  color: white;
+  font-size: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.access-btn:hover {
+  background-color: #142e64;
+}
+
+
+@media (max-width: 768px) {
+  .verified-card {
+    width: 360px;
+  }
+
+  .letrra{
+    margin-bottom: 8px;
+  }
+
+  .parr{
+      margin-bottom: 24px;
+  }
+
+  .verified-box{
+    padding: 12px;
+  }
+}
