@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -53,8 +54,8 @@ public class AuthServiceimpl implements AuthService {
             SecurityContextHolder.getContext().setAuthentication(authResult);
             return jwtUtil.generateToken(authResult);
 
-        } catch (Exception e) {
-            throw new RuntimeException("Error en la autenticación", e);
+        } catch (AuthenticationException e) {
+            throw new RuntimeException("Credenciales inválidas. Por favor, revise su correo y contraseña.", e);
         }
 
     }
@@ -106,8 +107,8 @@ public class AuthServiceimpl implements AuthService {
     @Override
     public AuthResponseDto autenticateUser(UserLoginDto userLoginDto) {
 
-        String jwt = authenticate(userLoginDto.getEmail(), userLoginDto.getPassword());
-        Optional<User> loggedInUser = userRepository.findByGmail(userLoginDto.getEmail());
+        String jwt = authenticate(userLoginDto.getGmail(), userLoginDto.getPassword());
+        Optional<User> loggedInUser = userRepository.findByGmail(userLoginDto.getGmail());
 
         AuthResponseDto authResponse = new AuthResponseDto();
         authResponse.setAccess_token(jwt);

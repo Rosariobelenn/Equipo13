@@ -33,7 +33,10 @@ public class SecurityConfig {
                                                 "/v3/api-docs/**",
                                                 "/swagger-resources/**",
                                                 "/webjars/**",
-                                                "/**" // ✅ Todas las rutas bajo /api/ son públicas
+                                                "/v1/api/login",
+                                                "/v1/api/register", 
+                                                "/"
+
                                   
                                 )
                                                 .permitAll()
