@@ -76,6 +76,26 @@
   background-color: #142e64;
 }
 
+.logo-circle {
+  width: 90px;
+  height: 80px;
+  background-color: #def6e8; /* 💧 color agua claro */
+  border-radius: 50%;                   /* círculo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 50% ;
+  padding: 20px;                     /* centra horizontalmente */
+}
+
+.circlee{
+  background-color:#def6e8;
+  width: 30px;
+  height: 40px;
+  
+}
+
 
 @media (max-width: 768px) {
   .verified-card {

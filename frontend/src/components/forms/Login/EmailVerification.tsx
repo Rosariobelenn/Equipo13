@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./EmailVerification.css";
+import Logo from "./logos"; // ruta según tu estructura
 
 const EmailVerification: React.FC = () => {
 const [code, setCode] = useState("");
@@ -25,7 +26,16 @@ const handleVerify = () => {
 return (
     <div className="verify-container">
     <div className="verify-card">
-        <div className="icon-circle">LOGO</div>
+      
+        <div className="icon-circle"> 
+    
+     <div className="login-container">
+      <Logo />
+    </div>
+        
+        
+         </div>
+         
         <h2 className="ltverimail">Verifica tu email</h2>
         <p className="parrafo">Hemos enviado un código de 6 dígitos a{" "}   <br /> <a className="linking" href="mailto:fedeecrer@gmail.com">fedeecrer@gmail.com</a></p>
 

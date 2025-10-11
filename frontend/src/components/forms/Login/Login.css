@@ -204,6 +204,27 @@
   align-items: center;
 }
 
+.log{
+ /* background-color: aqua;*/
+  width: 50px;
+  height: 50px;
+  color: rgb(5, 5, 134);
+}
+
+.login-container{
+  width: 90px;
+  height: 80px;
+  background-color:rgb(225, 248, 252);
+   display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;     /* centra verticalmente */
+  margin-bottom: 50px;
+  border-radius: 50% ;
+  padding: 20px;
+}
+
+
+
 
 
 @media (max-width: 768px) {
