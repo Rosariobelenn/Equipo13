@@ -10,7 +10,7 @@ const Login: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>("cliente");
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // ✅ hook para navegar
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,10 +21,10 @@ const Login: React.FC = () => {
     );
   };
 
-  // ✅ Navegación entre pestañas
+  // ✅ Funciones para manejar navegación
   const handleClienteClick = () => {
     setActiveTab("cliente");
-    navigate("/logincliente"); // 🔹 mejor usar ruta clara y consistente
+    navigate("/");
   };
 
   const handleOperadorClick = () => {
@@ -44,21 +44,26 @@ const Login: React.FC = () => {
               <button
                 type="button"
                 className={`toggle-btn ${
-                  activeTab === "cliente" ? "active extra-clase" : "" }`}onClick={handleClienteClick}>Soy cliente</button>
+                  activeTab === "cliente" ? "active extra-clase" : ""
+                }`}
+                onClick={handleClienteClick} > Soy cliente </button>
               <button
                 type="button"
                 className={`toggle-btn ${
                   activeTab === "operador" ? "active extra-clase" : ""
                 }`}
-                onClick={handleOperadorClick}  >Soy operador</button>
+                onClick={handleOperadorClick} >
+                Soy operador
+              </button>
             </div>
           </div>
 
-          {/* Título y subtítulo dinámico */}
+          {/* Título y subtítulo */}
           <div className="conteinertituloform">
-            <h2 className="tituloform"> {activeTab === "cliente" ? "Bienvenido" : "Acceso Operadores"} </h2>
+            <h2 className="tituloform">Acceso Operadores</h2>
             <h4 className="subtituloform">
-              {activeTab === "cliente" ? "Accede a tu cuenta o registra tu empresa" : "Panel de gestión de solicitudes de crédito"} </h4>
+              Panel de gestión de solicitudes de crédito
+            </h4>
           </div>
 
           {/* Input Correo */}
@@ -70,7 +75,8 @@ const Login: React.FC = () => {
               placeholder="Ingresa tu correo corporativo"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required/>
+              required
+            />
           </div>
 
           {/* Input Contraseña */}
@@ -83,8 +89,12 @@ const Login: React.FC = () => {
                 placeholder="Ingresa tu contraseña"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required/>
-              <span className="show-password-icon" onClick={() => setShowPassword(!showPassword)} >
+                required
+              />
+              <span
+                className="show-password-icon"
+                onClick={() => setShowPassword(!showPassword)}
+              >
                 {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
               </span>
             </div>
@@ -98,19 +108,20 @@ const Login: React.FC = () => {
               id="rememberMe"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              />
-            <label htmlFor="rememberMe" className="label2">Recordarme</label>
+            />
+            <label htmlFor="rememberMe" className="label2">
+              Recordarme
+            </label>
           </div>
 
           {/* Botón Ingresar */}
-          <button type="submit" className="extra-clase">Ingresar</button>
+          <button type="submit" className="extra-clase">
+            Ingresar
+          </button>
 
           {/* Enlace de registro */}
           <p className="register-text">
-            ¿No tenés cuenta?{" "}
-            <strong className="strg">
-              <a className="texxto"  onClick={() => navigate("/register")} style={{ cursor: "pointer" }}>Regístrate acá</a>
-            </strong>
+            Acceso restringido para personal autorizado
           </p>
         </form>
       </div>
@@ -119,3 +130,4 @@ const Login: React.FC = () => {
 };
 
 export default Login;
+
