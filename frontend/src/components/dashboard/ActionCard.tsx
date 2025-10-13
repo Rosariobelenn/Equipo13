@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { ActionCardProps } from "../../types/dashboard.types";
 
 function ActionCard({
@@ -6,7 +7,7 @@ function ActionCard({
   description,
   buttonText,
   buttonStyle,
-  onButtonClick,
+  navigateTo,
 }: ActionCardProps) {
   return (
     <article
@@ -29,8 +30,8 @@ function ActionCard({
       </figure>
       <h2 className="text-xl font-medium text-gray-900 mb-3">{title}</h2>
       <p className="text-gray-600 mb-6 w-11/12">{description}</p>
-      <button
-        onClick={onButtonClick}
+      <Link
+        to={navigateTo}
         className={`w-full px-6 py-2 rounded-lg transition-colors cursor-pointer ${
           buttonStyle === "primary"
             ? "bg-primary hover:bg-blue-800 text-white border border-primary"
@@ -38,7 +39,7 @@ function ActionCard({
         }`}
       >
         {buttonText}
-      </button>
+      </Link>
     </article>
   );
 }
