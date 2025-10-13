@@ -3,3 +3,4 @@ DB_URL=jdbc:postgresql://localhost:5432/mi_base
 DB_USER=mi_usuario
 DB_PASS=mi_password
 JWT_SECRET=mi_clave_jwt
+CORS_ALLOWED_ORIGINS=https://tudominio.com
