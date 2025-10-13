@@ -1,26 +1,42 @@
 import { useState } from "react";
 import { Upload, FileText, X } from "lucide-react";
 
+interface FileData {
+  name: string;
+  size: number;
+  type: string;
+}
+
 export default function StepDocuments() {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<FileData[]>([]);
   const [isChecked, setIsChecked] = useState(false);
 
-  const handleFileChange = (e) => {
-    const selectedFiles = Array.from(e.target.files);
-    setFiles(selectedFiles);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = Array.from(e.target.files ?? []);
+    const formattedFiles = selectedFiles.map((file) => ({
+      name: file.name,
+      size: file.size,
+      type: file.type,
+    }));
+    setFiles(formattedFiles);
   };
 
-  const handleRemoveFile = (index) => {
-    setFiles(files.filter((_, i) => i !== index));
+  const handleRemoveFile = (index: number) => {
+    setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const droppedFiles = Array.from(e.dataTransfer.files);
-    setFiles((prev) => [...prev, ...droppedFiles]);
+    const formattedFiles = droppedFiles.map((file) => ({
+      name: file.name,
+      size: file.size,
+      type: file.type,
+    }));
+    setFiles((prevFiles) => [...prevFiles, ...formattedFiles]);
   };
 
-  const handleDragOver = (e) => e.preventDefault();
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => e.preventDefault();
 
   return (
     <div className='space-y-6'>
@@ -88,7 +104,7 @@ export default function StepDocuments() {
                 </div>
                 <div
                   onClick={() => handleRemoveFile(index)}
-                  className='text-gray-400 hover:text-red-500 transition'
+                  className='text-gray-400 hover:text-red-500 transition cursor-pointer'
                 >
                   <X size={18} />
                 </div>
