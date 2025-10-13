@@ -7,5 +7,4 @@ public class UserResponseDto {
     private Long id;
     private String gmail;
     private String role;
-    private Long legal_representative_id;
 }

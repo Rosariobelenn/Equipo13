@@ -131,8 +131,6 @@ public class AuthServiceimpl implements AuthService {
             userDto.setId(loggedInUser.get().getId());
             userDto.setGmail(loggedInUser.get().getGmail());
             userDto.setRole(loggedInUser.get().getRole());
-            // Aquí deberías buscar el ID del representante legal si existe.
-            userDto.setLegal_representative_id(null); // Placeholder
             authResponse.setUser(userDto);
         }
 

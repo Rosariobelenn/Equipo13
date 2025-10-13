@@ -83,8 +83,7 @@ Devuelve un token JWT (o similar) que se usará en todas las llamadas protegidas
   "expires_in": 3600,
   "user": {
     "id": 100,
-    "name": "user name ",
-    "legal_representative_id": 10
+    "name": "user name "
   }
 }
 ```
