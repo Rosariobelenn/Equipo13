@@ -2,7 +2,7 @@ import { Building2, FileText, CircleCheckBig, Shield } from "lucide-react";
 import DashboardHeader from "../components/dashboard/DashboardHeader";
 import ActionCard from "../components/dashboard/ActionCard";
 import HelpSection from "../components/dashboard/HelpSection";
-import StatusCard from "../components/dashboard/StatusCard";
+import StatusCard from "../components/ui/StatusCard";
 import RecentActivity from "../components/dashboard/RecentActivity";
 import { ACTIVITIES } from "../data/activities";
 
@@ -19,7 +19,7 @@ function Dashboard() {
             description="Solicita un nuevo crédito para tu empresa de forma rápida y digital"
             buttonText="Iniciar solicitud"
             buttonStyle="primary"
-            onButtonClick={() => alert("Nueva Solicitud")}
+            navigateTo="/register"
           />
           <ActionCard
             icon={FileText}
@@ -27,7 +27,7 @@ function Dashboard() {
             description="Revisa el estado de tus solicitudes y completa acciones pendientes"
             buttonText="Ver solicitudes"
             buttonStyle="secondary"
-            onButtonClick={() => alert("Ver solicitudes")}
+            navigateTo="/requests-list"
           />
         </main>
 
