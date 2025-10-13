@@ -3,6 +3,7 @@ import Register from "../pages/Register";
 import RegisterFlow from "../components/forms/Register/RegisterFlow";
 import Milogin from "../pages/Milogin";
 import Dashboard from "../pages/Dashboard";
+import RequestsList from "../pages/RequestsList";
 import RequestPanel from "../pages/RequestPanel";
 
 export default function AppRoutes() {
@@ -12,6 +13,7 @@ export default function AppRoutes() {
       <Route path='/register' element={<Register />} />
       <Route path='/registerFlow' element={<RegisterFlow />} />
       <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/requests-list' element={<RequestsList />} />
       <Route path='/operator' element={<RequestPanel />} />
     </Routes>
   );

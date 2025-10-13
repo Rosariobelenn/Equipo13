@@ -6,15 +6,7 @@ export interface ActionCardProps {
   description: string;
   buttonText: string;
   buttonStyle: ButtonStyle;
-  onButtonClick: () => void;
-}
-
-export interface StatusCardProps {
-  icon: React.FC<React.SVGProps<SVGSVGElement>>;
-  iconColor: string;
-  bgColor: string;
-  label: string;
-  value: string;
+  navigateTo: string;
 }
 
 export type HelpItemProps = {
