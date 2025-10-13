@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.app.pyme_go.model.dto.user.AuthResponseDto;
 import com.app.pyme_go.model.dto.user.UserLoginDto;
-import com.app.pyme_go.model.dto.user.UserRegisterDto;
+import com.app.pyme_go.model.dto.user.RegisterDto;
 import com.app.pyme_go.service.AuthService;
 
 import jakarta.validation.Valid;
@@ -52,7 +52,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@Valid @RequestBody UserRegisterDto newUserDto, BindingResult bindingResult) {
+    public ResponseEntity<?> register(@Valid @RequestBody RegisterDto newUserDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             // Devolvemos los mensajes de error específicos de la validación
             String errors = bindingResult.getAllErrors().stream()
@@ -61,21 +61,18 @@ public class UserController {
             return ResponseEntity.badRequest().body(errors);
         }
         try {
-            AuthResponseDto response = authService.registerUser(newUserDto);
+            AuthResponseDto response = authService.registerUser(
+                newUserDto.getUser(), 
+                newUserDto.getLegal_representative(),
+                newUserDto.getCompany()
+                
+            );
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-    /*
-      
-    @GetMapping("/check-auth")
-    public ResponseEntity<String> checkAuth() {
-        return ResponseEntity.ok().body("Autenticado");
-    }
-
-    */
 
     @GetMapping("/hello")
     public String hello() {

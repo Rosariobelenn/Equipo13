@@ -1,11 +1,13 @@
 
+## APi desing 
 
 ## For Users
 
 #### Authentication
 
 ```
-POST /auth/login         → Log in
+POST /login         → Log in
+POST /register      → Register
 POST /auth/verify-email  → Verify email
 ```
 
@@ -122,6 +124,36 @@ Permite a un usuario confirmar su dirección de correo electrónico. El usuario 
 ---
 
 ## 📝 Registro
+
+**Descripción:**
+Permite  registrar un nuevo usuario con sus datos y los datos de la empresa
+
+### Request (JSON):
+
+```
+POST /register 
+
+{
+  "user": {
+    "gmail": "example@gmail.com",
+    "password": "12345678"
+  },
+  "company": {
+    "business_name": "pyme_go",
+    "tax_id": "12345",
+    "company_type": "Money"
+  },
+  "legal_representative": {
+    "full_name": "Example",
+    "position": "Manager",
+    "document_type": "CD",
+    "document_number": "1234",
+    "corporate_email": "example@gmail.com",
+    "contact_phone": "12345"
+  }
+}
+```
+
 
 **POST /users** → Crear usuario (email + contraseña)
 
