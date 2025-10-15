@@ -1,4 +1,4 @@
-import type { StatusBadgeProps } from "../../types/types";
+import type { StatusBadgeProps } from "../../types/common.types";
 
 const StatusBadge: React.FC<StatusBadgeProps> = ({
   icon: Icon,
