@@ -1,4 +1,4 @@
-import type { Application } from "../types/requestsList.types";
+import type { Application, RequestStatusStep } from "../types/request.types";
 
 export const applications: Application[] = [
   {
@@ -33,5 +33,36 @@ export const applications: Application[] = [
     actionText: "Ver contrato",
     status: "completed",
     statusLabel: "Aprobado - Desembolsado",
+  },
+];
+
+export const requestSteps: RequestStatusStep[] = [
+  {
+    id: "1",
+    title: "Solicitud enviada",
+    date: "30 de sep 2025, 10:30 a. m.",
+    status: "completed",
+  },
+  {
+    id: "2",
+    title: "Documentos en revisión",
+    date: "30 de sep 2025, 11:45 a. m.",
+    status: "completed",
+  },
+  {
+    id: "3",
+    title: "Verificación empresarial",
+    date: "01 de oct 2025, 09:15 a. m.",
+    status: "completed",
+  },
+  {
+    id: "4",
+    title: "Análisis crediticio",
+    status: "current",
+  },
+  {
+    id: "5",
+    title: "Decisión final",
+    status: "pending",
   },
 ];
