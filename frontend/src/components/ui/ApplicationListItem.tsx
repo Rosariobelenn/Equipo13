@@ -1,8 +1,9 @@
 import { AlertCircle } from "lucide-react";
-import type { Application } from "../../types/requestsList.types";
+import type { Application } from "../../types/request.types";
 import getActionButton from "../../lib/utils/getActionButton";
 import getStatusBadge from "../../lib/utils/getStatusBadge";
 import { formatAmount } from "../../lib/utils/utils";
+import { Link } from "react-router-dom";
 
 function ApplicationListItem({ application }: { application: Application }) {
   return (
@@ -42,9 +43,12 @@ function ApplicationListItem({ application }: { application: Application }) {
       </main>
       <aside className="flex md:flex-col justify-evenly md:justify-center items-center gap-3 mt-4 md:mt-0 md:col-span-1">
         {getActionButton(application)}
-        <button className="text-sm text-gray-900 hover:text-gray-600 underline transition-colors cursor-pointer">
+        <Link
+          to={`/request-details/${application.id}`}
+          className="text-sm text-gray-900 hover:text-gray-600 underline transition-colors cursor-pointer"
+        >
           Ver detalles
-        </button>
+        </Link>
       </aside>
     </article>
   );
