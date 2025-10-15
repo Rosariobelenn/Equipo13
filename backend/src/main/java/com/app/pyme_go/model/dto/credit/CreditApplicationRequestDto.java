@@ -3,6 +3,7 @@ package com.app.pyme_go.model.dto.credit;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,5 +34,13 @@ public class CreditApplicationRequestDto {
 
     @NotBlank(message = "El nombre del titular de la cuenta no puede estar vacío")
     private String bank_holder_name;
-}
 
+    @NotEmpty(message = "La URL de los estados contables no puede estar vacía")
+    private String document_financial_statements;
+
+    @NotEmpty(message = "La URL del certificado de ingresos brutos no puede estar vacía")
+    private String document_gross_income_certificate;
+
+    @NotEmpty(message = "La URL del extracto bancario no puede estar vacía")
+    private String document_statement_file;
+}

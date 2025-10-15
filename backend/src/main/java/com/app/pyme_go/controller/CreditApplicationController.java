@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,26 +24,24 @@ public class CreditApplicationController {
         this.creditApplicationService = creditApplicationService;
     }
 
-    @PostMapping("/credit-applications")
+    @PostMapping(
+            path = "/credit-applications",
+            consumes = {MediaType.APPLICATION_JSON_VALUE}
+    )
     public ResponseEntity<?> createCreditApplication(
-            @Valid @RequestPart("request") CreditApplicationRequestDto requestDto,
-            @RequestPart("document_financial_statements") MultipartFile financialStatements,
-            @RequestPart("document_gross_income_certificate") MultipartFile grossIncomeCertificate,
-            @RequestPart("document_statement_file") MultipartFile statementFile) {
+            @Valid @RequestBody CreditApplicationRequestDto requestDto) {
         try {
-            CreditApplication application = creditApplicationService.createCreditApplication(
-                    requestDto,
-                    financialStatements,
-                    grossIncomeCertificate,
-                    statementFile
-            );
+            CreditApplication application = creditApplicationService.createCreditApplication(requestDto);
             Map<String, Object> response = new HashMap<>();
             response.put("message", "Solicitud de crédito creada exitosamente.");
             response.put("credit_application_id", application.getId());
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+            // Log the exception for debugging purposes
+            // logger.error("Error creating credit application", e);
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Ocurrió un error inesperado al procesar la solicitud: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
         }
     }
 }
-

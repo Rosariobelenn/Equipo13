@@ -9,14 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.UUID;
 
 @Service
 public class CreditApplicationServiceImpl implements CreditApplicationService {
@@ -39,10 +33,7 @@ public class CreditApplicationServiceImpl implements CreditApplicationService {
     @Override
     @Transactional
     public CreditApplication createCreditApplication(
-            CreditApplicationRequestDto requestDto,
-            MultipartFile financialStatements,
-            MultipartFile grossIncomeCertificate,
-            MultipartFile statementFile) {
+            CreditApplicationRequestDto requestDto) {
 
         String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByGmail(userEmail)
@@ -73,51 +64,23 @@ public class CreditApplicationServiceImpl implements CreditApplicationService {
         CreditApplication savedApplication = creditApplicationRepository.save(creditApplication);
 
         // 3. Guardar documentos
-        try {
-            saveDocument(savedApplication, financialStatements, "financial_statements");
-            saveDocument(savedApplication, grossIncomeCertificate, "gross_income_certificate");
-            saveDocument(savedApplication, statementFile, "statement_file");
-        } catch (IOException e) {
-            // En una aplicación real, aquí se manejaría la transacción para revertir los cambios.
-            throw new RuntimeException("Error al guardar los documentos.", e);
-        }
+        saveDocument(savedApplication, requestDto.getDocument_financial_statements(), "financial_statements");
+        saveDocument(savedApplication, requestDto.getDocument_gross_income_certificate(), "gross_income_certificate");
+        saveDocument(savedApplication, requestDto.getDocument_statement_file(), "statement_file");
 
         return savedApplication;
     }
 
-    private void saveDocument(CreditApplication application, MultipartFile file, String documentType) throws IOException {
-        if (file == null || file.isEmpty()) {
-            return; // O lanzar excepción si el documento es obligatorio
-        }
-
-        String filePath = storeFile(file);
+    private void saveDocument(CreditApplication application, String fileUrl, String documentType) {
 
         Document doc = new Document();
         doc.setDocumentableId(application.getId());
         doc.setDocumentableType(CreditApplication.class.getSimpleName().toLowerCase());
         doc.setDocumentType(documentType);
-        doc.setFilePath(filePath);
+        doc.setFilePath(fileUrl); // Guardamos la URL directamente
         doc.setApproved(false);
 
         documentRepository.save(doc);
     }
 
-    private String storeFile(MultipartFile file) throws IOException {
-        // Lógica para guardar el archivo en el servidor
-        Path storageDirectory = Paths.get("uploads/documents").toAbsolutePath().normalize();
-        Files.createDirectories(storageDirectory);
-
-        String originalFileName = file.getOriginalFilename();
-        String fileExtension = "";
-        if (originalFileName != null && originalFileName.contains(".")) {
-            fileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
-        }
-        String newFileName = UUID.randomUUID().toString() + fileExtension;
-
-        Path targetLocation = storageDirectory.resolve(newFileName);
-        Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
-
-        return targetLocation.toString();
-    }
 }
-
