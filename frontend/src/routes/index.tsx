@@ -9,6 +9,7 @@ import Dashboard from "../pages/Dashboard";
 import RequestsList from "../pages/RequestsList";
 import RequestPanel from "../pages/RequestPanel";
 import RequestDetails from "../pages/RequestDetails";
+import DigitalSignatureContract from "../components/forms/Login/DigitalSignatureContract";
 
 export default function AppRoutes() {
   return (
@@ -23,6 +24,17 @@ export default function AppRoutes() {
       <Route path="/requests-list" element={<RequestsList />} />
       <Route path="/request-details/:id" element={<RequestDetails />} />
       <Route path="/operator" element={<RequestPanel />} />
+      <Route path='/' element={<Milogin />} />
+      <Route path='/register' element={<Register />} />
+      <Route path='/registerFlow' element={<RegisterFlow />} />
+      <Route path='/EmailVerification' element={<EmailVerification />} />
+      <Route path='/EmailVerified' element={<EmailVerified />} />
+      <Route path='/Loginoperador' element={<MiLoginOperador />} />
+      <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/requests-list' element={<RequestsList />} />
+      <Route path='/operator' element={<RequestPanel />} />
+      <Route path='/DigitalSignatureContract' element={<DigitalSignatureContract />} />
+      
     </Routes>
   );
 }
