@@ -81,6 +81,8 @@
   color: #a0a0a0;
 }
 
+
+
 .extra-clase {
   padding: 12px;
   border: none;
@@ -95,6 +97,7 @@
 
 .extra-clase:hover{
   background-color: #0b5e80;
+  
 }
 
 .register-text {
@@ -128,12 +131,14 @@
   font-size: 16px;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
   margin-top: 0; /* asegura que no tenga margen arriba */
+  text-align: center;
 }
 
 .tituloform{
   font-size: 50px;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
   margin-bottom: 5px; /* espacio pequeño debajo del h2 */
+  font-weight: bold;
 }
 
 .conteinertituloform{
@@ -167,13 +172,14 @@
 .toggle-btn {
   background: transparent;
   border: none;
-  color: #000;
+  color: #000000;
   padding: 8px 24px;
   border-radius: 30px;
   cursor: pointer;
   font-weight: 500;
   font-size: 14px;
   transition: all 0.3s;
+
 }
 
 .toggle-btn.active {
@@ -203,6 +209,27 @@
   display: flex;
   align-items: center;
 }
+
+.log{
+ /* background-color: aqua;*/
+  width: 50px;
+  height: 50px;
+  color: rgb(5, 5, 134);
+}
+
+.login-container{
+  width: 90px;
+  height: 80px;
+  background-color:rgb(225, 248, 252);
+   display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;     /* centra verticalmente */
+  margin-bottom: 50px;
+  border-radius: 50% ;
+  padding: 20px;
+}
+
+
 
 
 
