@@ -1,4 +1,4 @@
-import type { StatusCardProps } from "../../types/types";
+import type { StatusCardProps } from "../../types/common.types";
 
 function StatusCard({
   icon: Icon,

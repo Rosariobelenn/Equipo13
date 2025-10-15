@@ -8,3 +8,12 @@ export interface Application {
   status: "ready" | "pending" | "completed";
   statusLabel: string;
 }
+
+export interface RequestStatusStep {
+  id: string;
+  title: string;
+  date?: string;
+  status: "completed" | "current" | "pending";
+}
+
+export type RequestDetailsTabs = "progress" | "documents" | "contact";

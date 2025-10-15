@@ -1,6 +1,6 @@
 import { Eye, PenTool, Upload } from "lucide-react";
 import ActionButton from "../../components/ui/Button/ActionButton";
-import type { Application } from "../../types/requestsList.types";
+import type { Application } from "../../types/request.types";
 
 const getActionButton = (application: Application) => {
   switch (application.status) {
