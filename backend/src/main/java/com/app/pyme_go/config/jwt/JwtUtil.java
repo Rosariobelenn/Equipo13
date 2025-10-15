@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 import org.springframework.security.core.Authentication;
@@ -34,7 +35,7 @@ public class JwtUtil {
         return Jwts.builder().setSubject(mainUser.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + expiration * 1000L))
-                .signWith(key)
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
@@ -53,6 +54,7 @@ public class JwtUtil {
     public Claims extractAllClaims(String token){
         SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
         return Jwts.parserBuilder()
+                .setSigningKey(key).requireAudience(null)
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)

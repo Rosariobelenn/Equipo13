@@ -19,6 +19,7 @@ import com.app.pyme_go.config.jwt.JwtAuthenticationFilter;
 import com.app.pyme_go.config.jwt.JwtEntryPoint;
 
 import java.util.List;
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -70,8 +71,7 @@ public class SecurityConfig {
         CorsConfigurationSource corsConfigurationSource() {
                 CorsConfiguration configuration = new CorsConfiguration();
 
-                configuration.setAllowedOrigins(List.of( "http://localhost:3000"));
-                configuration.setAllowedOrigins(List.of(allowedOrigin));
+                configuration.setAllowedOrigins(Arrays.asList(allowedOrigin, "http://localhost:3000"));
                 configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                 configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
                 configuration.setAllowCredentials(true);
