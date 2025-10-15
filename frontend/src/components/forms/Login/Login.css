@@ -83,7 +83,7 @@
 
 
 
-.extra-clase {
+.extra-class {
   padding: 12px;
   border: none;
   border-radius: 5px;
@@ -95,7 +95,7 @@
   font-weight: bold; 
 }
 
-.extra-clase:hover{
+.extra-class:hover{
   background-color: #0b5e80;
   
 }

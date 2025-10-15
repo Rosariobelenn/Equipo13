@@ -44,11 +44,11 @@ const Login: React.FC = () => {
               <button
                 type="button"
                 className={`toggle-btn ${
-                  activeTab === "cliente" ? "active extra-clase" : "" }`}onClick={handleClienteClick}>Soy cliente</button>
+                  activeTab === "cliente" ? "active extra-class" : "" }`}onClick={handleClienteClick}>Soy cliente</button>
               <button
                 type="button"
                 className={`toggle-btn ${
-                  activeTab === "operador" ? "active extra-clase" : ""
+                  activeTab === "operador" ? "active extra-class" : ""
                 }`}
                 onClick={handleOperadorClick}  >Soy operador</button>
             </div>
@@ -103,7 +103,7 @@ const Login: React.FC = () => {
           </div>
 
           {/* Botón Ingresar */}
-          <button type="submit" className="extra-clase">Ingresar</button>
+          <button type="submit" className="extra-class">Ingresar</button>
 
           {/* Enlace de registro */}
           <p className="register-text">

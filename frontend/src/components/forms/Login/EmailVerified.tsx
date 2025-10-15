@@ -19,8 +19,8 @@ const EmailVerified: React.FC = () => {
 
         </div>
 
-        <h2 className="letrra">¡Email verificado!</h2>
-        <p className="parr">Tu correo electrónico ha sido confirmado exitosamente</p>
+        <h2 className="letter">¡Email verificado!</h2>
+        <p className="pair">Tu correo electrónico ha sido confirmado exitosamente</p>
 
         <div className="verified-box">
           <span> logo Verificado</span>
