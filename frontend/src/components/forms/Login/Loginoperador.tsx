@@ -44,13 +44,13 @@ const Login: React.FC = () => {
               <button
                 type="button"
                 className={`toggle-btn ${
-                  activeTab === "cliente" ? "active extra-clase" : ""
+                  activeTab === "cliente" ? "active extra-class" : ""
                 }`}
                 onClick={handleClienteClick} > Soy cliente </button>
               <button
                 type="button"
                 className={`toggle-btn ${
-                  activeTab === "operador" ? "active extra-clase" : ""
+                  activeTab === "operador" ? "active extra-class" : ""
                 }`}
                 onClick={handleOperadorClick} >
                 Soy operador
@@ -115,7 +115,7 @@ const Login: React.FC = () => {
           </div>
 
           {/* Botón Ingresar */}
-          <button type="submit" className="extra-clase">
+          <button type="submit" className="extra-class">
             Ingresar
           </button>
 

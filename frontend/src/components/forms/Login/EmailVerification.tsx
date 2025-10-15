@@ -37,7 +37,7 @@ return (
          </div>
          
         <h2 className="ltverimail">Verifica tu email</h2>
-        <p className="parrafo">Hemos enviado un código de 6 dígitos a{" "}   <br /> <a className="linking" href="mailto:fedeecrer@gmail.com">fedeecrer@gmail.com</a></p>
+        <p className="paragraph">Hemos enviado un código de 6 dígitos a{" "}   <br /> <a className="linking" href="mailto:fedeecrer@gmail.com">fedeecrer@gmail.com</a></p>
 
         <label className="labcod" htmlFor="code">Código de verificación *</label>
         <input
@@ -49,7 +49,7 @@ return (
         onChange={(e) => setCode(e.target.value)}
         placeholder="000000"
         />
-        <small className="pequeño">Ingresa el código de 6 dígitos que recibiste por email</small>
+        <small className="small">Ingresa el código de 6 dígitos que recibiste por email</small>
 
         <div className="resend-row">
         <span>⏱️ Reenviar en {timer > 0 ? `0:${timer}` : "0:00"}</span>

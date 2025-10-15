@@ -29,13 +29,13 @@
   font-size: 32px;
 }
 
-.letrra {
+.letter {  /*letter*/
   font-size: 22px;
   margin-bottom: 28px;
   color: #111;
 }
 
-.parr {
+.pair { /*pair*/
   color: #555;
   font-size: 14px;
   margin-bottom: 54px;
@@ -76,7 +76,7 @@
   background-color: #142e64;
 }
 
-.logo-circle {
+.logo-circle { 
   width: 90px;
   height: 80px;
   background-color: #def6e8; /* 💧 color agua claro */
@@ -102,11 +102,11 @@
     width: 360px;
   }
 
-  .letrra{
+  .letter{  /*letter*/
     margin-bottom: 8px;
   }
 
-  .parr{
+  .pair{  /*pair*/
       margin-bottom: 24px;
   }
 
