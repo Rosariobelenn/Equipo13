@@ -27,6 +27,7 @@
   align-items: center;
   margin: 0 auto 16px auto;
   font-size: 32px;
+  padding-left: 10px;
 }
 
 .letter {  /*letter*/
@@ -43,20 +44,24 @@
 
 .verified-box {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-items: center;
   background-color: #e9fbe7;
   border: 1px solid #b2e3a7;
   border-radius: 8px;
-  padding: 32px;
+  padding: 3px;
   color: #117a37;
   font-size: 14px;
   margin-bottom: 24px;
+  
 }
 
 .email {
   font-weight: 500;
   color: #117a37;
+  margin-bottom: 15px;
+  padding-left:10px;
 }
 
 .access-btn {
@@ -97,20 +102,53 @@
 }
 
 
+
+.logo-circlee { 
+  width: 40px;
+  height: 40px;
+  background-color: #def6e8; /* 💧 color agua claro */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /*padding: 3px;  menos padding */
+  
+}
+
+.conteiner-verl{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 40px;
+}
+
+.very{
+  margin-bottom: 15px;
+}
+
+
+
+
 @media (max-width: 768px) {
   .verified-card {
     width: 360px;
   }
 
-  .letter{  /*letter*/
+  .letter{  
     margin-bottom: 8px;
   }
 
-  .pair{  /*pair*/
+  .pair{  
       margin-bottom: 24px;
   }
 
   .verified-box{
     padding: 12px;
+  }
+
+  .conteiner-verl{
+    padding-left: 5vh;
+    flex-direction: column;
   }
 }
