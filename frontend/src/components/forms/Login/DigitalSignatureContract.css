@@ -1,5 +1,5 @@
 /* Background overlay */
-.overlay {
+.overlayy {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
@@ -21,7 +21,7 @@
 }
 
 /* Title */
-.title {
+.titlee {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 20px;
@@ -37,7 +37,7 @@
   margin-bottom: 20px;
 }
 
-.summary-item p {
+.summary-item .paragraphh { /*paragraphh*/
   margin: 4px 0;
   font-size: 14px;
   color: #333;
@@ -63,13 +63,13 @@
   color: #888;
 }
 
-.signature-area h3 {
+.signature-area .lettter { /*lettter*/
   margin-bottom: 6px;
   color: #333;
   font-size: 16px;
 }
 
-.signature-area p {
+.signature-area .paragraphh {  /*paragraphh*/
   color: #666;
   font-size: 14px;
   margin-bottom: 12px;
@@ -159,7 +159,7 @@
 }
 
 /* Título */
-.title {
+.titlee {
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 25px;
