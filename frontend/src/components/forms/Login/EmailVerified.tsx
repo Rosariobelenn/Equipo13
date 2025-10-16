@@ -1,6 +1,7 @@
 import React from "react";
 import "./EmailVerified.css";
 import LogoCheck from "./LogoCheck";
+import LogoChecktwo from "./LogoChecktwo";
 
 const EmailVerified: React.FC = () => {
   const handleAccess = () => {
@@ -13,7 +14,7 @@ const EmailVerified: React.FC = () => {
         <div className="icon-circle success">
 
            {/* Círculo con el logo de verificación */}
-        <div className="icon-circle success">
+        <div className="icon-circle successs">
           <LogoCheck />
         </div>
 
@@ -23,8 +24,18 @@ const EmailVerified: React.FC = () => {
         <p className="pair">Tu correo electrónico ha sido confirmado exitosamente</p>
 
         <div className="verified-box">
-          <span> logo Verificado</span>
+         
+          <span className="conteiner-verl"> 
+             
+             <div className="icon-circlee success">
+          <LogoChecktwo />
+        </div>
+            
+            
+                <p className="very">Verificado</p>
+                
           <span className="email">fedeecrer@gmail.com</span>
+          </span>
         </div>
 
         <button className="access-btn" onClick={handleAccess}>
