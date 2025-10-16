@@ -21,13 +21,13 @@ const DigitalSignatureContract: React.FC = () => {
   };
 
   return (
-    <div className="overlay">
+    <div className="overlayy">
       <div className="contract-modal">
-        <h2 className="title">Firma de contrato digital</h2>
+        <h2 className="titlee">Firma de contrato digital</h2>
 
         <div className="summary">
           <div className="summary-item">
-            <p>
+            <p className="paragraphh">
               <span className="label">Cantidad:</span> $ 1.800.000
             </p>
             <p>
@@ -35,7 +35,7 @@ const DigitalSignatureContract: React.FC = () => {
             </p>
           </div>
           <div className="summary-item">
-            <p>
+            <p className="paragraphh">
               <span className="label">Término:</span> 24 meses
             </p>
             <p>
@@ -46,8 +46,8 @@ const DigitalSignatureContract: React.FC = () => {
 
         <div className="signature-area">
           <div className="signature-icon">LOGO</div>
-          <h3>Área de firma digital</h3>
-          <p>
+          <h3 className="lettter">Área de firma digital</h3>
+          <p className="paragraphh">
             Al hacer clic, confirmas que has leído y aceptas todos los términos del contrato.
           </p>
           <div className="important-note">
