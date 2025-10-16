@@ -14,7 +14,7 @@ const EmailVerified: React.FC = () => {
         <div className="icon-circle success">
 
            {/* Círculo con el logo de verificación */}
-        <div className="icon-circle success">
+        <div className="icon-circle successs">
           <LogoCheck />
         </div>
 
@@ -27,7 +27,7 @@ const EmailVerified: React.FC = () => {
          
           <span className="conteiner-verl"> 
              
-             <div className="icon-circle success">
+             <div className="icon-circlee success">
           <LogoChecktwo />
         </div>
             

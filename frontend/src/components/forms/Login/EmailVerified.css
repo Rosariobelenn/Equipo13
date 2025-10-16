@@ -17,7 +17,6 @@
 }
 
 .icon-circle.success {
-  background-color: #e6f9ed;
   color: #1a9c46;
   border-radius: 50%;
   width: 64px;
@@ -27,16 +26,59 @@
   align-items: center;
   margin: 0 auto 16px auto;
   font-size: 32px;
-  padding-left: 10px;
+  
 }
 
-.letter {  /*letter*/
+.icon-circle.successs {
+  color: #1a9c46;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 16px auto;
+  font-size: 102px;
+  
+}
+
+.logo-circle {
+   width: 150px ;  /* ancho del círculo */
+  height: 80px ;   /* altura igual al ancho */
+  background-color: #e9fbe7;  /* fondo amarillo */
+  border-radius: 50%;         /* círculo perfecto */
+  display: flex;
+  justify-content: center;    /* centra el SVG horizontalmente */
+  align-items: center;        /* centra el SVG verticalmente */
+  
+}
+
+.logo-svg {
+  width: 80%;   /* tamaño relativo dentro del círculo */
+  height: 80%;
+}
+
+
+.icon-circlee.success {
+  color: #1a9c46;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 16px auto;
+  font-size: 32px;
+  
+}
+
+.letter {  
   font-size: 22px;
   margin-bottom: 28px;
   color: #111;
 }
 
-.pair { /*pair*/
+.pair { 
   color: #555;
   font-size: 14px;
   margin-bottom: 54px;
@@ -81,26 +123,15 @@
   background-color: #142e64;
 }
 
-.logo-circle { 
-  width: 90px;
-  height: 80px;
-  background-color: #def6e8; /* 💧 color agua claro */
-  border-radius: 50%;                   /* círculo */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
-  border-radius: 50% ;
-  padding: 20px;                     /* centra horizontalmente */
-}
 
-.circlee{
+
+
+/*.circlee{
   background-color:#def6e8;
   width: 30px;
   height: 40px;
   
-}
-
+}*/
 
 
 .logo-circlee { 
