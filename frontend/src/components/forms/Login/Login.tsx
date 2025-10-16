@@ -7,7 +7,7 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<string>("cliente");
+  const [activeTab, setActiveTab] = useState<"cliente" | "operador">("cliente");
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const navigate = useNavigate();
@@ -21,10 +21,9 @@ const Login: React.FC = () => {
     );
   };
 
-  // ✅ Navegación entre pestañas
   const handleClienteClick = () => {
     setActiveTab("cliente");
-    navigate("/logincliente"); // 🔹 mejor usar ruta clara y consistente
+    navigate("/logincliente");
   };
 
   const handleOperadorClick = () => {
@@ -34,34 +33,49 @@ const Login: React.FC = () => {
 
   return (
     <>
-      {/* Mitad izquierda (color celeste) */}
       <div className="login-container2">
-        {/* Mitad derecha (formulario azul oscuro) */}
         <form className="login-form" onSubmit={handleSubmit}>
+          {/* 🔹 Toggle visual modernizado */}
           <div className="toggle-container">
-            {/* Toggle “Soy cliente / Soy operador” */}
-            <div className="user-toggle">
+            <div className="toggle-tabs">
               <button
                 type="button"
-                className={`toggle-btn ${
-                  activeTab === "cliente" ? "active extra-class" : "" }`}onClick={handleClienteClick}>Soy cliente</button>
-              <button
-                type="button"
-                className={`toggle-btn ${
-                  activeTab === "operador" ? "active extra-class" : ""
+                onClick={handleClienteClick}
+                className={`toggle-tab ${
+                  activeTab === "cliente"
+                    ? "active-tab"
+                    : "inactive-tab"
                 }`}
-                onClick={handleOperadorClick}  >Soy operador</button>
+              >
+                Soy cliente
+              </button>
+              <button
+                type="button"
+                onClick={handleOperadorClick}
+                className={`toggle-tab ${
+                  activeTab === "operador"
+                    ? "active-tab"
+                    : "inactive-tab"
+                }`}
+              >
+                Soy operador
+              </button>
             </div>
           </div>
 
-          {/* Título y subtítulo dinámico */}
+          {/* Título dinámico */}
           <div className="conteinertituloform">
-            <h2 className="tituloform"> {activeTab === "cliente" ? "Bienvenido" : "Acceso Operadores"} </h2>
+            <h2 className="tituloform">
+              {activeTab === "cliente" ? "Bienvenido" : "Acceso Operadores"}
+            </h2>
             <h4 className="subtituloform">
-              {activeTab === "cliente" ? "Accede a tu cuenta o registra tu empresa" : "Panel de gestión de solicitudes de crédito"} </h4>
+              {activeTab === "cliente"
+                ? "Accede a tu cuenta o registra tu empresa"
+                : "Panel de gestión de solicitudes de crédito"}
+            </h4>
           </div>
 
-          {/* Input Correo */}
+          {/* Correo */}
           <div className="input-group">
             <label className="label1">Correo electrónico</label>
             <input
@@ -70,10 +84,11 @@ const Login: React.FC = () => {
               placeholder="Ingresa tu correo corporativo"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required/>
+              required
+            />
           </div>
 
-          {/* Input Contraseña */}
+          {/* Contraseña */}
           <div className="input-group password-group">
             <label className="label1">Contraseña</label>
             <div className="password-wrapper">
@@ -83,14 +98,22 @@ const Login: React.FC = () => {
                 placeholder="Ingresa tu contraseña"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required/>
-              <span className="show-password-icon" onClick={() => setShowPassword(!showPassword)} >
-                {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+                required
+              />
+              <span
+                className="show-password-icon"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <AiOutlineEyeInvisible />
+                ) : (
+                  <AiOutlineEye />
+                )}
               </span>
             </div>
           </div>
 
-          {/* Checkbox Recordarme */}
+          {/* Recordarme */}
           <div className="remember-me">
             <input
               className="botton"
@@ -98,18 +121,28 @@ const Login: React.FC = () => {
               id="rememberMe"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              />
-            <label htmlFor="rememberMe" className="label2">Recordarme</label>
+            />
+            <label htmlFor="rememberMe" className="label2">
+              Recordarme
+            </label>
           </div>
 
-          {/* Botón Ingresar */}
-          <button type="submit" className="extra-class">Ingresar</button>
+          {/* Botón ingresar */}
+          <button type="submit" className="extra-class">
+            Ingresar
+          </button>
 
-          {/* Enlace de registro */}
+          {/* Registro */}
           <p className="register-text">
             ¿No tenés cuenta?{" "}
             <strong className="strg">
-              <a className="texxto"  onClick={() => navigate("/register")} style={{ cursor: "pointer" }}>Regístrate acá</a>
+              <a
+                className="texxto"
+                onClick={() => navigate("/register")}
+                style={{ cursor: "pointer" }}
+              >
+                Regístrate acá
+              </a>
             </strong>
           </p>
         </form>
