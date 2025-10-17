@@ -1,23 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import "./DigitalSignatureContract.css";
+import PenTool from "./SignatureIcon";
 
 const DigitalSignatureContract: React.FC = () => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedFile(e.target.files[0]);
-      console.log("File selected:", e.target.files[0].name);
-    }
-  };
-
   const handleCancel = () => {
-    setSelectedFile(null); // limpiar archivo si se cancela
     console.log("Cancel clicked");
   };
 
   const handleSign = () => {
-    console.log("Signing with file:", selectedFile?.name || "No file selected");
+    console.log("Signing contract digitally");
   };
 
   return (
@@ -45,7 +36,7 @@ const DigitalSignatureContract: React.FC = () => {
         </div>
 
         <div className="signature-area">
-          <div className="signature-icon">LOGO</div>
+          <div className="signature-icon"><PenTool/></div>
           <h3 className="lettter">Área de firma digital</h3>
           <p className="paragraphh">
             Al hacer clic, confirmas que has leído y aceptas todos los términos del contrato.
@@ -53,22 +44,6 @@ const DigitalSignatureContract: React.FC = () => {
           <div className="important-note">
             <strong>Importante:</strong> La firma digital tiene la misma validez legal que una manuscrita.
           </div>
-
-          {/* Input personalizado para subir archivo */}
-          <label className="file-upload-label">
-             Subir archivo
-            <input
-              type="file"
-              accept=".pdf, image/*"
-              onChange={handleFileChange}
-              className="file-input"
-            />
-          </label>
-          {selectedFile && (
-            <div className="file-info">
-              Archivo seleccionado: <strong>{selectedFile.name}</strong>
-            </div>
-          )}
         </div>
 
         <div className="buttons">
