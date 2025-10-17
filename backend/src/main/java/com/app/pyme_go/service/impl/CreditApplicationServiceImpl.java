@@ -1,11 +1,10 @@
 package com.app.pyme_go.service.impl;
 
-import com.app.pyme_go.model.dto.credit.CreditApplicationDetailDto;
-import com.app.pyme_go.model.dto.credit.CreditApplicationRequestDto;
-import com.app.pyme_go.model.dto.credit.CreditApplicationResponseDto;
+import com.app.pyme_go.model.dto.credit.*;
 import com.app.pyme_go.model.entity.*;
 import com.app.pyme_go.repository.*;
 import com.app.pyme_go.service.CreditApplicationService;
+
 import jakarta.transaction.Transactional;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,14 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -80,12 +84,15 @@ public class CreditApplicationServiceImpl implements CreditApplicationService {
     }
 
     @Override
-    public List<CreditApplicationResponseDto> getCreditApplicationsForUser() {
+    public List<CreditApplicationResponseDto> getCreditApplicationsForUser(int page, int limit) {
         String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByGmail(userEmail)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 
-        List<CreditApplication> applications = creditApplicationRepository.findByUser(user);
+        // La paginación en Spring Data JPA es base 0, por eso page - 1
+        Pageable pageable = PageRequest.of(page - 1, limit);
+
+        Page<CreditApplication> applications = creditApplicationRepository.findByUser(user, pageable);
 
         return applications.stream()
                 .map(app -> new CreditApplicationResponseDto(
@@ -138,6 +145,103 @@ public class CreditApplicationServiceImpl implements CreditApplicationService {
         );
     }
 
+    @Override
+    public AdminCreditApplicationDetailDto getAdminCreditApplicationById(Long id) {
+        // La autorización de rol 'ADMIN' debería ser manejada por la configuración de seguridad de Spring.
+        CreditApplication app = creditApplicationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Solicitud de crédito no encontrada."));
+
+        // Mapeo de la Compañía
+        Company company = app.getCompany();
+        AdminCreditApplicationDetailDto.CompanyDto companyDto = new AdminCreditApplicationDetailDto.CompanyDto(
+                company.getBusinessName(), company.getTaxId(), company.getCompanyType()
+        );
+
+        // Mapeo del Representante Legal
+        LegalRepresentative lr = company.getLegalRepresentative();
+        AdminCreditApplicationDetailDto.LegalRepresentativeDto lrDto = new AdminCreditApplicationDetailDto.LegalRepresentativeDto(
+                lr.getFullName(), lr.getPosition(), lr.getDocumentType(), lr.getDocumentNumber(),
+                lr.getCorporateEmail(), lr.getContactPhone()
+        );
+
+        // Mapeo de la Cuenta Bancaria (con CBU/CVU ofuscado)
+        BankAccount ba = app.getBankAccount();
+        String maskedCbu = ba.getCbuCvu() != null ? "**********************" : null;
+        AdminCreditApplicationDetailDto.BankAccountDto bankAccountDto = new AdminCreditApplicationDetailDto.BankAccountDto(
+                ba.getBankName(), ba.getAccountType(), maskedCbu
+        );
+
+        // Mapeo de Documentos
+        List<AdminCreditApplicationDetailDto.DocumentDto> documentDtos = app.getDocuments().stream()
+                .map(doc -> new AdminCreditApplicationDetailDto.DocumentDto(
+                        doc.getId(), doc.getDocumentType(), doc.getFilePath(), doc.getApproved(), doc.getMessage()
+                )).collect(Collectors.toList());
+
+        // Mapeo de Asignado A (si existe)
+        AdminCreditApplicationDetailDto.AssignedToDto assignedToDto = null;
+        if (app.getAssignedTo() != null) {
+            User assignedUser = app.getAssignedTo();
+            assignedToDto = new AdminCreditApplicationDetailDto.AssignedToDto(assignedUser.getId(), getUserDisplayName(assignedUser));
+        }
+
+        // Mapeo de Comentarios (si existen)
+        // TODO: Implementar la lógica de comentarios cuando la entidad Comment esté disponible.
+        List<AdminCreditApplicationDetailDto.CommentDto> commentDtos = Collections.emptyList();
+
+        return new AdminCreditApplicationDetailDto(
+                app.getId(), app.getAmount(), app.getInstallmentCount(), app.getStatus(),
+                app.getCreatedAt(), app.getUpdatedAt(), companyDto, lrDto, bankAccountDto,
+                documentDtos,
+                commentDtos, assignedToDto
+        );
+    }
+
+    @Override
+    public Page<AdminCreditApplicationResponseDto> getAllCreditApplications(String status, Boolean assignedToMe, int page, int limit) {
+        Pageable pageable = PageRequest.of(page - 1, limit);
+
+        User currentUser = null;
+        if (assignedToMe != null && assignedToMe) {
+            String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
+            currentUser = userRepository.findByGmail(userEmail)
+                    .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+        }
+
+        CreditApplicationSpecification spec = new CreditApplicationSpecification(status, currentUser);
+
+        Page<CreditApplication> applicationsPage = creditApplicationRepository.findAll(spec, pageable);
+
+        return applicationsPage.map(app -> {
+            AdminCreditApplicationResponseDto.CompanyDto companyDto = new AdminCreditApplicationResponseDto.CompanyDto(app.getCompany().getBusinessName(), app.getCompany().getTaxId(), app.getCompany().getCompanyType());
+
+            LegalRepresentative lr = app.getCompany().getLegalRepresentative();
+            AdminCreditApplicationResponseDto.LegalRepresentativeDto lrDto = new AdminCreditApplicationResponseDto.LegalRepresentativeDto(lr.getFullName(), lr.getPosition(), lr.getDocumentType(), lr.getDocumentNumber(), lr.getCorporateEmail(), lr.getContactPhone());
+
+            AdminCreditApplicationResponseDto.AssignedToDto assignedToDto = null;
+            if (app.getAssignedTo() != null) {
+                User assignedUser = app.getAssignedTo();
+                assignedToDto = new AdminCreditApplicationResponseDto.AssignedToDto(assignedUser.getId(), getUserDisplayName(assignedUser));
+            }
+
+            return new AdminCreditApplicationResponseDto(app.getId(), app.getAmount(), app.getStatus(), app.getCreatedAt(), companyDto, lrDto, assignedToDto);
+        });
+    }
+
+    @Override
+    @Transactional
+    public CreditApplication updateCreditApplicationStatus(Long id, UpdateStatusRequestDto requestDto) {
+        CreditApplication application = creditApplicationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Solicitud de crédito no encontrada."));
+
+        application.setStatus(requestDto.getStatus());
+
+        // TODO: Si se proporciona un mensaje, debería guardarse como un comentario.
+        // Esto requiere la implementación de la entidad Comment y su relación con CreditApplication.
+        // if (requestDto.getMessage() != null && !requestDto.getMessage().isBlank()) { ... }
+
+        return creditApplicationRepository.save(application);
+    }
+
     private void saveDocument(CreditApplication application, String fileUrl, String documentType) {
 
         Document doc = new Document(); // Asumiendo que fileUrl no es nulo
@@ -150,4 +254,19 @@ public class CreditApplicationServiceImpl implements CreditApplicationService {
         documentRepository.save(doc);
     }
 
+    /**
+     * Gets a display name for a user.
+     * <p>
+     * This is a temporary solution. It attempts to extract a name from the user's email.
+     * This should be replaced by a proper 'name' or 'fullName' field in the User entity.
+     *
+     * @param user The user to get the display name for.
+     * @return A display name for the user.
+     */
+    private String getUserDisplayName(User user) {
+        return Optional.ofNullable(user)
+                .map(User::getGmail)
+                .map(email -> email.split("@")[0])
+                .orElse("N/A");
+    }
 }

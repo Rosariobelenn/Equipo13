@@ -71,7 +71,7 @@ public class SecurityConfig {
         CorsConfigurationSource corsConfigurationSource() {
                 CorsConfiguration configuration = new CorsConfiguration();
 
-                configuration.setAllowedOrigins(Arrays.asList(allowedOrigin, "http://localhost:3000"));
+                configuration.setAllowedOrigins(Arrays.asList(allowedOrigin, "http://localhost:3000","https://8080-cs-550858715579-default.cs-us-east1-vpcf.cloudshell.dev"));
                 configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                 configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
                 configuration.setAllowCredentials(true);

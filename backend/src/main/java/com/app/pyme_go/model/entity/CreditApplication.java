@@ -28,6 +28,10 @@ public class CreditApplication {
     private User user;
 
     @ManyToOne
+    @JoinColumn(name = "assigned_to_id")
+    private User assignedTo;
+
+    @ManyToOne
     @JoinColumn(name = "company_id", nullable = false)
     private Company company;
 
@@ -74,4 +78,3 @@ public class CreditApplication {
         this.updatedAt = LocalDateTime.now();
     }
 }
-
