@@ -1,0 +1,7 @@
+.signature-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;       /* ocupa todo el ancho del contenedor */
+  height: 100%;      /* opcional, si querés que llene su contenedor */
+}
