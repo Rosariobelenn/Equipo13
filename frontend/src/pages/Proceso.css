@@ -1,0 +1,119 @@
+.proceso-container {
+  /*max-width: 800px;*/
+ /* margin: 2rem auto;*/
+  font-family: "Inter", sans-serif;
+ /* padding: 1rem;*/
+ padding-left: 10%;
+ 
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.htwo {
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Timeline vertical */
+.timeline {
+  position: relative;
+  margin-left: 1rem;
+  padding-left: 2rem;
+  border-left: 3px solid #e5e7eb;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timeline-icon {
+  position: absolute;
+  left: -1.6rem;
+  top: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+/* Estados */
+.timeline-icon.completado {
+  background-color: #4ade80; /* verde */
+}
+
+.timeline-icon,
+.timeline-icon.en-proceso {
+  background-color: #60a5fa; /* azul */
+}
+
+.timeline-icon.pendiente {
+  background-color: #d1d5db; /* gris claro */
+}
+
+.timeline-content .htree {
+  margin: 0 0 0.2rem 0;
+  font-weight: 600;
+  color: #111827;
+}
+
+.timeline-content .ptwo {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.fecha {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* Botones */
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.acciones .bttoon {
+  flex: 1;
+  min-width: 150px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #f3f4f6;
+  color: #1f2937;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.acciones .bttoon:hover {
+  background-color: #e5e7eb;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .timeline {
+    margin-left: 0;
+    padding-left: 1rem;
+    border-left: 2px solid #e5e7eb;
+  }
+
+  .timeline-icon {
+    left: -1.2rem;
+  }
+
+  .acciones {
+    flex-direction: column;
+  }
+}

@@ -16,15 +16,22 @@ const SolicitudHeader: React.FC<SolicitudHeaderProps> = ({
 }) => {
   return (
     <div className="solicitud-header-container">
-      <button className="back-button" onClick={onBack}>
-        ← Volver a solicitudes
-      </button>
-      <div className="solicitud-info">
-        <h1>{`Solicitud ${numeroSolicitud}`}</h1>
-        <p>{empresa}</p>
-        {status && <span className="estado">{status}</span>}
-      </div>
+      <div className="btt">
+  <button className="back-button" onClick={onBack}>
+    ← Volver a solicitudes
+  </button>
+
+  
+    <div className="solicitud-info">
+      <h1 className="hone">{`Solicitud ${numeroSolicitud}`}</h1>
+      <p className=".pone">{empresa}</p>
+      
     </div>
+    </div>
+    {status && <span className="estado">{status}</span>}
+  
+</div>
+
   );
 };
 

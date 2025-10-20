@@ -1,7 +1,9 @@
 .solicitud-header-container {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  /*align-items: flex-start;*/
+   justify-content: space-between; /* separa los elementos al máximo */
+  align-items: center;
   padding: 1rem 2rem;
   background-color: #f9fafb;
 }
@@ -19,15 +21,22 @@
   text-decoration: underline;
 }
 
-.solicitud-info h1 {
+.solicitud-info .hone {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
   color: #111827;
 }
 
-.solicitud-info p {
+.solicitud-info .pone {
   margin: 0;
   color: #6b7280;
   font-size: 1rem;
+  
+}
+
+/**/
+.btt{
+  display:flex ;
+  gap: 2rem;
 }

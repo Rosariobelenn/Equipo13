@@ -1,6 +1,7 @@
 import React from "react";
 import "./SolicitudDetalle.css";
 import SolicitudHeader from "./SolicitudHeader";
+import Proceso from "./Proceso";
 
 export interface SolicitudAPI {
   id: number;
@@ -77,22 +78,32 @@ const SolicitudDetalle: React.FC<Props> = ({ data }) => {
       {/* Resumen de la solicitud */}
       <div className="solicitud-grid">
         <div className="card resumen">
-          <h3>Resumen de la solicitud</h3>
-          <p><strong>Empresa:</strong> {company.business_name}</p>
-          <p><strong>CUIT:</strong> {company.tax_id}</p>
-          <p><strong>Tipo societario:</strong> {company.company_type}</p>
-          <p><strong>Monto solicitado:</strong> ${amount.toLocaleString()}</p>
-          <p><strong>Cuotas:</strong> {installment_count}</p>
+          <div className="contpositioon">
+            <div>
+          <h3 className="lettter">Resumen de la solicitud</h3>
+
+          <p className="contnam"><div>Empresa: </div> <div className="styloleterr">{company.business_name}</div></p>
+          <p className="contnam"><div>Tipo societario:</div><div className="styloleterr"> {company.company_type} </div></p>
+          </div>
+          <div className="pound">
+          <p className="contnam" ><div>CUIT:</div><div className="styloleterr"> {company.tax_id} </div></p>
+          
+          <p className="contnam" ><div>Monto solicitado:</div> <div className="styloleterr"> ${amount.toLocaleString()}</div></p>
+          <p className="contnam"><div>Cuotas:</div> <div className="styloleterr"> {installment_count} </div></p>
+        </div>
+        </div>
         </div>
 
         <div className="card representante">
-          <h3>Representante legal</h3>
-          <p><strong>Nombre:</strong> {legal_representative.full_name}</p>
-          <p><strong>Cargo:</strong> {legal_representative.position}</p>
-          <p><strong>Email:</strong> {legal_representative.corporate_email}</p>
-          <p><strong>Teléfono:</strong> {legal_representative.contact_phone}</p>
+          <h3 className="lettter">Representante legal</h3>
+          <p className="contnam">Nombre: <strong>{legal_representative.full_name} </strong></p>
+          <p className="contnam">Cargo:<strong> {legal_representative.position} </strong></p>
+          <p className="contnam">Email:<strong> {legal_representative.corporate_email}</strong></p>
+          <p className="contnam">Teléfono:<strong> {legal_representative.contact_phone}</strong></p>
         </div>
       </div>
+
+      <Proceso/>
 
       {/* Cuenta bancaria y asignación */}
       <div className="solicitud-grid">
@@ -113,9 +124,9 @@ const SolicitudDetalle: React.FC<Props> = ({ data }) => {
       {/* Documentos */}
       <div className="card documentos">
         <h3>Documentos</h3>
-        <ul>
+        <ul className="ull">
           {documents.map((doc) => (
-            <li key={doc.id}>
+            <li className="lli" key={doc.id}>
               <strong>{doc.document_type}</strong> –{" "}
               <span>{doc.approved ? "✅ Aprobado" : "⏳ Pendiente"}</span>
               <br />

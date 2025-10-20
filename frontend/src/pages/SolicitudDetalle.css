@@ -34,17 +34,17 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
-.card h3 {
+.card .lettter {
   margin-bottom: 0.8rem;
   color: #1a1a1a;
 }
 
-.card ul {
+.card .ull {
   list-style: none;
   padding: 0;
 }
 
-.card ul li {
+.card .ull .lli {
   margin-bottom: 0.7rem;
 }
 
@@ -53,4 +53,30 @@
   padding-top: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.9rem;
+}
+
+.contnam{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+  font-family: "Inter", sans-serif;
+  
+}
+
+.contpositioon{
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.lettter{
+  padding-bottom: 5vh;
+}
+
+.pound{
+  margin-top: 5vh;
+}
+
+.styloleterr{
+    font-weight: bold;
 }
