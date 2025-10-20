@@ -10,6 +10,7 @@ import RequestsList from "../pages/RequestsList";
 import RequestPanel from "../pages/RequestPanel";
 import RequestDetails from "../pages/RequestDetails";
 import DigitalSignatureContract from "../components/forms/Login/DigitalSignatureContract";
+import SolicDet from "../pages/SolicDet"; // Ajusta la ruta según donde esté tu archivo
 
 
 
@@ -36,6 +37,9 @@ export default function AppRoutes() {
       <Route path='/requests-list' element={<RequestsList />} />
       <Route path='/operator' element={<RequestPanel />} />
       <Route path='/DigitalSignatureContract' element={<DigitalSignatureContract />} />
+      <Route path="/solicitud-detalle" element={<SolicDet />} />
+
+
 
     </Routes>
   );
