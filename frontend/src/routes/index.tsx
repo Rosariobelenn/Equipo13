@@ -11,6 +11,8 @@ import RequestPanel from "../pages/RequestPanel";
 import RequestDetails from "../pages/RequestDetails";
 import DigitalSignatureContract from "../components/forms/Login/DigitalSignatureContract";
 
+
+
 export default function AppRoutes() {
   return (
     <Routes>
@@ -34,7 +36,7 @@ export default function AppRoutes() {
       <Route path='/requests-list' element={<RequestsList />} />
       <Route path='/operator' element={<RequestPanel />} />
       <Route path='/DigitalSignatureContract' element={<DigitalSignatureContract />} />
-      
+
     </Routes>
   );
 }
