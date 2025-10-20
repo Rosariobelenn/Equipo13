@@ -3,14 +3,14 @@ import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
-const Login: React.FC = () => {
+const Loginoperator: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<string>("cliente");
+  const [activeTab, setActiveTab] = useState<"cliente" | "operador">("operador");
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const navigate = useNavigate(); // ✅ hook para navegar
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,7 +21,6 @@ const Login: React.FC = () => {
     );
   };
 
-  // ✅ Funciones para manejar navegación
   const handleClienteClick = () => {
     setActiveTab("cliente");
     navigate("/");
@@ -34,25 +33,31 @@ const Login: React.FC = () => {
 
   return (
     <>
-      {/* Mitad izquierda (color celeste) */}
       <div className="login-container2">
-        {/* Mitad derecha (formulario azul oscuro) */}
         <form className="login-form" onSubmit={handleSubmit}>
+          {/* 🔹 Toggle visual modernizado */}
           <div className="toggle-container">
-            {/* Toggle “Soy cliente / Soy operador” */}
-            <div className="user-toggle">
+            <div className="toggle-tabs">
               <button
                 type="button"
-                className={`toggle-btn ${
-                  activeTab === "cliente" ? "active extra-class" : ""
+                onClick={handleClienteClick}
+                className={`toggle-tab ${
+                  activeTab === "cliente"
+                    ? "active-tab"
+                    : "inactive-tab"
                 }`}
-                onClick={handleClienteClick} > Soy cliente </button>
+              >
+                Soy cliente
+              </button>
               <button
                 type="button"
-                className={`toggle-btn ${
-                  activeTab === "operador" ? "active extra-class" : ""
+                onClick={handleOperadorClick}
+                className={`toggle-tab ${
+                  activeTab === "operador"
+                    ? "active-tab"
+                    : "inactive-tab"
                 }`}
-                onClick={handleOperadorClick} >
+              >
                 Soy operador
               </button>
             </div>
@@ -119,7 +124,7 @@ const Login: React.FC = () => {
             Ingresar
           </button>
 
-          {/* Enlace de registro */}
+          {/* Texto informativo */}
           <p className="register-text">
             Acceso restringido para personal autorizado
           </p>
@@ -129,5 +134,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
-
+export default Loginoperator;

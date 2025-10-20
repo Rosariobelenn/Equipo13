@@ -7,7 +7,7 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [rememberMe, setRememberMe] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<string>("cliente");
+  const [activeTab, setActiveTab] = useState<"cliente" | "operador">("cliente");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 

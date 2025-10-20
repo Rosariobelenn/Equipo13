@@ -3,11 +3,11 @@ import React from "react";
 import "./PymeGo.css";
 import rocketIcon from "./rocket-icon.png";
 
-interface TituloCelesteProps {
+interface TitleBlueProps {
   texto: string;
 }
 
-const TituloCeleste: React.FC<TituloCelesteProps> = () => {
+const TitleBlue: React.FC<TitleBlueProps> = () => {
   return (
    <div className="login-container2">
 
@@ -50,4 +50,4 @@ const TituloCeleste: React.FC<TituloCelesteProps> = () => {
   );
 };
 
-export default TituloCeleste;
+export default TitleBlue;

@@ -1,0 +1,187 @@
+/* Background overlay */
+.overlayy {
+  position: fixed;
+  inset: 0;
+  /*background: rgba(0, 0, 0, 0.4);*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Main container */
+.contract-modal {
+  background: white;
+  border-radius: 16px;
+  width: 480px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  padding: 24px;
+  font-family: "Inter", sans-serif;
+  border: solid black;
+}
+
+/* Title */
+.titlee {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Contract summary */
+.summary {
+  background: #f7f7f8;
+  border-radius: 12px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 20px;
+}
+
+.summary-item .paragraphh { /*paragraphh*/
+  margin: 4px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.label {
+  font-weight: 600;
+  color: #555;
+}
+
+/* Signature area */
+.signature-area {
+  border: 1.5px solid #ddd;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signature-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #888;
+}
+
+.signature-area .lettter { /*lettter*/
+  margin-bottom: 6px;
+  color: #333;
+  font-size: 16px;
+}
+
+.signature-area .paragraphh {  /*paragraphh*/
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.important-note {
+  background-color: #fff8e5;
+  color: #8a6d3b;
+  border: 1px solid #f0e1b0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.cancel {
+  background-color: #f2f2f2;
+}
+
+.cancel:hover {
+  background-color: #e0e0e0;
+}
+
+.sign {
+  background-color: #0066ff;
+  color: white;
+}
+
+.sign:hover {
+  background-color: #0052cc;
+}
+
+
+/*//////////////*/
+/* DigitalSignatureContract.css */
+
+/* Fondo semitransparente */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal del contrato */
+.contract-modal {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 30px 40px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Título */
+.titlee {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: #333333;
+  font-weight: 600;
+}
+
+/* Resumen del contrato */
+.summary {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.summary-item {
+  margin-bottom: 15px;
+}
+
+.label {
+  font-weight: 500;
+  color: #555555;
+}
+
