@@ -63,25 +63,29 @@ const Login: React.FC = () => {
     <div className='login-container2'>
       <form className='login-form' onSubmit={handleSubmit}>
         <div className='toggle-container'>
-          <div className='user-toggle'>
+          <div className='toggle-tabs'>
             <button
-              type='button'
-              className={`toggle-btn ${
-                activeTab === "cliente" ? "active extra-class" : ""
-              }`}
-              onClick={handleClienteClick}
-            >
-              Soy cliente
-            </button>
+                type="button"
+                onClick={handleClienteClick}
+                className={`toggle-tab ${
+                  activeTab === "cliente"
+                    ? "active-tab"
+                    : "inactive-tab"
+                }`}
+              >
+                Soy cliente
+              </button>
             <button
-              type='button'
-              className={`toggle-btn ${
-                activeTab === "operador" ? "active extra-class" : ""
-              }`}
-              onClick={handleOperadorClick}
-            >
-              Soy operador
-            </button>
+                type="button"
+                onClick={handleOperadorClick}
+                className={`toggle-tab ${
+                  activeTab === "operador"
+                    ? "active-tab"
+                    : "inactive-tab"
+                }`}
+              >
+                Soy operador
+              </button>
           </div>
         </div>
 
