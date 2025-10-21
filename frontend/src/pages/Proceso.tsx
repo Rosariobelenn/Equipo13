@@ -1,9 +1,11 @@
 import React from "react";
 import "./Proceso.css";
 import ProgressBar from "./ProgressBar"; // ruta según donde esté tu archivo
-import Message from "./message";
+import Message from "./Message";
 import Downloadd from "./Download";
 import Logdocumentation from "./Logdocumentation";
+import Watch from "./Watch";
+import Check from "./check";
 
 interface Paso {
   titulo: string;
@@ -51,11 +53,11 @@ const Proceso: React.FC = () => {
       <div className="timeline">
 
       <div className="progesbar">  <ProgressBar step={1} />  {/* step puede ser 1, 2 o 3 */}</div>
-       <h2 className="htwo">Estado del proceso</h2>
+       <h2 className="htwo posfour"> <Watch/> Estado del proceso</h2>
         {pasos.map((paso, index) => (
           <div key={index} className="timeline-item">
             <div className={`timeline-icon ${paso.estado}`}>
-              {paso.estado === "completado" ? "✔" : "⏱"}
+              {paso.estado === "completado" ? <Check/> : "⏱"}
             </div>
             <div className="timeline-content">
               <h3 className="htree">{paso.titulo}</h3>
@@ -66,11 +68,11 @@ const Proceso: React.FC = () => {
         ))}
       </div>
 
-     
+    
       <div className="acciones">
         <h3 className="letttertree">Acciones</h3>
         <button className="bttoonn"> <Message /> Enviar mensaje</button>
-         <button className="bttoonn"><Downloadd /> Descargar resumen</button>
+        <button className="bttoonn"><Downloadd /> Descargar resumen</button>
         <button className="bttoonn"><Logdocumentation/> Ver documentación</button> 
       </div>
     </div>

@@ -3,7 +3,7 @@ import "./SolicitudDetalle.css";
 import SolicitudHeader from "./SolicitudHeader";
 import Proceso from "./Proceso";
 import Summary from "./summary";
-import Person from "./person";
+import Person from "./Person";
 
 
 
