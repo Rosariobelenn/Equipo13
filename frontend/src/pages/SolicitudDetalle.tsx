@@ -70,7 +70,7 @@ const SolicitudDetalle: React.FC<Props> = ({ data }) => {
   } = data;
 
   return (
-    <div className="solicitud-container">
+    <div className="solicitud-containerone">
       {/* Header con número de solicitud, empresa y estado */}
       <SolicitudHeader
         numeroSolicitud={id.toString()}
