@@ -44,8 +44,11 @@ const Proceso: React.FC = () => {
     <div className="proceso-container">
      {/* <h2 className="htwo">Estado del proceso</h2>*/}
       
-      <ProgressBar step={1} />  {/* step puede ser 1, 2 o 3 */}
+      
       <div className="timeline">
+
+      <div className="progesbar">  <ProgressBar step={1} />  {/* step puede ser 1, 2 o 3 */}</div>
+       <h2 className="htwo">Estado del proceso</h2>
         {pasos.map((paso, index) => (
           <div key={index} className="timeline-item">
             <div className={`timeline-icon ${paso.estado}`}>
@@ -60,10 +63,12 @@ const Proceso: React.FC = () => {
         ))}
       </div>
 
+     
       <div className="acciones">
+        <h3 className="letttertree">Acciones</h3>
         <button className="bttoon">Enviar mensaje</button>
-        <button className="bttoon">Descargar resumen</button>
-        <button className="bttoon">Ver documentación</button>
+         <button className="bttoon">Descargar resumen</button>
+        <button className="bttoon">Ver documentación</button> 
       </div>
     </div>
   );
