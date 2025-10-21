@@ -12,7 +12,7 @@ import RequestDetails from "../pages/RequestDetails";
 import DigitalSignatureContract from "../components/forms/Login/DigitalSignatureContract";
 import SolicDet from "../pages/SolicDet"; // Ajusta la ruta según donde esté tu archivo
 import SolicitudCredito from "../pages/SolicitudCredito";
-
+import SolicitudEnviada from "../pages/SolicitudEnviada";
 
 export default function AppRoutes() {
   return (
@@ -39,6 +39,7 @@ export default function AppRoutes() {
       <Route path='/DigitalSignatureContract' element={<DigitalSignatureContract />} />
       <Route path="/solicitud-detalle" element={<SolicDet />} />
       <Route path="/SolicitudCredito" element={<SolicitudCredito />} />
+      <Route path="/SolicitudEnviada" element={<SolicitudEnviada />} />
 
 
 
