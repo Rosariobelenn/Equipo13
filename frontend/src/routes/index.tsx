@@ -10,7 +10,7 @@ import RequestsList from "../pages/RequestsList";
 import RequestPanel from "../pages/RequestPanel";
 import RequestDetails from "../pages/RequestDetails";
 import DigitalSignatureContract from "../components/forms/Login/DigitalSignatureContract";
-import SolicDet from "../pages/SolicDet"; // Ajusta la ruta según donde esté tu archivo
+import SolicDet from "../pages/SolicDet"; 
 import SolicitudCredito from "../pages/SolicitudCredito";
 import SolicitudEnviada from "../pages/SolicitudEnviada";
 import SolicitudResumen from "../pages/SolicitudResumen";
