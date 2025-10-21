@@ -13,6 +13,10 @@ import DigitalSignatureContract from "../components/forms/Login/DigitalSignature
 import SolicDet from "../pages/SolicDet"; // Ajusta la ruta según donde esté tu archivo
 import SolicitudCredito from "../pages/SolicitudCredito";
 import SolicitudEnviada from "../pages/SolicitudEnviada";
+import SolicitudResumen from "../pages/SolicitudResumen";
+import ListaDocumentos from "../pages/ListaDocumentos";
+
+
 
 export default function AppRoutes() {
   return (
@@ -40,7 +44,9 @@ export default function AppRoutes() {
       <Route path="/solicitud-detalle" element={<SolicDet />} />
       <Route path="/SolicitudCredito" element={<SolicitudCredito />} />
       <Route path="/SolicitudEnviada" element={<SolicitudEnviada />} />
-
+      <Route path="/SolicitudResumen" element={<SolicitudResumen />} />
+      <Route path="/ListaDocumentos" element={<ListaDocumentos />} />
+      
 
 
     </Routes>
