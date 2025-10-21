@@ -1,6 +1,9 @@
 import React from "react";
 import "./Proceso.css";
 import ProgressBar from "./ProgressBar"; // ruta según donde esté tu archivo
+import Message from "./message";
+import Downloadd from "./Download";
+import Logdocumentation from "./Logdocumentation";
 
 interface Paso {
   titulo: string;
@@ -66,9 +69,9 @@ const Proceso: React.FC = () => {
      
       <div className="acciones">
         <h3 className="letttertree">Acciones</h3>
-        <button className="bttoon">Enviar mensaje</button>
-         <button className="bttoon">Descargar resumen</button>
-        <button className="bttoon">Ver documentación</button> 
+        <button className="bttoonn"> <Message /> Enviar mensaje</button>
+         <button className="bttoonn"><Downloadd /> Descargar resumen</button>
+        <button className="bttoonn"><Logdocumentation/> Ver documentación</button> 
       </div>
     </div>
   );

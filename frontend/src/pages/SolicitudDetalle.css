@@ -80,3 +80,13 @@
 .styloleterr{
     font-weight: bold;
 }
+
+.possitioon{
+  display: flex;
+  gap: 5%;
+}
+
+.possitioontwo{
+  display: flex;
+  gap: 2%;
+}

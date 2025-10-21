@@ -2,6 +2,10 @@ import React from "react";
 import "./SolicitudDetalle.css";
 import SolicitudHeader from "./SolicitudHeader";
 import Proceso from "./Proceso";
+import Summary from "./summary";
+import Person from "./person";
+
+
 
 export interface SolicitudAPI {
   id: number;
@@ -80,7 +84,7 @@ const SolicitudDetalle: React.FC<Props> = ({ data }) => {
         <div className="card resumen">
           <div className="contpositioon">
             <div>
-          <h3 className="lettter">Resumen de la solicitud</h3>
+          <h3 className="lettter possitioon">   <Summary />  Resumen de la solicitud</h3>
 
           <p className="contnam"><div>Empresa: </div> <div className="styloleterr">{company.business_name}</div></p>
           <p className="contnam"><div>Tipo societario:</div><div className="styloleterr"> {company.company_type} </div></p>
@@ -95,7 +99,7 @@ const SolicitudDetalle: React.FC<Props> = ({ data }) => {
         </div>
 
         <div className="card representante">
-          <h3 className="lettter">Representante legal</h3>
+          <h3 className="lettter possitioontwo"> <Person /> Representante legal</h3>
           <p className="contnam">Nombre: <strong>{legal_representative.full_name} </strong></p>
           <p className="contnam">Cargo:<strong> {legal_representative.position} </strong></p>
           <p className="contnam">Email:<strong> {legal_representative.corporate_email}</strong></p>
