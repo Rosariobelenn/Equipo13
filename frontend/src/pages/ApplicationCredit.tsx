@@ -11,7 +11,7 @@ const SolicitudCredito: React.FC = () => {
   const [titular, setTitular] = useState("");
 
   return (
-    <div className="solicitud-container">
+    <div className="solicitud-containerfive">
         <div className="ppositioon">
             <div>
       <a href="#" className="volver-link">← Volver al dashboard</a>
@@ -23,27 +23,28 @@ const SolicitudCredito: React.FC = () => {
 
 
 
-      <h1>Solicitar crédito</h1>
+      <h1 className="h1five">Solicitar crédito</h1>
       <p className="subtitle">Completa los datos para tu solicitud de crédito</p>
 
       {/* Monto y condiciones */}
       <section className="section">
-        <h2>💰 Monto y Condiciones</h2>
+        <h2 className="h2five">💰 Monto y Condiciones</h2>
         <div className="form-row">
           <div className="form-group">
-            <label>Monto solicitado *</label>
+            <label className="labelf" >Monto solicitado *</label>
             <input
+              className="inputfive"
               type="number"
               placeholder="$ 0"
               value={monto}
               onChange={(e) => setMonto(e.target.value)}
             />
-            <small>Monto mínimo: $50.000 - Máximo: $5.000.000</small>
+            <small className="smallfive">Monto mínimo: $50.000 - Máximo: $5.000.000</small>
           </div>
 
           <div className="form-group">
-            <label>Cantidad de cuotas *</label>
-            <select value={cuotas} onChange={(e) => setCuotas(e.target.value)}>
+            <label className="labelf">Cantidad de cuotas *</label>
+            <select className="selectfive" value={cuotas} onChange={(e) => setCuotas(e.target.value)}>
               <option value="">Seleccionar cuotas</option>
               <option value="6">6 cuotas</option>
               <option value="12">12 cuotas</option>
@@ -55,11 +56,11 @@ const SolicitudCredito: React.FC = () => {
 
       {/* Cuenta para depósito */}
       <section className="section">
-        <h2>🏦 Cuenta para Depósito</h2>
+        <h2 className="h2five">🏦 Cuenta para Depósito</h2>
         <div className="form-row">
           <div className="form-group">
-            <label>Banco *</label>
-            <select value={banco} onChange={(e) => setBanco(e.target.value)}>
+            <label className="labelf">Banco *</label>
+            <select className="selectfive" value={banco} onChange={(e) => setBanco(e.target.value)}>
               <option value="">Selecciona tu banco</option>
               <option value="Santander">Santander</option>
               <option value="BBVA">BBVA</option>
@@ -68,8 +69,8 @@ const SolicitudCredito: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label>Tipo de cuenta *</label>
-            <select value={tipoCuenta} onChange={(e) => setTipoCuenta(e.target.value)}>
+            <label className="labelf">Tipo de cuenta *</label>
+            <select className="selectfive" value={tipoCuenta} onChange={(e) => setTipoCuenta(e.target.value)}>
               <option value="">Seleccionar tipo</option>
               <option value="CC">Cuenta Corriente</option>
               <option value="CA">Caja de Ahorro</option>
@@ -79,20 +80,22 @@ const SolicitudCredito: React.FC = () => {
 
         <div className="form-row">
           <div className="form-group">
-            <label>CBU/CVU *</label>
+            <label className="labelf">CBU/CVU *</label>
             <input
+            className="inputfive"
               type="text"
               maxLength={22}
               placeholder="0000000000000000000000"
               value={cbucvu}
               onChange={(e) => setCbucvu(e.target.value)}
             />
-            <small>22 dígitos sin espacios ni guiones</small>
+            <small className="smallfive">22 dígitos sin espacios ni guiones</small>
           </div>
 
           <div className="form-group">
-            <label>Titular de la cuenta *</label>
+            <label className="labelf">Titular de la cuenta *</label>
             <input
+              className="inputfive"
               type="text"
               placeholder="Nombre completo del titular"
               value={titular}
@@ -104,7 +107,7 @@ const SolicitudCredito: React.FC = () => {
 
       {/* Documentación */}
       <section className="section">
-        <h2>📄 Documentación Requerida</h2>
+        <h2 className="h2five">📄 Documentación Requerida</h2>
 
         {[
           "Estados contables (últimos 2 meses)",
@@ -112,11 +115,11 @@ const SolicitudCredito: React.FC = () => {
           "Extracto bancario (último mes)",
         ].map((titulo, idx) => (
           <div key={idx} className="upload-box">
-            <label>{titulo} *</label>
+            <label className="labelf">{titulo} *</label>
             <div className="upload-area">
-              <p>📤 Haz clic para subir o arrastra aquí</p>
-              <small>PDF o imagen (máx. 5MB)</small>
-              <input type="file" />
+              <p className="pfive">📤 Haz clic para subir o arrastra aquí</p>
+              <small className="smallfive">PDF o imagen (máx. 5MB)</small>
+              <input className="inputfive" type="file" />
             </div>
           </div>
         ))}

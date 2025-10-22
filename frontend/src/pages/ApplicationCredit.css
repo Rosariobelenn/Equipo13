@@ -1,4 +1,4 @@
-.solicitud-container {
+.solicitud-containerfive {
   max-width: 800px;
   margin: 2rem auto;
   font-family: "Inter", sans-serif;
@@ -12,7 +12,7 @@
   font-size: 0.9rem;
 }
 
-h1 {
+.h1five {
   text-align: center;
   margin-top: 1rem;
   font-size: 1.8rem;
@@ -32,7 +32,7 @@ h1 {
   background-color: #fafafa;
 }
 
-.section h2 {
+.section .h2five {
   font-size: 1rem;
   margin-bottom: 1rem;
   color: #333;
@@ -50,13 +50,13 @@ h1 {
   flex-direction: column;
 }
 
-label {
+.labelf {
   font-weight: 500;
   margin-bottom: 0.4rem;
 }
 
-input,
-select {
+.inputfive,
+.selectfive {
   border: 1px solid #d1d5db;
   border-radius: 8px;
   padding: 0.5rem 0.8rem;
@@ -70,7 +70,7 @@ select:focus {
   box-shadow: 0 0 0 2px #a5f3fc;
 }
 
-small {
+.smallfive {
   color: #777;
   margin-top: 0.3rem;
 }
@@ -93,12 +93,12 @@ small {
   border-color: #22d3ee;
 }
 
-.upload-area p {
+.upload-area .pfive {
   font-size: 0.95rem;
   color: #333;
 }
 
-.upload-area small {
+.upload-area .smallfive {
   display: block;
   color: #777;
 }
