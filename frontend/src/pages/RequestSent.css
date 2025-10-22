@@ -184,3 +184,13 @@
 .colourinfo{
    color: #f57c00;
 }
+
+
+.logmpf{
+  background-color: #D0F0C0 ;
+  color:#006400 ;
+  padding: 0.5rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}

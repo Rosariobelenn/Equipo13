@@ -37,9 +37,9 @@ const RequestSent: React.FC = () => {
       <div className="proximos-pasos">
         <h3 className="h3seven"><CircleCheckIcon/> <strong>Próximos pasos</strong></h3>
         <ul className="ulseven">
-          <li className="liseven" ><Mail size={18}/> <div className="poslt"> <strong>Confirmación por email </strong>  <br /> Recibirás un email de confirmación en las próximas horas </div></li>
-          <li className="liseven"><Phone size={18}/> <div className="poslt"> <strong>Contacto telefónico</strong>  <br />  Nuestro equipo puede contactarte para aclarar información </div> </li>
-          <li className="liseven"><FileText size={18}/><div className="poslt"> <strong> Documentación adicional </strong><br />Si es necesario, te solicitaremos documentos complementarios </div></li>
+          <li className="liseven" ><Mail className="logmpf" size={18}/> <div className="poslt"> <strong>Confirmación por email </strong>  <br /> Recibirás un email de confirmación en las próximas horas </div></li>
+          <li className="liseven"><Phone className="logmpf" size={18}/> <div className="poslt"> <strong>Contacto telefónico</strong>  <br />  Nuestro equipo puede contactarte para aclarar información </div> </li>
+          <li className="liseven"><FileText  className="logmpf" size={18}/><div className="poslt"> <strong> Documentación adicional </strong><br />Si es necesario, te solicitaremos documentos complementarios </div></li>
         </ul>
       </div>
 
