@@ -43,9 +43,6 @@ public class UserController {
         }
         try {
 
-            System.out.println("Email: " + loginUserDto.getGmail());
-            System.out.println("Password: " + loginUserDto.getPassword());
-
             AuthResponseDto response = authService.autenticateUser(loginUserDto);
 
             return ResponseEntity.ok(response);

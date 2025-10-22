@@ -31,8 +31,11 @@ public class JwtUtil {
 
         UserDetails mainUser = (UserDetails) authentication.getPrincipal();
         SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
+        String role = mainUser.getAuthorities().iterator().next().getAuthority();
+
 
         return Jwts.builder().setSubject(mainUser.getUsername())
+                .claim("role", "ROLE_" + role)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + expiration * 1000L))
                 .signWith(key, SignatureAlgorithm.HS256)
@@ -64,4 +67,9 @@ public class JwtUtil {
     public String extractGmail(String token){
         return extractAllClaims(token).getSubject();
     }
+
+    public String extractRole(String token) {
+        return extractAllClaims(token).get("role", String.class);
+    }
+
 }

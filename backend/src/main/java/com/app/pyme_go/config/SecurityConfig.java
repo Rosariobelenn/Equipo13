@@ -40,12 +40,11 @@ public class SecurityConfig {
                                                 "/webjars/**",
                                                 "/v1/api/login",
                                                 "/v1/api/register", 
-                                                "/"
-
-                                  
+                                                "/"   
+                                                ).permitAll()
+                                                .requestMatchers("/v1/api/admin/**").hasRole("ADMIN")
+                                                .anyRequest().authenticated()
                                 )
-                                                .permitAll()
-                                                .anyRequest().authenticated())
                                 .httpBasic(Customizer.withDefaults())
                                 .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtEntryPoint()))
                                 .addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -71,7 +70,7 @@ public class SecurityConfig {
         CorsConfigurationSource corsConfigurationSource() {
                 CorsConfiguration configuration = new CorsConfiguration();
 
-                configuration.setAllowedOrigins(Arrays.asList(allowedOrigin, "http://localhost:3000","https://8080-cs-550858715579-default.cs-us-east1-vpcf.cloudshell.dev"));
+                configuration.setAllowedOrigins(Arrays.asList(allowedOrigin, "http://localhost:3000"));
                 configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                 configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
                 configuration.setAllowCredentials(true);
