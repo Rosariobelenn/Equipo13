@@ -1,5 +1,5 @@
 import React from "react";
-import "./SolicitudResumen.css";
+import "./ApplicationSummary.css";
 import { CheckCircle, XCircle, Clock } from "lucide-react";
 
 interface Documento {
@@ -41,7 +41,7 @@ const documentos: Documento[] = [
   },
 ];
 
-const SolicitudResumen: React.FC = () => {
+const ApplicationSummary: React.FC = () => {
   return (
     <div className="solicitud-card">
       <h3 className="solicitud-titulo">Solicitud ME-00001232</h3>
@@ -95,4 +95,4 @@ const SolicitudResumen: React.FC = () => {
   );
 };
 
-export default SolicitudResumen;
+export default ApplicationSummary;

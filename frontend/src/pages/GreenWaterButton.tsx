@@ -1,12 +1,12 @@
 import React from "react";
-import "./BotonVerdeAgua.css";
+import "./GreenWaterButton.css";
 
-interface BotonVerdeAguaProps {
+interface GreenWaterButtonProps {
   texto?: string;
   onClick?: () => void;
 }
 
-const BotonVerdeAgua: React.FC<BotonVerdeAguaProps> = ({
+const GreenWaterButton: React.FC<GreenWaterButtonProps> = ({
   texto = "Nueva Solicitud",
   onClick,
 }) => {
@@ -17,4 +17,4 @@ const BotonVerdeAgua: React.FC<BotonVerdeAguaProps> = ({
   );
 };
 
-export default BotonVerdeAgua;
+export default GreenWaterButton;

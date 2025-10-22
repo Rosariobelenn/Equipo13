@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./SolicitudCredito.css";
-import BotonVerdeAgua from "./BotonVerdeAgua";
+import "./ApplicationCredit.css";
+import GreenWaterButton from "./GreenWaterButton";
 
 const SolicitudCredito: React.FC = () => {
   const [monto, setMonto] = useState("");
@@ -17,7 +17,7 @@ const SolicitudCredito: React.FC = () => {
       <a href="#" className="volver-link">← Volver al dashboard</a>
       </div>
       <div>
-      <BotonVerdeAgua/>
+      <GreenWaterButton/>
       </div>
        </div>
 

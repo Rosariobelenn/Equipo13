@@ -1,8 +1,8 @@
 import React from "react";
-import "./SolicitudEnviada.css";
+import "./RequestSent.css";
 import { Clock, Mail, Phone, FileText, Info } from "lucide-react";
 
-const SolicitudEnviada: React.FC = () => {
+const RequestSent: React.FC = () => {
   return (
     <div className="solicitud-container">
       {/* Encabezado */}
@@ -65,4 +65,4 @@ const SolicitudEnviada: React.FC = () => {
   );
 };
 
-export default SolicitudEnviada;
+export default RequestSent;

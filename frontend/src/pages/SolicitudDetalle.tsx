@@ -1,6 +1,6 @@
 import React from "react";
 import "./SolicitudDetalle.css";
-import SolicitudHeader from "./SolicitudHeader";
+import Headerr from "./Headerr";
 import Proceso from "./Proceso";
 import Summary from "./summary";
 import Person from "./Person";
@@ -72,7 +72,7 @@ const SolicitudDetalle: React.FC<Props> = ({ data }) => {
   return (
     <div className="solicitud-containerone">
       {/* Header con número de solicitud, empresa y estado */}
-      <SolicitudHeader
+      <Headerr
         numeroSolicitud={id.toString()}
         empresa={company.business_name}
         status={status}

@@ -11,10 +11,10 @@ import RequestPanel from "../pages/RequestPanel";
 import RequestDetails from "../pages/RequestDetails";
 import DigitalSignatureContract from "../components/forms/Login/DigitalSignatureContract";
 import SolicDet from "../pages/SolicDet"; 
-import SolicitudCredito from "../pages/SolicitudCredito";
-import SolicitudEnviada from "../pages/SolicitudEnviada";
+import ApplicationCredit from "../pages/ApplicationCredit";
+import RequestSent from "../pages/RequestSent";
 import SolicitudResumen from "../pages/SolicitudResumen";
-import ListaDocumentos from "../pages/ListaDocumentos";
+import DocumentList from "../pages/DocumentList";
 
 
 
@@ -26,7 +26,7 @@ export default function AppRoutes() {
       <Route path="/registerFlow" element={<RegisterFlow />} />
       <Route path="/EmailVerification" element={<EmailVerification />} />
       <Route path="/EmailVerified" element={<EmailVerified />} />
-      <Route path="/Loginoperador" element={<MyLoginOperator />} />
+      <Route path="/MyLoginOperator" element={<MyLoginOperator />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/requests-list" element={<RequestsList />} />
       <Route path="/request-details/:id" element={<RequestDetails />} />
@@ -36,16 +36,16 @@ export default function AppRoutes() {
       <Route path='/registerFlow' element={<RegisterFlow />} />
       <Route path='/EmailVerification' element={<EmailVerification />} />
       <Route path='/EmailVerified' element={<EmailVerified />} />
-      <Route path='/Loginoperador' element={<MyLoginOperator />} />
+      <Route path='/MyLoginOperator' element={<MyLoginOperator />} />
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/requests-list' element={<RequestsList />} />
       <Route path='/operator' element={<RequestPanel />} />
       <Route path='/DigitalSignatureContract' element={<DigitalSignatureContract />} />
-      <Route path="/solicitud-detalle" element={<SolicDet />} />
-      <Route path="/SolicitudCredito" element={<SolicitudCredito />} />
-      <Route path="/SolicitudEnviada" element={<SolicitudEnviada />} />
+      <Route path="/request-detail" element={<SolicDet />} />
+      <Route path="/ApplicationCredit" element={<ApplicationCredit />} />
+      <Route path="/RequestSent" element={<RequestSent />} />
       <Route path="/SolicitudResumen" element={<SolicitudResumen />} />
-      <Route path="/ListaDocumentos" element={<ListaDocumentos />} />
+      <Route path="/DocumentList" element={<DocumentList />} />
       
 
 

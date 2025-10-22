@@ -1,5 +1,5 @@
 import React from "react";
-import "./ListaDocumentos.css";
+import "./DocumentList.css";
 import { CheckCircle, XCircle, Clock, Upload, Pencil } from "lucide-react";
 
 interface Documento {
@@ -43,7 +43,7 @@ const documentos: Documento[] = [
   },
 ];
 
-const ListaDocumentos: React.FC = () => {
+const DocumentList: React.FC = () => {
   return (
     <div className="lista-container">
       <h2 className="solicitud-titulo">Solicitud ME-00001234</h2>
@@ -81,4 +81,4 @@ const ListaDocumentos: React.FC = () => {
   );
 };
 
-export default ListaDocumentos;
+export default DocumentList;
