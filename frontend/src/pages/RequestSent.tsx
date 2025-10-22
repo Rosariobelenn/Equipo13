@@ -8,8 +8,8 @@ const RequestSent: React.FC = () => {
       {/* Encabezado */}
       <div className="solicitud-header">
         <Clock className="icono" />
-        <h2>¡Solicitud enviada exitosamente!</h2>
-        <p>
+        <h2 className="h2seven">¡Solicitud enviada exitosamente!</h2>
+        <p className="pseven">
           Tu solicitud de crédito ha sido recibida y está siendo procesada. Nuestro equipo especializado revisará toda la información y te contactará pronto.
         </p>
         <div className="tiempo-respuesta">
@@ -19,44 +19,44 @@ const RequestSent: React.FC = () => {
 
       {/* Resumen */}
       <div className="resumen">
-        <h3>📄 Resumen de tu solicitud</h3>
+        <h3 className="h3seven">📄 Resumen de tu solicitud</h3>
         <div className="resumen-grid">
-          <p><strong>Empresa:</strong> Mi empresa SRL</p>
-          <p><strong>Representante:</strong> Registrado</p>
-          <p><strong>CUIT:</strong> ***,***,***,*</p>
-          <p><strong>Email:</strong> Registrado</p>
-          <p><strong>Figura jurídica:</strong> S.R.L.</p>
-          <p><strong>Documentos:</strong> 3 archivo(s)</p>
-          <p><strong>Número de referencia:</strong> ME-00001234</p>
+          <p className="pseven"><strong>Empresa:</strong> Mi empresa SRL</p>
+          <p className="pseven"><strong>Representante:</strong> Registrado</p>
+          <p className="pseven"><strong>CUIT:</strong> ***,***,***,*</p>
+          <p className="pseven"><strong>Email:</strong> Registrado</p>
+          <p className="pseven"><strong>Figura jurídica:</strong> S.R.L.</p>
+          <p className="pseven"><strong>Documentos:</strong> 3 archivo(s)</p>
+          <p className="pseven"><strong>Número de referencia:</strong> ME-00001234</p>
         </div>
       </div>
 
       {/* Próximos pasos */}
       <div className="proximos-pasos">
-        <h3>✅ Próximos pasos</h3>
-        <ul>
-          <li><Mail size={18}/> Confirmación por email — Recibirás un email de confirmación en las próximas horas</li>
-          <li><Phone size={18}/> Contacto telefónico — Nuestro equipo puede contactarte para aclarar información</li>
-          <li><FileText size={18}/> Documentación adicional — Si es necesario, te solicitaremos documentos complementarios</li>
+        <h3 className="h3seven">✅ Próximos pasos</h3>
+        <ul className="ulseven">
+          <li className="liseven" ><Mail size={18}/> Confirmación por email — Recibirás un email de confirmación en las próximas horas</li>
+          <li className="liseven"><Phone size={18}/> Contacto telefónico — Nuestro equipo puede contactarte para aclarar información</li>
+          <li className="liseven"><FileText size={18}/> Documentación adicional — Si es necesario, te solicitaremos documentos complementarios</li>
         </ul>
       </div>
 
       {/* Información importante */}
       <div className="info-importante">
-        <h3><Info size={18}/> Información importante</h3>
-        <ul>
-          <li>Mantené tu teléfono disponible, podríamos contactarte para aclarar información.</li>
-          <li>Revisá tu email regularmente, incluida la carpeta de spam.</li>
-          <li>Si no recibís noticias en 48 horas, contactanos.</li>
-          <li>Toda la información será tratada de forma confidencial.</li>
+        <h3 className="h3seven"><Info size={18}/> Información importante</h3>
+        <ul className="ulseven">
+          <li className="liseven">Mantené tu teléfono disponible, podríamos contactarte para aclarar información.</li>
+          <li className="liseven">Revisá tu email regularmente, incluida la carpeta de spam.</li>
+          <li className="liseven">Si no recibís noticias en 48 horas, contactanos.</li>
+          <li className="liseven">Toda la información será tratada de forma confidencial.</li>
         </ul>
       </div>
 
       {/* Ayuda */}
       <div className="ayuda">
-        <p>¿Necesitás ayuda o tenés preguntas?</p>
-        <p>📞 0800-123-4567 — ✉️ soporte@miempresa.com</p>
-        <small>Horario de atención: Lunes a Viernes de 9:00 a 18:00 hs</small>
+        <p className="pseven">¿Necesitás ayuda o tenés preguntas?</p>
+        <p className="pseven">📞 0800-123-4567 — ✉️ soporte@miempresa.com</p>
+        <small className="smallseven">Horario de atención: Lunes a Viernes de 9:00 a 18:00 hs</small>
       </div>
 
       {/* Botón */}
