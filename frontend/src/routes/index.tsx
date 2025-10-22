@@ -13,7 +13,7 @@ import DigitalSignatureContract from "../components/forms/Login/DigitalSignature
 import SolicDet from "../pages/SolicDet"; 
 import ApplicationCredit from "../pages/ApplicationCredit";
 import RequestSent from "../pages/RequestSent";
-import SolicitudResumen from "../pages/SolicitudResumen";
+import ApplicationSummary from "../pages/ApplicationSummary";
 import DocumentList from "../pages/DocumentList";
 
 
@@ -44,7 +44,7 @@ export default function AppRoutes() {
       <Route path="/request-detail" element={<SolicDet />} />
       <Route path="/ApplicationCredit" element={<ApplicationCredit />} />
       <Route path="/RequestSent" element={<RequestSent />} />
-      <Route path="/SolicitudResumen" element={<SolicitudResumen />} />
+      <Route path="/ApplicationSummary" element={<ApplicationSummary />} />
       <Route path="/DocumentList" element={<DocumentList />} />
       
 
