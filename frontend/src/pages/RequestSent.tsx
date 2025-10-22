@@ -21,7 +21,7 @@ const RequestSent: React.FC = () => {
 
       {/* Resumen */}
       <div className="resumen">
-        <h3 className="h3seven"><FileTextIcontwo/> Resumen de tu solicitud</h3>
+        <h3 className="h3seven"><FileTextIcontwo/> <strong> Resumen de tu solicitud</strong></h3>
         <div className="resumen-grid">
           <p className="pseven"><strong>Empresa:</strong> Mi empresa SRL</p>
           <p className="pseven"><strong>Representante:</strong> Registrado</p>
@@ -35,17 +35,17 @@ const RequestSent: React.FC = () => {
 
       {/* Próximos pasos */}
       <div className="proximos-pasos">
-        <h3 className="h3seven"><CircleCheckIcon/> Próximos pasos</h3>
+        <h3 className="h3seven"><CircleCheckIcon/> <strong>Próximos pasos</strong></h3>
         <ul className="ulseven">
-          <li className="liseven" ><Mail size={18}/> Confirmación por email — Recibirás un email de confirmación en las próximas horas</li>
-          <li className="liseven"><Phone size={18}/> Contacto telefónico — Nuestro equipo puede contactarte para aclarar información</li>
-          <li className="liseven"><FileText size={18}/> Documentación adicional — Si es necesario, te solicitaremos documentos complementarios</li>
+          <li className="liseven" ><Mail size={18}/> <div className="poslt"> <strong>Confirmación por email </strong>  <br /> Recibirás un email de confirmación en las próximas horas </div></li>
+          <li className="liseven"><Phone size={18}/> <div className="poslt"> <strong>Contacto telefónico</strong>  <br />  Nuestro equipo puede contactarte para aclarar información </div> </li>
+          <li className="liseven"><FileText size={18}/><div className="poslt"> <strong> Documentación adicional </strong><br />Si es necesario, te solicitaremos documentos complementarios </div></li>
         </ul>
       </div>
 
       {/* Información importante */}
       <div className="info-importante">
-        <h3 className="h3seven"><Info size={18}/> Información importante</h3>
+        <h3 className="h3seven"><Info className="colourinfo" size={18}/> <strong> Información importante </strong></h3>
         <ul className="ulseven">
           <li className="liseven">Mantené tu teléfono disponible, podríamos contactarte para aclarar información.</li>
           <li className="liseven">Revisá tu email regularmente, incluida la carpeta de spam.</li>
