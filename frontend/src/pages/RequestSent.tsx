@@ -1,5 +1,7 @@
 import React from "react";
 import "./RequestSent.css";
+import FileTextIcontwo from "./FileTextIcontwo";
+import CircleCheckIcon from "./CircleCheckIcon";
 import { Clock, Mail, Phone, FileText, Info } from "lucide-react";
 
 const RequestSent: React.FC = () => {
@@ -19,7 +21,7 @@ const RequestSent: React.FC = () => {
 
       {/* Resumen */}
       <div className="resumen">
-        <h3 className="h3seven">📄 Resumen de tu solicitud</h3>
+        <h3 className="h3seven"><FileTextIcontwo/> Resumen de tu solicitud</h3>
         <div className="resumen-grid">
           <p className="pseven"><strong>Empresa:</strong> Mi empresa SRL</p>
           <p className="pseven"><strong>Representante:</strong> Registrado</p>
@@ -33,7 +35,7 @@ const RequestSent: React.FC = () => {
 
       {/* Próximos pasos */}
       <div className="proximos-pasos">
-        <h3 className="h3seven">✅ Próximos pasos</h3>
+        <h3 className="h3seven"><CircleCheckIcon/> Próximos pasos</h3>
         <ul className="ulseven">
           <li className="liseven" ><Mail size={18}/> Confirmación por email — Recibirás un email de confirmación en las próximas horas</li>
           <li className="liseven"><Phone size={18}/> Contacto telefónico — Nuestro equipo puede contactarte para aclarar información</li>
