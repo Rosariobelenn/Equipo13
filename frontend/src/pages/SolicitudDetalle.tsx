@@ -1,7 +1,7 @@
 import React from "react";
 import "./SolicitudDetalle.css";
 import Headerr from "./Headerr";
-import Proceso from "./Proceso";
+import Process from "./Process";
 import Summary from "./summary";
 import Person from "./Person";
 
@@ -107,7 +107,7 @@ const SolicitudDetalle: React.FC<Props> = ({ data }) => {
         </div>
       </div>
 
-      <Proceso/>
+      <Process/>
 
       {/* Cuenta bancaria y asignación */}
       <div className="solicitud-grid">

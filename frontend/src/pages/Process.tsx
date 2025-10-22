@@ -44,7 +44,7 @@ const pasos: Paso[] = [
   },
 ];
 
-const Proceso: React.FC = () => {
+const Process: React.FC = () => {
   return (
     <div className="proceso-container">
      {/* <h2 className="htwo">Estado del proceso</h2>*/}
@@ -79,4 +79,4 @@ const Proceso: React.FC = () => {
   );
 };
 
-export default Proceso;
+export default Process;
