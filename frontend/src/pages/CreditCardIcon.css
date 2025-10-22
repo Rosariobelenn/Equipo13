@@ -1,0 +1,14 @@
+.creditcard-container {
+  background-color: #bce4f3; /* azul agua */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.creditcard-icon {
+  color: #0047ab; /* azul */
+  width: 20px;
+  height: 20px;
+}

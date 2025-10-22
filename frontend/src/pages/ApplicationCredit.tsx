@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import "./ApplicationCredit.css";
 import GreenWaterButton from "./GreenWaterButton";
+import UploadIcon from "./UploadIcon"
+import CalculatorIcon from "./CalculatorIcon";
+import CreditCardIcon from "./CreditCardIcon";
+import FileTextIcon from "./FileTextIcon";
+
 
 const SolicitudCredito: React.FC = () => {
   const [monto, setMonto] = useState("");
@@ -28,7 +33,7 @@ const SolicitudCredito: React.FC = () => {
 
       {/* Monto y condiciones */}
       <section className="section">
-        <h2 className="h2five">💰 Monto y Condiciones</h2>
+        <h2 className="h2five"><CalculatorIcon/> Monto y Condiciones</h2>
         <div className="form-row">
           <div className="form-group">
             <label className="labelf" >Monto solicitado *</label>
@@ -56,7 +61,7 @@ const SolicitudCredito: React.FC = () => {
 
       {/* Cuenta para depósito */}
       <section className="section">
-        <h2 className="h2five">🏦 Cuenta para Depósito</h2>
+        <h2 className="h2five"><CreditCardIcon/> Cuenta para Depósito</h2>
         <div className="form-row">
           <div className="form-group">
             <label className="labelf">Banco *</label>
@@ -107,7 +112,7 @@ const SolicitudCredito: React.FC = () => {
 
       {/* Documentación */}
       <section className="section">
-        <h2 className="h2five">📄 Documentación Requerida</h2>
+        <h2 className="h2five"><FileTextIcon/> Documentación Requerida</h2>
 
         {[
           "Estados contables (últimos 2 meses)",
@@ -117,7 +122,7 @@ const SolicitudCredito: React.FC = () => {
           <div key={idx} className="upload-box">
             <label className="labelf">{titulo} *</label>
             <div className="upload-area">
-              <p className="pfive">📤 Haz clic para subir o arrastra aquí</p>
+              <p className="pfive"> <div className="posdownld"> <UploadIcon/></div> Haz clic para subir o arrastra aquí</p>
               <small className="smallfive">PDF o imagen (máx. 5MB)</small>
               <input className="inputfive" type="file" />
             </div>
@@ -125,7 +130,7 @@ const SolicitudCredito: React.FC = () => {
         ))}
       </section>
 
-      <button className="submit-button">📨 Enviar Solicitud de Crédito</button>
+      <button className="ssubmit-button">📨 Enviar Solicitud de Crédito</button>
     </div>
   );
 };
