@@ -1,7 +1,7 @@
 import React from "react";
 import "./SolicitudDetalle.css";
 import Headerr from "./Headerr";
-import Process from "./Process";
+import Process from "./Proceso";
 import Summary from "./summary";
 import Person from "./Person";
 
