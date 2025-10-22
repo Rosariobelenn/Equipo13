@@ -18,6 +18,7 @@ import DocumentList from "../pages/DocumentList";
 
 
 
+
 export default function AppRoutes() {
   return (
     <Routes>
@@ -46,6 +47,7 @@ export default function AppRoutes() {
       <Route path="/RequestSent" element={<RequestSent />} />
       <Route path="/ApplicationSummary" element={<ApplicationSummary />} />
       <Route path="/DocumentList" element={<DocumentList />} />
+      
       
 
 
