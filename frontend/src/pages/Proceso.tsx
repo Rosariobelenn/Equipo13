@@ -1,11 +1,11 @@
 import React from "react";
 import "./Proceso.css";
 import ProgressBar from "./ProgressBar"; // ruta según donde esté tu archivo
-import Message from "./Message";
-import Downloadd from "./Download";
-import Logdocumentation from "./Logdocumentation";
-import Watch from "./Watch";
-import Check from "./check";
+import Message from "./logoss/Message";
+import Downloadd from "./logoss/Download";
+import Logdocumentation from "./logoss/Logdocumentation";
+import Watch from "./logoss/Watch";
+import Check from "./logoss/check";
 
 interface Paso {
   titulo: string;

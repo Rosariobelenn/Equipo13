@@ -1,7 +1,7 @@
 import React from "react";
 import "./RequestSent.css";
-import FileTextIcontwo from "./FileTextIcontwo";
-import CircleCheckIcon from "./CircleCheckIcon";
+import FileTextIcontwo from "./logoss/FileTextIcontwo";
+import CircleCheckIcon from "./logoss/CircleCheckIcon";
 import { Clock, Mail, Phone, FileText, Info } from "lucide-react";
 
 const RequestSent: React.FC = () => {

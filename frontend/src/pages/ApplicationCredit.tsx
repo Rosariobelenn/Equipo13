@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./ApplicationCredit.css";
 import GreenWaterButton from "./GreenWaterButton";
-import UploadIcon from "./UploadIcon"
-import CalculatorIcon from "./CalculatorIcon";
-import CreditCardIcon from "./CreditCardIcon";
-import FileTextIcon from "./FileTextIcon";
+import UploadIcon from "./logoss/UploadIcon";
+import CalculatorIcon from "./logoss/CalculatorIcon";
+import CreditCardIcon from "./logoss/CreditCardIcon";
+import FileTextIcon from "./logoss/FileTextIcon";
 
 
 const SolicitudCredito: React.FC = () => {

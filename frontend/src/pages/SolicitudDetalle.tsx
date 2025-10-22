@@ -2,8 +2,8 @@ import React from "react";
 import "./SolicitudDetalle.css";
 import Headerr from "./Headerr";
 import Process from "./Proceso";
-import Summary from "./summary";
-import Person from "./Person";
+import Summary from "./logoss/summary";
+import Person from "./logoss/Person";
 
 
 
