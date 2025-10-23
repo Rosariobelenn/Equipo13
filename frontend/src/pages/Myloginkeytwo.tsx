@@ -1,15 +1,15 @@
 import React from "react";
-import Login from "../components/forms/Login/Login";
+import Loginkeytwo from "../components/forms/Login/Loginkeytwo";
 import TitleBluetwo from "../components/forms/Login/TitleBluetwo";
 
 
-const Mylogin: React.FC = () => {
+const Myloginkeytwo: React.FC = () => {
   return (
     <div className="fondo">
-      <Login />
+      <Loginkeytwo />
       <TitleBluetwo texto="Mi título alineado a la izquierda" />
     </div>
   );
 };
 
-export default Mylogin;
+export default Myloginkeytwo;
