@@ -15,7 +15,7 @@ import ApplicationCredit from "../pages/ApplicationCredit";
 import RequestSent from "../pages/RequestSent";
 import ApplicationSummary from "../pages/ApplicationSummary";
 import DocumentList from "../pages/DocumentList";
-
+import Detailsfinal from "../pages/Detailsfinal";
 
 
 
@@ -47,6 +47,8 @@ export default function AppRoutes() {
       <Route path="/RequestSent" element={<RequestSent />} />
       <Route path="/ApplicationSummary" element={<ApplicationSummary />} />
       <Route path="/DocumentList" element={<DocumentList />} />
+      <Route path="/Detailsfinal" element={<Detailsfinal />} />
+      
       
       
       
