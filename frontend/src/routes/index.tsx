@@ -17,7 +17,7 @@ import ApplicationSummary from "../pages/ApplicationSummary";
 import DocumentList from "../pages/DocumentList";
 import Detailsfinal from "../pages/Detailsfinal";
 import Myloginkey from "../pages/Myloginkey";
-
+import Loginkeytwo from "../pages/Myloginkeytwo";
 
 export default function AppRoutes() {
   return (
@@ -49,6 +49,7 @@ export default function AppRoutes() {
       <Route path="/DocumentList" element={<DocumentList />} />
       <Route path="/Detailsfinal" element={<Detailsfinal />} />
       <Route path="/Myloginkey" element={<Myloginkey />} />
+      <Route path="/Loginkeytwo" element={<Loginkeytwo />} />
       
       
       
