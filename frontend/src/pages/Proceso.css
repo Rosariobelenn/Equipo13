@@ -61,7 +61,7 @@
 }
 
 .timeline-content .htree {
-  margin: 0 0 0.2rem 0;
+  margin: 0 10rem 0.5rem 1rem;
   font-weight: 600;
   color: #111827;
 }
@@ -100,7 +100,27 @@
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
+  display: flex;
+  gap: 5%;
 }
+
+
+.acciones .bttoonn {
+  /*flex: 1;*/
+  min-width: 250px;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #f3f4f6;
+  color: #1f2937;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  gap: 5%;
+}
+
+
 
 .acciones .bttoon:hover {
   background-color: #e5e7eb;
@@ -110,6 +130,12 @@
 .letttertree{
       padding-bottom: 5vh;
       text-align: center;
+}
+
+
+.posfour{
+  display: flex;
+  gap: 5%;
 }
 
 /* Responsive */
@@ -133,3 +159,4 @@
 .progesbar{
     padding-bottom: 20%;
 }
+

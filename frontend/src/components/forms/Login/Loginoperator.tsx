@@ -28,7 +28,7 @@ const Loginoperator: React.FC = () => {
 
   const handleOperadorClick = () => {
     setActiveTab("operador");
-    navigate("/Loginoperador");
+    navigate("/MyLoginOperator");
   };
 
   return (

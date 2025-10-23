@@ -1,0 +1,133 @@
+.solicitud-containerfive {
+  max-width: 800px;
+  margin: 2rem auto;
+  font-family: "Inter", sans-serif;
+  color: #222;
+  background-color: #fff;
+}
+
+.volver-link {
+  color: #777;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.h1five {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.section {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #fafafa;
+}
+
+.section .h2five {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.labelf {
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.inputfive,
+.selectfive {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.95rem;
+}
+
+
+.smallfive {
+  color: #777;
+  margin-top: 0.3rem;
+}
+
+.upload-box {
+  margin-bottom: 1.5rem;
+}
+
+.upload-area {
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  text-align: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  position: relative;
+}
+
+
+
+.upload-area .pfive {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.upload-area .smallfive {
+  display: block;
+  color: #777;
+}
+
+.upload-area input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+.ssubmit-button {
+  display: block;
+  width: 50%;
+  padding: 0.9rem;
+  margin-left: 25%;
+  font-size: 1rem;
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.ssubmit-button:hover {
+  background-color: #1d4ed8;
+}
+
+.ppositioon{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.posdownld{
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 5%;
+}

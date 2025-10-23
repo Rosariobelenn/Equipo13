@@ -51,12 +51,12 @@ const Login: React.FC = () => {
 
   const handleClienteClick = () => {
     setActiveTab("cliente");
-    navigate("/logincliente");
+    navigate("/");
   };
 
   const handleOperadorClick = () => {
     setActiveTab("operador");
-    navigate("/loginoperador");
+    navigate("/MyLoginOperator");
   };
 
   return (

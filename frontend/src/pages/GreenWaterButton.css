@@ -1,0 +1,26 @@
+.boton-verde-agua {
+  background-color: #c5f8f3; /* Verde agua claro */
+  color: #0b6358; /* Verde oscuro */
+  border: 1.5px solid #0b6358;
+  border-radius: 12px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.boton-verde-agua:hover {
+  background-color: #aef3ec;
+  transform: translateY(-2px);
+}
+
+.boton-verde-agua:active {
+  transform: translateY(0);
+}
+
+.boton-verde-agua:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(11, 99, 88, 0.25);
+}
+

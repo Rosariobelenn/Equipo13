@@ -1,0 +1,14 @@
+.circlecheck-icon-container-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #D0F0C0; /* verde agua claro */
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.circlecheck-icon-green {
+  color: #2E7D32; /* verde oscuro */
+  width: 22px;
+  height: 22px;
+}

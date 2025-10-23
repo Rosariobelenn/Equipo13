@@ -1,0 +1,14 @@
+.filetext-icon-container-blue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c1e6f1; /* azul agua */
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.filetext-icon-blue {
+  color: #1565C0; /* azul oscuro */
+  width: 24px;
+  height: 24px;
+}

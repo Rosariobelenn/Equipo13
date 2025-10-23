@@ -1,6 +1,11 @@
 import React from "react";
 import "./Proceso.css";
 import ProgressBar from "./ProgressBar"; // ruta según donde esté tu archivo
+import Message from "./logoss/Message";
+import Downloadd from "./logoss/Download";
+import Logdocumentation from "./logoss/Logdocumentation";
+import Watch from "./logoss/Watch";
+import Check from "./logoss/check";
 
 interface Paso {
   titulo: string;
@@ -39,7 +44,7 @@ const pasos: Paso[] = [
   },
 ];
 
-const Proceso: React.FC = () => {
+const Process: React.FC = () => {
   return (
     <div className="proceso-container">
      {/* <h2 className="htwo">Estado del proceso</h2>*/}
@@ -48,11 +53,11 @@ const Proceso: React.FC = () => {
       <div className="timeline">
 
       <div className="progesbar">  <ProgressBar step={1} />  {/* step puede ser 1, 2 o 3 */}</div>
-       <h2 className="htwo">Estado del proceso</h2>
+       <h2 className="htwo posfour"> <Watch/> Estado del proceso</h2>
         {pasos.map((paso, index) => (
           <div key={index} className="timeline-item">
             <div className={`timeline-icon ${paso.estado}`}>
-              {paso.estado === "completado" ? "✔" : "⏱"}
+              {paso.estado === "completado" ? <Check/> : "⏱"}
             </div>
             <div className="timeline-content">
               <h3 className="htree">{paso.titulo}</h3>
@@ -63,15 +68,15 @@ const Proceso: React.FC = () => {
         ))}
       </div>
 
-     
+    
       <div className="acciones">
         <h3 className="letttertree">Acciones</h3>
-        <button className="bttoon">Enviar mensaje</button>
-         <button className="bttoon">Descargar resumen</button>
-        <button className="bttoon">Ver documentación</button> 
+        <button className="bttoonn"> <Message /> Enviar mensaje</button>
+        <button className="bttoonn"><Downloadd /> Descargar resumen</button>
+        <button className="bttoonn"><Logdocumentation/> Ver documentación</button> 
       </div>
     </div>
   );
 };
 
-export default Proceso;
+export default Process;

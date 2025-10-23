@@ -1,0 +1,14 @@
+.filetext-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E6E0FF; /* violeta claro */
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.filetext-icon {
+  color: #7B2CBF; /* violeta oscuro */
+  width: 24px;
+  height: 24px;
+}

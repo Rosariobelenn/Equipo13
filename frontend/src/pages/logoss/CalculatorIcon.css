@@ -1,0 +1,15 @@
+.calculator-container {
+  background-color: #bbe7d9; /* verde agua */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem; /* más chico */
+  border-radius: 10px;
+}
+
+.calculator-icon {
+  color: #006400; /* verde oscuro */
+  width: 20px; /* tamaño reducido */
+  height: 20px;
+}
+

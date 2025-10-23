@@ -22,7 +22,7 @@ const TitleBlue: React.FC<TitleBlueProps> = () => {
         <span className="spacio"></span>
       </div>
       <h1 className="title">PYME GO</h1>
-      <p className="subtitle">
+      <p className="subtitlee">
         Impulsa tu empresa con <br /> <strong>créditos inteligentes</strong>
       </p>
       <p className="description">

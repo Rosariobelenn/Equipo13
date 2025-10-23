@@ -1,4 +1,4 @@
-.solicitud-container {
+.solicitud-containerone {
   font-family: "Inter", sans-serif;
   background-color: #f9fafb;
   padding: 2rem;
@@ -79,4 +79,14 @@
 
 .styloleterr{
     font-weight: bold;
+}
+
+.possitioon{
+  display: flex;
+  gap: 5%;
+}
+
+.possitioontwo{
+  display: flex;
+  gap: 2%;
 }

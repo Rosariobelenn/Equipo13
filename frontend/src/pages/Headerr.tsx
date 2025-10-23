@@ -1,5 +1,5 @@
 import React from "react";
-import "./SolicitudHeader.css";
+import "./Headerr.css";
 
 interface SolicitudHeaderProps {
   numeroSolicitud: string;
@@ -8,7 +8,7 @@ interface SolicitudHeaderProps {
   onBack?: () => void;
 }
 
-const SolicitudHeader: React.FC<SolicitudHeaderProps> = ({
+const Headerr: React.FC<SolicitudHeaderProps> = ({
   numeroSolicitud,
   empresa,
   status,
@@ -35,7 +35,7 @@ const SolicitudHeader: React.FC<SolicitudHeaderProps> = ({
   );
 };
 
-export default SolicitudHeader;
+export default Headerr;
 
 
 
