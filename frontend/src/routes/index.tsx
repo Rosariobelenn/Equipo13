@@ -18,6 +18,7 @@ import DocumentList from "../pages/DocumentList";
 import Detailsfinal from "../pages/Detailsfinal";
 import Myloginkey from "../pages/Myloginkey";
 import Loginkeytwo from "../pages/Myloginkeytwo";
+import Myloginkeythree from "../pages/Myloginkeythree";
 
 export default function AppRoutes() {
   return (
@@ -50,6 +51,7 @@ export default function AppRoutes() {
       <Route path="/Detailsfinal" element={<Detailsfinal />} />
       <Route path="/Myloginkey" element={<Myloginkey />} />
       <Route path="/Loginkeytwo" element={<Loginkeytwo />} />
+      <Route path="/Myloginkeythree" element={<Myloginkeythree />} />
       
       
       
