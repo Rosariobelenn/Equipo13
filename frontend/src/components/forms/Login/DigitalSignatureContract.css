@@ -102,11 +102,12 @@
 }
 
 .cancel {
-  background-color: #f2f2f2;
+ /* background-color: #f2f2f2;*/
+ background-color: rgb(202, 111, 111);
 }
 
 .cancel:hover {
-  background-color: #e0e0e0;
+  background-color: #c44444;
 }
 
 .sign {
@@ -183,5 +184,30 @@
 .label {
   font-weight: 500;
   color: #555555;
+}
+
+
+/*//////////////*/
+/* DigitalSignatureContracttwo.css */
+.contract-modal {
+  position: relative; /* 🔹 necesario para que el botón se posicione relativo al modal */
+}
+
+.btn.volver {
+  position: absolute; 
+  top: 1rem;          
+  left: 1rem;         
+  background-color: #6c63ff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn.volver:hover {
+  background-color: #5848e3;
 }
 
