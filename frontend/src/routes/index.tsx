@@ -15,8 +15,11 @@ import ApplicationCredit from "../pages/ApplicationCredit";
 import RequestSent from "../pages/RequestSent";
 import ApplicationSummary from "../pages/ApplicationSummary";
 import DocumentList from "../pages/DocumentList";
-
-
+import Detailsfinal from "../pages/Detailsfinal";
+import Myloginkey from "../pages/Myloginkey";
+import Loginkeytwo from "../pages/Myloginkeytwo";
+import Myloginkeythree from "../pages/Myloginkeythree";
+import Loginkeyfour from "../pages/Myloginkeyfour";
 
 
 export default function AppRoutes() {
@@ -47,6 +50,11 @@ export default function AppRoutes() {
       <Route path="/RequestSent" element={<RequestSent />} />
       <Route path="/ApplicationSummary" element={<ApplicationSummary />} />
       <Route path="/DocumentList" element={<DocumentList />} />
+      <Route path="/Detailsfinal" element={<Detailsfinal />} />
+      <Route path="/Myloginkey" element={<Myloginkey />} />
+      <Route path="/Loginkeytwo" element={<Loginkeytwo />} />
+      <Route path="/Myloginkeythree" element={<Myloginkeythree />} />
+      <Route path="/Loginkeyfour" element={<Loginkeyfour />} />
       
       
       

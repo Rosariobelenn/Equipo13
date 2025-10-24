@@ -1,0 +1,79 @@
+.verificacion-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #001f3f; 
+  font-family: Arial, sans-serif;
+  width: 100%;
+}
+
+.verificacion-card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 0.8rem;
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.verificacion-title {
+  margin-bottom: 0.5rem;
+  color: #1f2a44;
+}
+
+.verificacion-text {
+  margin-bottom: 1.5rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.inputs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.input-digit {
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  transition: border 0.3s;
+  color: #000; 
+}
+
+.input-digit:focus {
+  border-color: #00a7e1;
+  outline: none;
+}
+
+.btn-continuar {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #00a7e1;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-continuar:hover {
+  background-color: #008bb5;
+}
+
+.reenviar-text {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.reenviar-link {
+  color: #00a7e1;
+  cursor: pointer;
+  font-weight: bold;
+}
