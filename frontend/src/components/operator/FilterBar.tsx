@@ -16,16 +16,16 @@ export default function FilterBar({
   setBusqueda,
 }: FilterBarProps) {
   return (
-    <div className='flex flex-wrap items-center gap-3 justify-between bg-white border shadow-sm rounded-xl p-4'>
-      <div className='flex flex-wrap gap-2'>
+    <div className='flex flex-wrap items-center gap-3 justify-between bg-white  shadow-sm rounded-xl p-4'>
+      <div className='flex flex-wrap gap-2 bg-[#F1F5F9] p-2'>
         {filtros.map((f) => (
           <button
             key={f}
             onClick={() => setFiltroEstado(f)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition ${
+            className={`px-3 py-1.5 rounded-lg text-sm font-medium  transition ${
               filtroEstado === f
-                ? "bg-blue-100 text-blue-700 border-blue-300"
-                : "bg-gray-50 text-gray-600 hover:bg-gray-100"
+                ? "bg-white text-primary shadow border-white"
+                : " text-gray-600 hover:bg-gray-100"
             }`}
           >
             {f}

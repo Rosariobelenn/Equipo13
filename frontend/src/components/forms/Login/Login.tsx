@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-
+import { useAuth } from "../../../context/AuthContext";
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -10,7 +10,7 @@ const Login: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"cliente" | "operador">("cliente");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,29 +18,17 @@ const Login: React.FC = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("https://pymego.onrender.com/v1/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          gmail: email,
-          password: password,
-        }),
-      });
+      await login(email, password);
 
-      const data = await response.json();
+      const storedUser = JSON.parse(localStorage.getItem("userData") || "null");
 
-      if (!response.ok) {
-        throw new Error(data.message || "Login failed");
+      console.log("Inicio de sesión exitoso ✅", storedUser);
+
+      if (storedUser?.role?.toUpperCase() === "ADMIN") {
+        navigate("/operator");
+      } else {
+        navigate("/dashboard");
       }
-
-      // ✅ Successful login
-      console.log("Server response:", data);
-
-      // Save user data or token
-      localStorage.setItem("userData", JSON.stringify(data));
-
-      // Navigate to dashboard
-      navigate("/dashboard");
     } catch (error: any) {
       alert(`Error: ${error.message}`);
       console.error("Login error:", error);
@@ -65,27 +53,23 @@ const Login: React.FC = () => {
         <div className='toggle-container'>
           <div className='toggle-tabs'>
             <button
-                type="button"
-                onClick={handleClienteClick}
-                className={`toggle-tab ${
-                  activeTab === "cliente"
-                    ? "active-tab"
-                    : "inactive-tab"
-                }`}
-              >
-                Soy cliente
-              </button>
+              type='button'
+              onClick={handleClienteClick}
+              className={`toggle-tab ${
+                activeTab === "cliente" ? "active-tab" : "inactive-tab"
+              }`}
+            >
+              Soy cliente
+            </button>
             <button
-                type="button"
-                onClick={handleOperadorClick}
-                className={`toggle-tab ${
-                  activeTab === "operador"
-                    ? "active-tab"
-                    : "inactive-tab"
-                }`}
-              >
-                Soy operador
-              </button>
+              type='button'
+              onClick={handleOperadorClick}
+              className={`toggle-tab ${
+                activeTab === "operador" ? "active-tab" : "inactive-tab"
+              }`}
+            >
+              Soy operador
+            </button>
           </div>
         </div>
 

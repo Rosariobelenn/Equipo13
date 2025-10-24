@@ -5,9 +5,11 @@ import StepSecurity from "./StepSecurity";
 import StepDocuments from "./StepDocuments";
 import Footer from "../../layout/Footer/Footer";
 import { useApi } from "../../../context/ApiContext";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterFlow() {
   const [step, setStep] = useState(1);
+  const navigate = useNavigate();
   const { auth } = useApi();
   const [formData, setFormData] = useState({
     user: { gmail: "", password: "" },
@@ -30,6 +32,7 @@ export default function RegisterFlow() {
     try {
       await auth.register(formData);
       alert("Registro completado ✅");
+      navigate("/");
     } catch (error) {
       console.error(error);
       alert("Hubo un error al registrar ❌");

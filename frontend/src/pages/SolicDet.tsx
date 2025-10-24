@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import SolicitudDetalle from "./SolicitudDetalle";
 import "./SolicitudDetalle.css";
 
@@ -32,50 +33,69 @@ interface SolicitudAPI {
     document_type: string;
     file_path: string;
     approved: boolean;
-    message: string;
+    message: string | null;
   }[];
   comments: {
     id: number;
     author: string;
     message: string;
     created_at: string;
-    approved?: boolean; // opcional para renderizar estado
   }[];
   assigned_to: {
     id: number;
     name: string;
-  };
+  } | null;
 }
 
 const SolicDet: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
   const [data, setData] = useState<SolicitudAPI | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("/datos.db")
-      .then(async (res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const text = await res.text();
-        try {
-          const json = JSON.parse(text);
-          setData(json as SolicitudAPI);
-        } catch (parseErr) {
-          throw new Error("Error al parsear JSON: " + parseErr);
-        }
-      })
-      .catch((err) => setError(String(err)))
-      .finally(() => setLoading(false));
-  }, []);
+    if (!id) return;
 
-  if (loading) return <div style={{ padding: 24 }}>Cargando datos...</div>;
-  if (error) return <div style={{ padding: 24, color: "crimson" }}>Error: {error}</div>;
-  if (!data) return <div style={{ padding: 24 }}>No hay datos</div>;
+    const fetchSolicitud = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(
+          `https://pymego.onrender.com/v1/api/admin/credit-applications/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+            },
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status} - ${res.statusText}`);
+        }
+
+        const json = (await res.json()) as SolicitudAPI;
+        setData(json);
+      } catch (err) {
+        setError(String(err));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSolicitud();
+  }, [id]);
+
+  if (loading)
+    return <div style={{ padding: 24 }}>Cargando solicitud #{id}...</div>;
+  if (error)
+    return (
+      <div style={{ padding: 24, color: "crimson" }}>
+        Error al cargar los datos: {error}
+      </div>
+    );
+  if (!data)
+    return <div style={{ padding: 24 }}>No se encontró la solicitud #{id}</div>;
 
   return <SolicitudDetalle data={data} />;
 };
 
 export default SolicDet;
-
-
-
