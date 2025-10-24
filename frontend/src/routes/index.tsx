@@ -16,6 +16,12 @@ import RequestSent from "../pages/RequestSent";
 import ApplicationSummary from "../pages/ApplicationSummary";
 import DocumentList from "../pages/DocumentList";
 import ProtectedRoute from "./ProtectedRoute";
+import Detailsfinal from "../pages/Detailsfinal";
+import Myloginkey from "../pages/Myloginkey";
+import Loginkeytwo from "../pages/Myloginkeytwo";
+import Myloginkeythree from "../pages/Myloginkeythree";
+import Loginkeyfour from "../pages/Myloginkeyfour";
+
 
 export default function AppRoutes() {
   return (
@@ -28,7 +34,7 @@ export default function AppRoutes() {
       <Route path='/MyLoginOperator' element={<MyLoginOperator />} />
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/requests-list' element={<RequestsList />} />
-      <Route path='/request-details/:id' element={<RequestDetails />} />
+ <Route path='/request-details/:id' element={<RequestDetails />} />
       <Route
         path='/DigitalSignatureContract'
         element={<DigitalSignatureContract />}
@@ -41,6 +47,18 @@ export default function AppRoutes() {
           </ProtectedRoute>
         }
       />
+      <Route path="/ApplicationCredit" element={<ApplicationCredit />} />
+      <Route path="/RequestSent" element={<RequestSent />} />
+      <Route path="/ApplicationSummary" element={<ApplicationSummary />} />
+      <Route path="/DocumentList" element={<DocumentList />} />
+      <Route path="/Detailsfinal" element={<Detailsfinal />} />
+      <Route path="/Myloginkey" element={<Myloginkey />} />
+      <Route path="/Loginkeytwo" element={<Loginkeytwo />} />
+      <Route path="/Myloginkeythree" element={<Myloginkeythree />} />
+      <Route path="/Loginkeyfour" element={<Loginkeyfour />} />
+      
+      
+      
 
       <Route
         path='/request-detail/:id'
