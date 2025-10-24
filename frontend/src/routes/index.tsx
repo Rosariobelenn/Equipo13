@@ -10,11 +10,12 @@ import RequestsList from "../pages/RequestsList";
 import RequestPanel from "../pages/RequestPanel";
 import RequestDetails from "../pages/RequestDetails";
 import DigitalSignatureContract from "../components/forms/Login/DigitalSignatureContract";
-import SolicDet from "../pages/SolicDet"; 
+import SolicDet from "../pages/SolicDet";
 import ApplicationCredit from "../pages/ApplicationCredit";
 import RequestSent from "../pages/RequestSent";
 import ApplicationSummary from "../pages/ApplicationSummary";
 import DocumentList from "../pages/DocumentList";
+import ProtectedRoute from "./ProtectedRoute";
 import Detailsfinal from "../pages/Detailsfinal";
 import Myloginkey from "../pages/Myloginkey";
 import Loginkeytwo from "../pages/Myloginkeytwo";
@@ -25,16 +26,6 @@ import Loginkeyfour from "../pages/Myloginkeyfour";
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Mylogin />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/registerFlow" element={<RegisterFlow />} />
-      <Route path="/EmailVerification" element={<EmailVerification />} />
-      <Route path="/EmailVerified" element={<EmailVerified />} />
-      <Route path="/MyLoginOperator" element={<MyLoginOperator />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/requests-list" element={<RequestsList />} />
-      <Route path="/request-details/:id" element={<RequestDetails />} />
-      <Route path="/operator" element={<RequestPanel />} />
       <Route path='/' element={<Mylogin />} />
       <Route path='/register' element={<Register />} />
       <Route path='/registerFlow' element={<RegisterFlow />} />
@@ -43,9 +34,19 @@ export default function AppRoutes() {
       <Route path='/MyLoginOperator' element={<MyLoginOperator />} />
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/requests-list' element={<RequestsList />} />
-      <Route path='/operator' element={<RequestPanel />} />
-      <Route path='/DigitalSignatureContract' element={<DigitalSignatureContract />} />
-      <Route path="/request-detail" element={<SolicDet />} />
+ <Route path='/request-details/:id' element={<RequestDetails />} />
+      <Route
+        path='/DigitalSignatureContract'
+        element={<DigitalSignatureContract />}
+      />
+      <Route
+        path='/operator'
+        element={
+          <ProtectedRoute requiredRole='ADMIN'>
+            <RequestPanel />
+          </ProtectedRoute>
+        }
+      />
       <Route path="/ApplicationCredit" element={<ApplicationCredit />} />
       <Route path="/RequestSent" element={<RequestSent />} />
       <Route path="/ApplicationSummary" element={<ApplicationSummary />} />
@@ -59,7 +60,19 @@ export default function AppRoutes() {
       
       
 
+      <Route
+        path='/request-detail/:id'
+        element={
+          <ProtectedRoute requiredRole='ADMIN'>
+            <SolicDet />
+          </ProtectedRoute>
+        }
+      />
 
+      <Route path='/ApplicationCredit' element={<ApplicationCredit />} />
+      <Route path='/RequestSent' element={<RequestSent />} />
+      <Route path='/ApplicationSummary' element={<ApplicationSummary />} />
+      <Route path='/DocumentList' element={<DocumentList />} />
     </Routes>
   );
 }

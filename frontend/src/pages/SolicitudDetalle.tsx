@@ -4,8 +4,7 @@ import Headerr from "./Headerr";
 import Process from "./Proceso";
 import Summary from "./logoss/summary";
 import Person from "./logoss/Person";
-
-
+import { useNavigate } from "react-router-dom";
 
 export interface SolicitudAPI {
   id: number;
@@ -68,69 +67,113 @@ const SolicitudDetalle: React.FC<Props> = ({ data }) => {
     comments,
     assigned_to,
   } = data;
+  const navigate = useNavigate();
 
   return (
-    <div className="solicitud-containerone">
-      {/* Header con número de solicitud, empresa y estado */}
+    <div className='solicitud-containerone'>
       <Headerr
         numeroSolicitud={id.toString()}
         empresa={company.business_name}
         status={status}
-        onBack={() => console.log("Volver a solicitudes")}
+        onBack={() => navigate(`/operator`)}
       />
 
-      {/* Resumen de la solicitud */}
-      <div className="solicitud-grid">
-        <div className="card resumen">
-          <div className="contpositioon">
+      <div className='solicitud-grid'>
+        <div className='card resumen'>
+          <div className='contpositioon'>
             <div>
-          <h3 className="lettter possitioon">   <Summary />  Resumen de la solicitud</h3>
+              <h3 className='lettter possitioon'>
+                {" "}
+                <Summary /> Resumen de la solicitud
+              </h3>
 
-          <p className="contnam"><div>Empresa: </div> <div className="styloleterr">{company.business_name}</div></p>
-          <p className="contnam"><div>Tipo societario:</div><div className="styloleterr"> {company.company_type} </div></p>
+              <div className='contnam'>
+                <div>Empresa: </div>{" "}
+                <div className='styloleterr'>{company.business_name}</div>
+              </div>
+              <div className='contnam'>
+                <div>Tipo societario:</div>
+                <div className='styloleterr'> {company.company_type} </div>
+              </div>
+            </div>
+            <div className='pound'>
+              <div className='contnam'>
+                <div>CUIT:</div>
+                <div className='styloleterr'> {company.tax_id} </div>
+              </div>
+
+              <div className='contnam'>
+                <div>Monto solicitado:</div>{" "}
+                <div className='styloleterr'> ${amount.toLocaleString()}</div>
+              </div>
+              <div className='contnam'>
+                <div>Cuotas:</div>{" "}
+                <div className='styloleterr'> {installment_count} </div>
+              </div>
+            </div>
           </div>
-          <div className="pound">
-          <p className="contnam" ><div>CUIT:</div><div className="styloleterr"> {company.tax_id} </div></p>
-          
-          <p className="contnam" ><div>Monto solicitado:</div> <div className="styloleterr"> ${amount.toLocaleString()}</div></p>
-          <p className="contnam"><div>Cuotas:</div> <div className="styloleterr"> {installment_count} </div></p>
-        </div>
-        </div>
         </div>
 
-        <div className="card representante">
-          <h3 className="lettter possitioontwo"> <Person /> Representante legal</h3>
-          <p className="contnam">Nombre: <strong>{legal_representative.full_name} </strong></p>
-          <p className="contnam">Cargo:<strong> {legal_representative.position} </strong></p>
-          <p className="contnam">Email:<strong> {legal_representative.corporate_email}</strong></p>
-          <p className="contnam">Teléfono:<strong> {legal_representative.contact_phone}</strong></p>
+        <div className='card representante'>
+          <h3 className='lettter possitioontwo'>
+            {" "}
+            <Person /> Representante legal
+          </h3>
+          <p className='contnam'>
+            Nombre: <strong>{legal_representative.full_name} </strong>
+          </p>
+          <p className='contnam'>
+            Cargo:<strong> {legal_representative.position} </strong>
+          </p>
+          <p className='contnam'>
+            Email:<strong> {legal_representative.corporate_email}</strong>
+          </p>
+          <p className='contnam'>
+            Teléfono:<strong> {legal_representative.contact_phone}</strong>
+          </p>
         </div>
       </div>
 
-      <Process/>
+      <Process />
 
       {/* Cuenta bancaria y asignación */}
-      <div className="solicitud-grid">
-        <div className="card estado">
+      <div className='solicitud-grid'>
+        <div className='card estado'>
           <h3>Cuenta bancaria</h3>
-          <p><strong>Banco:</strong> {bank_account.bank_name}</p>
-          <p><strong>Tipo:</strong> {bank_account.account_type}</p>
-          <p><strong>CBU / CVU:</strong> {bank_account.cbu_cvu}</p>
+          <p>
+            <strong>Banco:</strong> {bank_account.bank_name}
+          </p>
+          <p>
+            <strong>Tipo:</strong> {bank_account.account_type}
+          </p>
+          <p>
+            <strong>CBU / CVU:</strong> {bank_account.cbu_cvu}
+          </p>
         </div>
 
-        <div className="card acciones">
+        <div className='card acciones'>
           <h3>Asignado a</h3>
-          <p><strong>ID:</strong> {assigned_to.id}</p>
-          <p><strong>Nombre:</strong> {assigned_to.name}</p>
+          {assigned_to ? (
+            <>
+              <p>
+                <strong>ID:</strong> {assigned_to.id}
+              </p>
+              <p>
+                <strong>Nombre:</strong> {assigned_to.name}
+              </p>
+            </>
+          ) : (
+            <p className='text-gray-500 italic'>No asignado</p>
+          )}
         </div>
       </div>
 
       {/* Documentos */}
-      <div className="card documentos">
+      <div className='card documentos'>
         <h3>Documentos</h3>
-        <ul className="ull">
+        <ul className='ull'>
           {documents.map((doc) => (
-            <li className="lli" key={doc.id}>
+            <li className='lli' key={doc.id}>
               <strong>{doc.document_type}</strong> –{" "}
               <span>{doc.approved ? "✅ Aprobado" : "⏳ Pendiente"}</span>
               <br />
@@ -141,11 +184,13 @@ const SolicitudDetalle: React.FC<Props> = ({ data }) => {
       </div>
 
       {/* Comentarios */}
-      <div className="card comentarios">
+      <div className='card comentarios'>
         <h3>Comentarios</h3>
         {comments.map((c) => (
-          <div key={c.id} className="comentario">
-            <p><strong>{c.author}:</strong> {c.message}</p>
+          <div key={c.id} className='comentario'>
+            <p>
+              <strong>{c.author}:</strong> {c.message}
+            </p>
             <small>{new Date(c.created_at).toLocaleString()}</small>
           </div>
         ))}
@@ -155,4 +200,3 @@ const SolicitudDetalle: React.FC<Props> = ({ data }) => {
 };
 
 export default SolicitudDetalle;
-

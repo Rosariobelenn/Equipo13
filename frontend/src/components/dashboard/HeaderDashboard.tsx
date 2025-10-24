@@ -1,7 +1,8 @@
 import { useAuth } from "../../context/AuthContext";
 
-export default function HeaderPanel() {
+export default function HeaderDashboard() {
   const { logout, user } = useAuth();
+  console.log(user);
 
   const handleLogout = () => {
     logout();
@@ -19,7 +20,7 @@ export default function HeaderPanel() {
         </p>
       </div>
       <div className='text-sm text-gray-700'>
-        Operador: <span className='font-medium'>{user?.email}</span> |{" "}
+        Operador: <span className='font-medium'>{user?.gmail}</span> |{" "}
         <button
           onClick={handleLogout}
           className='text-primary font-medium hover:underline'
