@@ -6,17 +6,15 @@
 #### Authentication
 
 ```
-POST /login         → Log in
-POST /register      → Register
-POST /auth/verify-email  → Verify email
+POST /login               → Log in
+POST /register            → Register
+POST /auth/verify-email   → Verify email
 ```
 
-#### Registration
+#### Users
 
 ```
-POST /companies          → Register company
-POST /legal-representatives → Register legal representative
-POST /users              → Create user (email + password)
+GET /user/{id}           -> View all user info 
 ```
 
 #### Documents
@@ -31,9 +29,9 @@ GET /documents/{id}      → View document
 #### Credit Application
 
 ```
-POST /credit-applications         → Create credit application (includes bank account and documents)
-GET /credit-applications          → View all applications of the user
-GET /credit-applications/{id}     → View detailed application
+POST /credit-applications          → Create credit application (includes bank account and documents)
+GET /credit-applications           → View all applications of the user
+GET /credit-applications/{id}      → View detailed application
 PUT /credit-applications/{id}/sign → Digitally sign application
 ```
 
@@ -52,7 +50,7 @@ PUT /admin/credit-applications/{id}/status   → Update application status
 #### Document Management
 
 ```
-PUT /admin/documents/{id}/validate → Validate or reject document (with message)
+PUT /admin/documents/{id}/validate           → Validate or reject document (with message)
 ```
 
 ---
@@ -189,86 +187,40 @@ Crea una nueva cuenta de usuario en el sistema. Este es el primer paso para que 
 }
 ```
 
----
+# Get info from a user 
+### GET /user/{id} → View user info
 
-**POST /legal-representatives** → Registrar representante legal
+Description:
+Returns the full information of a specific user (legal representative).
+Requires authentication.
 
-**Descripción:**
-Registra los datos de un representante legal y lo asocia con una cuenta de usuario existente. Requiere autenticación. El ID del usuario se obtiene del token JWT.
+Path Parameter:
 
-### Request (JSON):
+id (integer) — User ID.
 
-```json
+Response 200 (JSON)
+```
 {
   "full_name": "Juan Pérez",
   "position": "Gerente General",
-  "document_type": "DNI",
-  "document_number": "12345678",
-  "corporate_email": "juan.perez@empresa.com",
-  "contact_phone": "+5491122334455"
+  "corporate_email": "jperez@miempresa.com",
+  "contact_phone": "+54 9 11 5555 5555"
 }
 ```
-
-### Response 201 (JSON) - Creado exitosamente:
-
-```json
+Response 404 (JSON)
+```
 {
-  "message": "Representante legal registrado exitosamente.",
-  "legal_representative": {
-    "id": 11,
-    "full_name": "Juan Pérez",
-    "user_id": 101
-  }
+  "error": "User not found"
 }
 ```
 
- Response 404 (JSON) - Usuario no encontrado:
+Response 401 (JSON)
 
-```json
+```
 {
-  "error": "El usuario asociado no fue encontrado."
+  "error": "Unauthorized"
 }
 ```
-
----
-
-### POST /companies → Registrar empresa
-
-**Descripción:**
-Registra una nueva empresa en el sistema. Esta operación debe ser realizada por un usuario autenticado que ya haya registrado sus datos como representante legal. El ID del representante se obtiene a través del token JWT.
-
-### Request (JSON):
-
-```json
-{
-  "business_name": "Mi Empresa S.A.",
-  "tax_id": "30-12345678-9",
-  "company_type": "Sociedad Anónima"
-}
-```
-
-### Response 201 (JSON) - Creado exitosamente:
-
-```json
-{
-  "message": "Empresa registrada exitosamente.",
-  "company": {
-    "id": 5,
-    "business_name": "Mi Empresa S.A.",
-    "tax_id": "30-12345678-9",
-    "legal_representative_id": 11
-  }
-}
-```
-
-### Response 400 (JSON) - CUIT/TAX ID ya registrado:
-
-```json
-{
-  "error": "El CUIT/TAX ID ya se encuentra registrado."
-}
-```
-
 
 
 ---

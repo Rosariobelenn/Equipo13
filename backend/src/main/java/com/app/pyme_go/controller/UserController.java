@@ -27,6 +27,7 @@ public class UserController {
 
     private final AuthService authService;
 
+
     public UserController(AuthService authService) {
         this.authService = authService;
     }
@@ -75,7 +76,8 @@ public class UserController {
         }
     }
 
-    @GetMapping("/hello") // Ruta de prueba para verificar autenticación
+
+    @GetMapping("/hello") 
     public String hello() {
         return "Hello Protected route";
     }
