@@ -5,4 +5,6 @@ import com.app.pyme_go.model.entity.Document;
 
 public interface DocumentService {
     Document validateDocument(Long id, ValidateDocumentRequestDto requestDto);
+    void updateDocument(Long id, String documentUrl);
+
 }

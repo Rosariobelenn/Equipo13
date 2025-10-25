@@ -26,7 +26,7 @@ public class JwtEntryPoint implements AuthenticationEntryPoint {
         Map<String, Object> errorDetails = new HashMap<>();
         errorDetails.put("status", 401);
         errorDetails.put("error", "Unauthorized");
-        errorDetails.put("message", "Acceso denegado. Token inválido o ausente.");
+        errorDetails.put("message", "Acceso denegado.");
         errorDetails.put("path", request.getRequestURI());
         errorDetails.put("timestamp", LocalDateTime.now().toString());
 

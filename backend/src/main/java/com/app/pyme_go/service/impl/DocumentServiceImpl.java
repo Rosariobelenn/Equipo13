@@ -27,4 +27,16 @@ public class DocumentServiceImpl implements DocumentService {
         document.setMessage(requestDto.getMessage());
         return documentRepository.save(document);
     }
+
+    @Override
+    @Transactional
+    public void updateDocument(Long id, String documentUrl) {
+        Document document = documentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Documento no encontrado con id: " + id));
+                
+        document.setFilePath(documentUrl);
+        document.setApproved(false); 
+        document.setMessage(null);   
+        documentRepository.save(document);
+    }
 }
