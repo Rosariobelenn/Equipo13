@@ -12,13 +12,17 @@
   background-color: #fff;
   padding: 2rem 3rem;
   border-radius: 12px;
-  width: 400px;
+  width: 600px;
+  height: 600px;
+  justify-content: center;
+  align-content: center;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .titulo {
-  margin-bottom: 0.5rem;
-  color: #1f2a44;
+  margin-bottom: 2.5rem;
+  color: #143d9c;
+  font-size: 30px;
 }
 
 .descripcion {
@@ -35,7 +39,7 @@
   display: block;
   margin-bottom: 0.3rem;
   font-weight: 500;
-  color: #1f2a44;
+  color: #052a81;
 }
 
 .input-wrapper {
