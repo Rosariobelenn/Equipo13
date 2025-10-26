@@ -6,6 +6,7 @@ import Downloadd from "./logoss/Download";
 import Logdocumentation from "./logoss/Logdocumentation";
 import Watch from "./logoss/Watch";
 import Check from "./logoss/check";
+import Checktwo from "./logoss/checktwo";
 
 interface Paso {
   titulo: string;
@@ -40,7 +41,7 @@ const pasosBase: Paso[] = [
   {
     titulo: "Aprobación final",
     descripcion: "Decisión definitiva y términos del crédito",
-    estado: "en-proceso",
+    estado: "pendiente",
   },
 ];
 
@@ -89,9 +90,9 @@ const Process: React.FC<ProcessProps> = ({ step }) => {
   } else {
     // Paso pendiente
     if (paso.titulo === "Aprobación final") {
-      icono = "⚡"; // ícono especial para "Aprobación final" pendiente
+      icono = "⏱"; // ícono especial para "Aprobación final" pendiente
     } else {
-      icono = "⏱"; // ícono normal para el resto de pendientes
+      icono = <Checktwo />; // ícono normal para el resto de pendientes
     }
   }
 

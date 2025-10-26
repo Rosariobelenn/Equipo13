@@ -1,21 +1,21 @@
-import React from 'react';
-import { CircleCheckBig } from 'lucide-react';
+import React from "react";
+import { Clock5 } from "lucide-react";
 
-const Check: React.FC = () => {
+const checktwo: React.FC = () => {
   return (
     <div
       style={{
-        backgroundColor: '#d4f1f4', // verde agua (Aquamarine)
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '0.5rem',
-        borderRadius: '50%', // opcional, para hacerlo circular
+        backgroundColor: "#b2f0ff", // fondo azul agua
+        display: "inline-flex",
+        padding: "0.5rem",
+        borderRadius: "50%", // círculo
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
-      <CircleCheckBig color="#0d208dff" size={20} /> {/* verde oscuro */}
+      <Clock5 color="#0077cc" size={24} /> {/* icono azul */}
     </div>
   );
 };
 
-export default Check;
+export default checktwo;
