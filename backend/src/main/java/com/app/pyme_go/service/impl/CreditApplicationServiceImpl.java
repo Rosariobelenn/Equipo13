@@ -6,7 +6,6 @@ import com.app.pyme_go.repository.*;
 import com.app.pyme_go.service.CreditApplicationService;
 
 import jakarta.transaction.Transactional;
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -234,11 +232,6 @@ public class CreditApplicationServiceImpl implements CreditApplicationService {
                 .orElseThrow(() -> new RuntimeException("Solicitud de crédito no encontrada."));
 
         application.setStatus(requestDto.getStatus());
-
-        // TODO: Si se proporciona un mensaje, debería guardarse como un comentario.
-        // Esto requiere la implementación de la entidad Comment y su relación con CreditApplication.
-        // if (requestDto.getMessage() != null && !requestDto.getMessage().isBlank()) { ... }
-
         return creditApplicationRepository.save(application);
     }
 

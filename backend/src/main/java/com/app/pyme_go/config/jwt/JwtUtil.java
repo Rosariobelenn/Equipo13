@@ -1,11 +1,11 @@
 package com.app.pyme_go.config.jwt;
 
 
-import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 import javax.crypto.SecretKey;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -27,17 +27,23 @@ public class JwtUtil {
     @Value("${application.security.jwt.expiration}")
     private long expiration;
 
+    private SecretKey key;
+
+    @PostConstruct
+    public void init() {
+        this.key = Keys.hmacShaKeyFor(secretKey.getBytes());
+    }
+
     public String generateToken(Authentication authentication) {
 
         UserDetails mainUser = (UserDetails) authentication.getPrincipal();
-        SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
         String role = mainUser.getAuthorities().iterator().next().getAuthority();
 
 
         return Jwts.builder().setSubject(mainUser.getUsername())
                 .claim("role", "ROLE_" + role)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(new Date().getTime() + expiration * 1000L))
+                .setExpiration(new Date(new Date().getTime() + expiration))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -55,9 +61,7 @@ public class JwtUtil {
         return extractAllClaims(token).getExpiration();
     }
     public Claims extractAllClaims(String token){
-        SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
         return Jwts.parserBuilder()
-                .setSigningKey(key).requireAudience(null)
                 .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)

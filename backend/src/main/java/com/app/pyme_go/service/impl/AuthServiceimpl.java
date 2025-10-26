@@ -2,6 +2,7 @@ package com.app.pyme_go.service.impl;
 
 import org.springframework.beans.factory.annotation.Value;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.pyme_go.config.jwt.JwtUtil;
 import com.app.pyme_go.model.dto.company.CompanyDto;
+import com.app.pyme_go.model.dto.document.DocumentInfoDto;
 import com.app.pyme_go.model.dto.legalrepresentative.LegalRepresentativeDto;
 import com.app.pyme_go.model.dto.user.AdminResponseDto;
 import com.app.pyme_go.model.dto.user.AuthResponseDto;
@@ -22,9 +24,12 @@ import com.app.pyme_go.model.dto.user.RegisterDto;
 import com.app.pyme_go.model.dto.user.UserLoginDto;
 import com.app.pyme_go.model.dto.user.UserRegisterDto;
 import com.app.pyme_go.model.dto.user.UserResponseDto;
+import com.app.pyme_go.exception.UserAlreadyExistsException;
 import com.app.pyme_go.model.entity.Company;
+import com.app.pyme_go.model.entity.Document;
 import com.app.pyme_go.model.entity.LegalRepresentative;
 import com.app.pyme_go.model.entity.User;
+import com.app.pyme_go.repository.DocumentRepository;
 import com.app.pyme_go.repository.UserRepository;
 import com.app.pyme_go.service.AuthService;
 import com.app.pyme_go.service.CompanyService;
@@ -43,6 +48,7 @@ public class AuthServiceimpl implements AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
+    private final DocumentRepository documentRepository;
 
     @Autowired
     public AuthServiceimpl(
@@ -52,7 +58,8 @@ public class AuthServiceimpl implements AuthService {
         PasswordEncoder passwordEncoder,
         JwtUtil jwtUtil, 
         AuthenticationManagerBuilder authenticationManagerBuilder, 
-        UserRepository userRepository
+        UserRepository userRepository,
+        DocumentRepository documentRepository
     ) {
         this.userService = userService;
         this.legalRepresentativeService = legalRepresentativeService; 
@@ -61,6 +68,7 @@ public class AuthServiceimpl implements AuthService {
         this.jwtUtil = jwtUtil;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userRepository = userRepository;
+        this.documentRepository = documentRepository;
     }
 
     @Override
@@ -73,77 +81,75 @@ public class AuthServiceimpl implements AuthService {
             return jwtUtil.generateToken(authResult);
 
         } catch (AuthenticationException e) {
-            throw new RuntimeException("Credenciales inválidas. Por favor, revise su correo y contraseña.", e);
+            throw new AuthenticationException("Credenciales inválidas. Por favor, revise su correo y contraseña.", e) {};
         }
 
     }
 
     @Override
-    public AuthResponseDto registerUser(
-            UserRegisterDto user,
-            LegalRepresentativeDto legalRepresentative,
-            CompanyDto company) {
+    public AuthResponseDto registerUser(RegisterDto registerDto) {
+        UserRegisterDto user = registerDto.getUser();
+        LegalRepresentativeDto legalRepresentative = registerDto.getLegal_representative();
+        CompanyDto company = registerDto.getCompany();
+
         if (userService.existsByGmail(user.getGmail())) {
-            throw new IllegalArgumentException("El nombre de usuario ya existe");
+            throw new UserAlreadyExistsException("El correo electrónico '" + user.getGmail() + "' ya está en uso.");
         }
+
+        String roleName = "USER";
+
+        User newUser = new User();
+        newUser.setGmail(user.getGmail());
+        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        newUser.setRole(roleName);
+
+        userService.save(newUser);
+
+        LegalRepresentative newLegalRep = new LegalRepresentative();
+        newLegalRep.setUser(newUser);
+        newLegalRep.setFullName(legalRepresentative.getFull_name());
+        newLegalRep.setPosition(legalRepresentative.getPosition());
+        newLegalRep.setDocumentType(legalRepresentative.getDocument_type());
+        newLegalRep.setDocumentNumber(legalRepresentative.getDocument_number());
+        newLegalRep.setCorporateEmail(legalRepresentative.getCorporate_email());
+        newLegalRep.setContactPhone(legalRepresentative.getContact_phone());
+
+        legalRepresentativeService.save(newLegalRep);
+    
+        Company newCompany = new Company();
+        newCompany.setBusinessName(company.getBusiness_name());
+        newCompany.setTaxId(company.getTax_id());
+        newCompany.setCompanyType(company.getCompany_type());
+        newCompany.setLegalRepresentative(newLegalRep);
+
+        companyService.save(newCompany);
+
+        List<DocumentInfoDto> documentInfos = registerDto.getDocuments();
+        if (documentInfos != null && !documentInfos.isEmpty()) {
+            for (DocumentInfoDto docInfo : documentInfos) {
+                Document newDocument = new Document();
+                newDocument.setDocumentableId(newCompany.getId());
+                newDocument.setDocumentableType("Company");
+                newDocument.setDocumentType(docInfo.getDocumentType());
+                newDocument.setFilePath(docInfo.getUrl());
+                documentRepository.save(newDocument);
+            }
+        }
+
+        String jwt = authenticate(user.getGmail(), user.getPassword());
+        User registeredUser = userRepository.findByGmail(user.getGmail())
+                .orElseThrow(() -> new RuntimeException("Could not retrieve user after registration"));
+        UserResponseDto userDto = new UserResponseDto(
+            registeredUser.getId(), 
+            registeredUser.getGmail(),
+            registeredUser.getRole()
+        );
 
         AuthResponseDto authResponse = new AuthResponseDto();
-
-        try {
-
-            String roleName = "USER";
-
-            User newUser = new User();
-            newUser.setGmail(user.getGmail());
-            newUser.setPassword(passwordEncoder.encode(user.getPassword()));
-            newUser.setRole(roleName);
-
-            userService.save(newUser);
-
-            LegalRepresentative newLegalRep = new LegalRepresentative();
-            newLegalRep.setUser(newUser);
-            newLegalRep.setFullName(legalRepresentative.getFull_name());
-            newLegalRep.setPosition(legalRepresentative.getPosition());
-            newLegalRep.setDocumentType(legalRepresentative.getDocument_type());
-            newLegalRep.setDocumentNumber(legalRepresentative.getDocument_number());
-            newLegalRep.setCorporateEmail(legalRepresentative.getCorporate_email());
-            newLegalRep.setContactPhone(legalRepresentative.getContact_phone());
-            newLegalRep.setUser(newUser);
-
-            legalRepresentativeService.save(newLegalRep);
-        
-
-            Company newCompany = new Company();
-            newCompany.setBusinessName(company.getBusiness_name());
-            newCompany.setTaxId(company.getTax_id());
-            newCompany.setCompanyType(company.getCompany_type());
-            newCompany.setLegalRepresentative(newLegalRep);
-
-            companyService.save(newCompany);
-
-
-            // for autentication afther register a new user
-            String jwt = authenticate(user.getGmail(), user.getPassword());
-            Optional<User> registeredUser = userRepository.findByGmail(user.getGmail());
-
-            if (registeredUser.isEmpty()) {
-                throw new RuntimeException("No se pudo recuperar el usuario después del registro");
-            }
-
-            UserResponseDto userDto = new UserResponseDto();
-            userDto.setId(registeredUser.get().getId());
-            userDto.setGmail(registeredUser.get().getGmail());
-            userDto.setRole(registeredUser.get().getRole());
-
-            authResponse = new AuthResponseDto();
-            authResponse.setAccess_token(jwt);
-            authResponse.setUser(userDto);
-            authResponse.setExpires_in(expiration);
-
-        } catch (Exception e) {
-            throw new RuntimeException("No se pudo registrar el usuario", e);
-        }
-
+        authResponse.setAccess_token(jwt);
+        authResponse.setExpires_in(expiration);
+        authResponse.setUser(userDto);
+          
         return authResponse;
     }
 
@@ -163,9 +169,7 @@ public class AuthServiceimpl implements AuthService {
             adminDto.setId(loggedInUser.get().getId());
             adminDto.setEmail(loggedInUser.get().getGmail());
             adminDto.setRole(loggedInUser.get().getRole());
-            // Asumiendo que el admin tiene un nombre, que no está en la entidad User.
-            // Esto podría necesitar un ajuste en el modelo User o una entidad AdminProfile.
-            adminDto.setName("Admin"); // Placeholder
+            adminDto.setName("Admin"); 
             authResponse.setUser(adminDto);
 
         } else {
