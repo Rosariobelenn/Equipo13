@@ -73,7 +73,7 @@ const Loginoperator: React.FC = () => {
 
           {/* Input Correo */}
           <div className="input-group">
-            <label className="label1">Correo electrónico</label>
+            <label className="labelonne">Correo electrónico</label>
             <input
               className="botton"
               type="email"
@@ -86,7 +86,7 @@ const Loginoperator: React.FC = () => {
 
           {/* Input Contraseña */}
           <div className="input-group password-group">
-            <label className="label1">Contraseña</label>
+            <label className="labelonne">Contraseña</label>
             <div className="password-wrapper">
               <input
                 className="botton"
