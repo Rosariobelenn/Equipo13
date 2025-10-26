@@ -21,7 +21,7 @@
 
 .titulo {
   margin-bottom: 2.5rem;
-  color: #143d9c;
+  color: #13275e;
   font-size: 30px;
 }
 
@@ -35,11 +35,11 @@
   margin-bottom: 1.5rem;
 }
 
-.input-group label {
+.input-group .labeel {
   display: block;
   margin-bottom: 0.3rem;
   font-weight: 500;
-  color: #052a81;
+  color: #152f79;
 }
 
 .input-wrapper {
