@@ -21,6 +21,8 @@ import Myloginkey from "../pages/Myloginkey";
 import Loginkeytwo from "../pages/Myloginkeytwo";
 import Myloginkeythree from "../pages/Myloginkeythree";
 import Loginkeyfour from "../pages/Myloginkeyfour";
+import Proceso from "../pages/Proceso";
+
 
 
 export default function AppRoutes() {
@@ -73,6 +75,8 @@ export default function AppRoutes() {
       <Route path='/RequestSent' element={<RequestSent />} />
       <Route path='/ApplicationSummary' element={<ApplicationSummary />} />
       <Route path='/DocumentList' element={<DocumentList />} />
+      <Route path='/Proceso' element={<Proceso step={1} />} />
+      
     </Routes>
   );
 }
