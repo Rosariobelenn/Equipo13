@@ -59,9 +59,11 @@
 .feature {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
+  justify-content: center;
 }
 
 .feature .icon {
   font-size: 20px;
+  padding-bottom: 35px;
 }

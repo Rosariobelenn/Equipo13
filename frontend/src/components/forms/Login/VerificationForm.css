@@ -12,14 +12,18 @@
   background-color: #fff;
   padding: 2rem;
   border-radius: 0.8rem;
-  width: 350px;
+  width: 450px;
+  height: 450px;
+  
   text-align: center;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .verificacion-title {
-  margin-bottom: 0.5rem;
-  color: #1f2a44;
+  margin-bottom: 2.5rem;
+  color: #143480;
+  font-size: 24px;
+  padding-right: 220px;
 }
 
 .verificacion-text {

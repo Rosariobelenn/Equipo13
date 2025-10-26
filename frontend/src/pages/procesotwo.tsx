@@ -8,6 +8,7 @@ import Watch from "./logoss/Watch";
 import Check from "./logoss/check";
 import Checktwo from "./logoss/checktwo";
 
+
 interface Paso {
   titulo: string;
   descripcion: string;
