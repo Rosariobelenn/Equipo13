@@ -25,7 +25,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ step }) => {
 
   return (
     <div className="progress-container">
-      <h2 className="htwo">Estado del proceso</h2>
+      <h2 className="htwo">Progreso del proceso</h2>
 
       <div className="progress-wrapper">
         <div className="progress-percent-top">{porcentaje}%</div>

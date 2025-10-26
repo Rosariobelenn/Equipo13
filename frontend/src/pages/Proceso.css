@@ -13,11 +13,19 @@
 }
 
 .htwo {
-  margin-bottom: 2.5rem;
-  font-weight: 600;
-  color: #1f2937;
+  margin-bottom: 0.5rem;
+  color: #585f69;
   
 }
+
+.htwop {
+  margin-bottom: 2.5rem;
+  color: black;
+  font-weight: bold;
+
+  
+}
+
 
 /* Timeline vertical */
 .timeline {
@@ -155,7 +163,12 @@
     flex-direction: column;
    
   }
+ 
 
+  .acciones {
+    padding-left: 10%;
+  }
+  
   
   
 }

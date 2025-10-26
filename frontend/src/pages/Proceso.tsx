@@ -76,7 +76,7 @@ const Process: React.FC<ProcessProps> = ({ step }) => {
           <ProgressBar step={step} />
         </div>
 
-        <h2 className="htwo posfour">
+        <h2 className="htwop posfour">
           <Watch /> Estado del proceso
         </h2>
 
