@@ -150,7 +150,10 @@ background-color: #1a56db;
   }
 
   .verify-card {
+    top: 100%;
   padding: 40px;
   width: 360px;
+    
   }
+
 }

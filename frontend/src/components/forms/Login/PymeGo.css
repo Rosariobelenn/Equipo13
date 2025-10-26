@@ -12,6 +12,22 @@
   
 }
 
+.pymego-containertwo {
+  background-color: #0ba1d8;
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+  font-family: 'Arial', sans-serif;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20%;
+  
+}
+
+
 .logo .imagee {
   width: 50px;
   margin-bottom: 20px;
@@ -66,4 +82,21 @@
 .feature .icon {
   font-size: 20px;
   padding-bottom: 35px;
+}
+
+
+@media (max-width: 768px) {
+  .pymego-containertwo {
+   background-color: #0ba1d8;
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+  font-family: 'Arial', sans-serif;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+}
 }

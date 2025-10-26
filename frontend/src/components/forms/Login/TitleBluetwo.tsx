@@ -1,7 +1,7 @@
 // TituloCeleste.tsx
 import React from "react";
 import "./PymeGo.css";
-import rocketIcon from "./rocket-icon.png";
+import rocketIcon from "./logsupl.png";
 
 interface TitleBlueProps {
   texto: string;
@@ -11,7 +11,7 @@ const TitleBlue: React.FC<TitleBlueProps> = () => {
   return (
    <div className="login-container2">
 
-     <div className="pymego-container">
+     <div className="pymego-containertwo">
       <div className="logo">
     <img className="imagee" src={rocketIcon} alt="Logo"  style={{ width: "150px", height: "auto", borderRadius: "10px" }} />
 
