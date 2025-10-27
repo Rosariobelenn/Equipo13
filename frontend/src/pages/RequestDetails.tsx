@@ -1,19 +1,24 @@
-import { useState } from "react";
-import { Clock } from "lucide-react";
-import SectionHeader from "../components/ui/SectionHeader";
-import { applications, requestSteps } from "../data/applications";
 import { useParams } from "react-router-dom";
+import SectionHeader from "../components/ui/SectionHeader";
 import { formatAmount } from "../lib/utils/utils";
-import type { RequestDetailsTabs } from "../types/request.types";
 import CurrentStatusBanner from "../components/ui/CurrentStatusBanner";
-import TabsNavigation from "../components/ui/TabsNavigation";
-import TabsContent from "../components/ui/TabsContent";
-import { REQUEST_DETAILS_TABS } from "../constants/requestDetailsTabs";
+import { useCreditApplication } from "../hooks/useCreditApplications";
+import { getProgressPercentage } from "../lib/utils/getProgressPercentage";
+import OperatorItem from "../components/ui/OperatorItem";
+import ActionsItem from "../components/ui/ActionsItem";
+import { assignedOperator } from "../data/assignedOperator";
+import ApplicationProgress from "../components/ui/ApplicationProgress";
+import RequestDetailsSkeleton from "../components/ui/RequestDetailsSkeleton";
 
 function RequestDetails() {
-  const [activeTab, setActiveTab] = useState<RequestDetailsTabs>("progress");
   const { id } = useParams();
-  const application = applications.find((application) => application.id === id);
+  const idNumber = parseInt(id as string);
+  const { application, isLoading, error } = useCreditApplication(idNumber);
+
+  if (isLoading) return <RequestDetailsSkeleton />;
+  if (error) return <div>Error al cargar solicitud</div>;
+
+  const progress = getProgressPercentage(application.status);
 
   return (
     <section className="bg-gray-50 p-6" id="request-details">
@@ -24,7 +29,7 @@ function RequestDetails() {
               path: "/requests-list",
               text: "Volver a mis solicitudes",
             }}
-            title={`Solicitud ${application.id}`}
+            title={`Solicitud ME-0000${application.id}`}
             subtitle={`Monto: ${formatAmount(application.amount)}`}
             badge={{
               text: "En revisión",
@@ -33,40 +38,17 @@ function RequestDetails() {
           />
 
           <CurrentStatusBanner
-            title="Estado actual"
-            icon={<Clock className="text-blue-600" size={24} />}
-            description="Tu solicitud está siendo revisada por nuestro equipo. Te notificaremos cualquier novedad."
+            progress={progress}
+            status={application.status}
           />
 
-          <div className="overflow-hidden">
-            <TabsNavigation
-              activeTab={activeTab}
-              onTabChange={setActiveTab}
-              tabs={REQUEST_DETAILS_TABS}
-            />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <ApplicationProgress application={application} />
 
-            <div className="rounded-xl bg-white border border-gray-200 p-4 md:p-6">
-              {activeTab === "progress" && (
-                <TabsContent
-                  title="Progreso de tu solicitud"
-                  requestDetails={requestSteps}
-                />
-              )}
-
-              {activeTab === "documents" && (
-                <TabsContent
-                  title="Documentos"
-                  description="Aquí aparecerán los documentos relacionados con tu solicitud."
-                />
-              )}
-
-              {activeTab === "contact" && (
-                <TabsContent
-                  title="Contacto"
-                  description="Información de contacto y soporte."
-                />
-              )}
-            </div>
+            <aside className="flex flex-col gap-4">
+              <OperatorItem assignedOperator={assignedOperator} />
+              <ActionsItem />
+            </aside>
           </div>
         </article>
       )}
