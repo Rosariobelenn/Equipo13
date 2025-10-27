@@ -45,9 +45,8 @@ export interface StatusCardProps {
 }
 
 export interface CurrentStatusBannerProps {
-  title: string;
-  description: string;
-  icon?: React.ReactNode;
+  progress: number;
+  status: string;
 }
 
 export interface Tab {
@@ -59,4 +58,15 @@ export interface TabsNavigationProps {
   activeTab: RequestDetailsTabs;
   onTabChange: (tab: RequestDetailsTabs) => void;
   tabs: Tab[];
+}
+
+export interface OperatorProps {
+  fullName: string;
+  position: string;
+  email: string;
+  phoneNumber: string;
+}
+
+export interface OperatorItemProps {
+  assignedOperator: OperatorProps;
 }
