@@ -2,7 +2,7 @@ import type { Application, RequestStatusStep } from "../types/request.types";
 
 export const applications: Application[] = [
   {
-    id: "ME-00001233",
+    id: "33",
     amount: 1800000,
     requestedDate: "30 de julio de 2025",
     updatedDate: "02 de agosto de 2025",
@@ -13,7 +13,7 @@ export const applications: Application[] = [
     statusLabel: "Listo para firmar",
   },
   {
-    id: "ME-00001232",
+    id: "32",
     amount: 950000,
     requestedDate: "30 de mayo de 2025",
     updatedDate: "02 de junio de 2025",
@@ -24,7 +24,7 @@ export const applications: Application[] = [
     statusLabel: "Documentos pendientes",
   },
   {
-    id: "ME-00001231",
+    id: "31",
     amount: 750000,
     requestedDate: "30 de enero de 2025",
     updatedDate: "07 de febrero de 2025",
