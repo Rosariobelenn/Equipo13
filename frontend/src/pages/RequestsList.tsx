@@ -1,12 +1,20 @@
+import { Plus } from "lucide-react";
 import SectionHeader from "../components/ui/SectionHeader";
 import StatusCard from "../components/ui/StatusCard";
 import ApplicationListItem from "../components/ui/ApplicationListItem";
 import HelpSection from "../components/ui/HelpSection";
-import { statusItems } from "../data/statusItems";
-import { applications } from "../data/applications";
-import { Plus } from "lucide-react";
+import { applications as creditApplications } from "../data/applications"; // TODO eliminar esto
+import { useCreditApplications } from "../hooks/useCreditApplications";
+import { useStatusItems } from "../hooks/useStatusItems";
 
 function RequestsList() {
+  const { applications, isLoading, error } = useCreditApplications();
+  const statusItems = useStatusItems(applications);
+  // console.log(applications);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading applications</div>;
+
   return (
     <section className="bg-gray-50 p-6" id="requests-list">
       <article className="max-w-5xl mx-auto">
@@ -39,7 +47,16 @@ function RequestsList() {
         </section>
 
         <section className="space-y-4">
-          {applications.map((application) => (
+          {applications?.map((application) => (
+            <ApplicationListItem
+              key={application.id}
+              application={application}
+            />
+          ))}
+        </section>
+
+        <section className="space-y-4">
+          {creditApplications?.map((application) => (
             <ApplicationListItem
               key={application.id}
               application={application}
