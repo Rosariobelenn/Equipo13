@@ -1,10 +1,9 @@
 import { Eye, PenTool, Upload } from "lucide-react";
 import ActionButton from "../../components/ui/Button/ActionButton";
-import type { Application } from "../../types/request.types";
 
-const getActionButton = (application: Application) => {
-  switch (application.status) {
-    case "ready":
+const getActionButton = (status: string) => {
+  switch (status) {
+    case "approved":
       return (
         <ActionButton
           icon={PenTool}
@@ -12,7 +11,7 @@ const getActionButton = (application: Application) => {
           className="bg-blue-600 text-white hover:bg-blue-700"
         />
       );
-    case "pending":
+    case "pending_documents":
       return (
         <ActionButton
           icon={Upload}
