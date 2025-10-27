@@ -105,17 +105,18 @@ public class CreditApplicationServiceImpl implements CreditApplicationService {
     }
 
     @Override
+    @Transactional
     public CreditApplicationDetailDto getCreditApplicationById(Long id) {
         String userEmail = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByGmail(userEmail)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 
         CreditApplication app = creditApplicationRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Credit application not found or access denied")); // Using RuntimeException to trigger 404-like response
+                .orElseThrow(() -> new RuntimeException("Solicitud de crédito no encontrada con el ID: " + id));
 
         // Security Check: Ensure the user is the owner of the application
         if (!app.getUser().getId().equals(user.getId())) {
-            throw new AccessDeniedException("Credit application not found or access denied");
+            throw new AccessDeniedException("No tienes permiso para acceder a esta solicitud de crédito.");
         }
 
         // Find the legal representative to get the name
@@ -144,6 +145,7 @@ public class CreditApplicationServiceImpl implements CreditApplicationService {
     }
 
     @Override
+    @Transactional
     public AdminCreditApplicationDetailDto getAdminCreditApplicationById(Long id) {
         // La autorización de rol 'ADMIN' debería ser manejada por la configuración de seguridad de Spring.
         CreditApplication app = creditApplicationRepository.findById(id)

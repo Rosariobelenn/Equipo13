@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.HashMap;
@@ -141,9 +142,11 @@ public class CreditApplicationController {
         try {
             CreditApplicationDetailDto application = creditApplicationService.getCreditApplicationById(id);
             return ResponseEntity.ok(application);
+        } catch (AccessDeniedException e) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Map.of("error", e.getMessage()));
         } catch (RuntimeException e) {
             Map<String, String> errorResponse = new HashMap<>();
-            errorResponse.put("error", "Credit application not found or access denied");
+            errorResponse.put("error", e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
         }
     }
