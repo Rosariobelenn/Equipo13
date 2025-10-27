@@ -17,3 +17,9 @@ export interface RequestStatusStep {
 }
 
 export type RequestDetailsTabs = "progress" | "documents" | "contact";
+
+export interface ApplicationProgressProps {
+  status: string;
+  created_at: string;
+  updated_at: string;
+}
