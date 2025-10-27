@@ -5,7 +5,13 @@ export interface Application {
   updatedDate: string;
   message: string;
   actionText: string;
-  status: "ready" | "pending" | "completed";
+  status:
+    | "approved"
+    | "pending_review"
+    | "under_review"
+    | "completed"
+    | "pending_documents"
+    | "rejected";
   statusLabel: string;
 }
 
