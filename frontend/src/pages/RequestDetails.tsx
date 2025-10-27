@@ -9,14 +9,20 @@ import ActionsItem from "../components/ui/ActionsItem";
 import { assignedOperator } from "../data/assignedOperator";
 import ApplicationProgress from "../components/ui/ApplicationProgress";
 import RequestDetailsSkeleton from "../components/ui/RequestDetailsSkeleton";
+import RequestsDataError from "../components/ui/RequestsListError";
+import { getHeaderBadge } from "../lib/utils/getHeaderBadge";
 
 function RequestDetails() {
   const { id } = useParams();
   const idNumber = parseInt(id as string);
-  const { application, isLoading, error } = useCreditApplication(idNumber);
+  const { application, isLoading, error, refetch } =
+    useCreditApplication(idNumber);
 
   if (isLoading) return <RequestDetailsSkeleton />;
-  if (error) return <div>Error al cargar solicitud</div>;
+  if (error)
+    return (
+      <RequestsDataError title="Error al cargar solicitud" onRetry={refetch} />
+    );
 
   const progress = getProgressPercentage(application.status);
 
@@ -31,10 +37,7 @@ function RequestDetails() {
             }}
             title={`Solicitud ME-0000${application.id}`}
             subtitle={`Monto: ${formatAmount(application.amount)}`}
-            badge={{
-              text: "En revisión",
-              variant: "yellow",
-            }}
+            badge={getHeaderBadge(application.status)}
           />
 
           <CurrentStatusBanner
