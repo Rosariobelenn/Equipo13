@@ -65,7 +65,21 @@ export default function AppRoutes() {
           </ProtectedRoute>
         }
       />
+<<<<<<< HEAD
       <Route path="/Proceso" element={<Proceso step={1} />} />
+=======
+
+      <Route path='/ApplicationCredit' element={<ApplicationCredit />} />
+      <Route path='/RequestSent' element={<RequestSent />} />
+      <Route path='/ApplicationSummary' element={<ApplicationSummary />} />
+      <Route path='/DocumentList' element={<DocumentList />} />
+      <Route path='/Proceso' element={<Proceso step={1} />} />
+
+      
+      
+
+      
+>>>>>>> 4e0d9b6 (login)
     </Routes>
   );
 }
