@@ -27,6 +27,7 @@ export const useCreditApplication = (id: number | undefined) => {
     data: application,
     isLoading,
     error,
+    refetch,
   } = useQuery({
     queryKey: ["creditApplication", id],
     queryFn: () => creditApplicationService.getCreditApplicationById(id!),
@@ -37,6 +38,7 @@ export const useCreditApplication = (id: number | undefined) => {
     application,
     isLoading,
     error,
+    refetch,
   };
 };
 
@@ -47,7 +49,6 @@ export const useCreateCreditApplication = () => {
     mutationFn: (data: CreditRequest) =>
       creditApplicationService.createCreditApplication(data),
     onSuccess: () => {
-      // Invalida la lista para que se recargue
       queryClient.invalidateQueries({ queryKey: ["creditApplications"] });
     },
     onError: (error: unknown) => {
