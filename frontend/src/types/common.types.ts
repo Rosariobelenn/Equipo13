@@ -8,7 +8,7 @@ export interface ActionButtonProps {
 
 export interface SectionHeaderBadge {
   text: string;
-  variant?: "yellow" | "green" | "blue" | "red" | "gray";
+  variant?: "yellow" | "gray";
 }
 
 export interface SectionHeaderActionButton {
@@ -69,4 +69,9 @@ export interface OperatorProps {
 
 export interface OperatorItemProps {
   assignedOperator: OperatorProps;
+}
+
+export interface RequestsDataErrorProps {
+  title: string;
+  onRetry?: () => void;
 }
