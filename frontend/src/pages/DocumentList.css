@@ -28,6 +28,7 @@
   margin-bottom: 1rem;
   transition: all 0.2s ease-in-out;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  
 }
 
 .documento-card:hover {
@@ -41,8 +42,13 @@
 }
 
 .icono {
-  width: 22px;
-  height: 22px;
+  width: 72px;
+  height: 72px;
+}
+
+.iconor {
+  width: 42px;
+  height: 42px;
 }
 
 .verde {
