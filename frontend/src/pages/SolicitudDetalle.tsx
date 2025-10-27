@@ -1,7 +1,7 @@
 import React from "react";
 import "./SolicitudDetalle.css";
 import Headerr from "./Headerr";
-import Process from "./Proceso";
+import Proceso from "./Proceso";
 import Summary from "./logoss/summary";
 import Person from "./logoss/Person";
 import { useNavigate } from "react-router-dom";
@@ -134,7 +134,7 @@ const SolicitudDetalle: React.FC<Props> = ({ data }) => {
         </div>
       </div>
 
-      <Process />
+      <Proceso step={1} />
 
       {/* Cuenta bancaria y asignación */}
       <div className='solicitud-grid'>

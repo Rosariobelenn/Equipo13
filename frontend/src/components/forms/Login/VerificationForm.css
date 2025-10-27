@@ -12,14 +12,19 @@
   background-color: #fff;
   padding: 2rem;
   border-radius: 0.8rem;
-  width: 350px;
+  width: 450px;
+  height: 450px;
+  justify-content: center;
+  align-content:center ;
   text-align: center;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .verificacion-title {
-  margin-bottom: 0.5rem;
-  color: #1f2a44;
+  margin-bottom: 1.5rem;
+  color: #143480;
+  font-size: 24px;
+  padding-right: 220px;
 }
 
 .verificacion-text {
@@ -73,7 +78,7 @@
 }
 
 .reenviar-link {
-  color: #00a7e1;
+  color: #1a1ab9;
   cursor: pointer;
   font-weight: bold;
 }

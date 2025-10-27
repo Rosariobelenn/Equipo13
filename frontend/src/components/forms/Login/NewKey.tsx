@@ -24,7 +24,7 @@ const NuevaClave: React.FC = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="input-group">
-            <label htmlFor="password">Ingresa tu nueva contraseña</label>
+            <label className="labeel" htmlFor="password">Ingresa tu nueva contraseña</label>
             <div className="input-wrapper">
               <input
                 type={showPassword ? "text" : "password"}
@@ -45,7 +45,7 @@ const NuevaClave: React.FC = () => {
           </div>
 
           <div className="input-group">
-            <label htmlFor="confirmPassword">Confirmar contraseña</label>
+            <label className="labeel" htmlFor="confirmPassword">Confirmar contraseña</label>
             <div className="input-wrapper">
               <input
                 type={showConfirmPassword ? "text" : "password"}

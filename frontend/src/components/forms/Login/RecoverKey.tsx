@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./RecoverKey.css";
 
+
 const RecuperoClave: React.FC = () => {
   const [email, setEmail] = useState("");
 
@@ -34,7 +35,7 @@ const RecuperoClave: React.FC = () => {
             required
             className="recupero-input"
           />
-          <button type="submit" className="recupero-button">
+          <button  type="submit" className="recupero-button">
             CONTINUAR
           </button>
         </form>
