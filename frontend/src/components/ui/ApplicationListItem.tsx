@@ -1,11 +1,19 @@
 import { AlertCircle } from "lucide-react";
-import type { Application } from "../../types/request.types";
 import getActionButton from "../../lib/utils/getActionButton";
 import getStatusBadge from "../../lib/utils/getStatusBadge";
-import { formatAmount } from "../../lib/utils/utils";
+import {
+  formatAmount,
+  formatDate,
+  getStatusMessage,
+} from "../../lib/utils/utils";
 import { Link } from "react-router-dom";
+import type { CreditApplication } from "../../types/credit.types";
 
-function ApplicationListItem({ application }: { application: Application }) {
+function ApplicationListItem({
+  application,
+}: {
+  application: CreditApplication;
+}) {
   return (
     <article
       key={application.id}
@@ -14,32 +22,34 @@ function ApplicationListItem({ application }: { application: Application }) {
       <main className="md:col-span-2">
         <header className="flex flex-col sm:flex-row md:items-center gap-3 mb-2">
           <h3 className="text-xl font-semibold text-gray-900">
-            Solicitud {application.id}
+            Solicitud ME-0000{application.id}
           </h3>
-          {getStatusBadge(application.status, application.statusLabel)}
+          {getStatusBadge(application.status)}
         </header>
 
-        <ul className="flex flex-col md:flex-row gap-1 md:gap-8 text-sm text-gray-600 mb-4 list-disc list-inside ml-2">
+        <ul className="flex flex-col md:flex-row gap-1 md:gap-4 text-sm text-gray-600 mb-4 list-disc list-inside ml-2">
           <li className="list-none">
             Monto: <strong>{formatAmount(application.amount)}</strong>
           </li>
-          <li>Solicitado: {application.requestedDate}</li>
-          <li>Actualizado: {application.updatedDate}</li>
+          <li>Solicitado: {formatDate(application.created_at)}</li>
+          <li>Actualizado: {formatDate(application.updated_at)}</li>
         </ul>
 
         <p className="text-gray-700 text-sm mb-4 bg-gray-100/50 p-3 rounded-lg ml-2">
-          {application.message}
+          {getStatusMessage(application.status)}
         </p>
 
-        <ul className="flex items-center gap-2 text-sm ml-2">
-          <li>
-            <AlertCircle className="w-4 h-4 text-amber-600" />
-          </li>
-          <li className="text-gray-600">Acción requerida:</li>
-          <li className="text-orange-600 font-medium">
-            {application.actionText}
-          </li>
-        </ul>
+        {application.status != "pending_review" && (
+          <ul className="flex items-center gap-2 text-sm ml-2">
+            <li>
+              <AlertCircle className="w-4 h-4 text-amber-600" />
+            </li>
+            <li className="text-gray-600">Acción requerida:</li>
+            <li className="text-orange-600 font-medium">
+              Firmar contrato | Cargar documentos | Otra
+            </li>
+          </ul>
+        )}
       </main>
       <aside className="flex md:flex-col justify-evenly md:justify-center items-center gap-3 mt-4 md:mt-0 md:col-span-1">
         {getActionButton(application)}
