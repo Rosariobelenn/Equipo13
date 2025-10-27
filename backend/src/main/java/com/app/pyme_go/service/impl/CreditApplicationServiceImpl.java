@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.util.Collections;
 import java.util.List;
@@ -207,7 +208,7 @@ public class CreditApplicationServiceImpl implements CreditApplicationService {
                     .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
         }
 
-        CreditApplicationSpecification spec = new CreditApplicationSpecification(status, currentUser);
+        Specification<CreditApplication> spec = new CreditApplicationSpecification(status, currentUser);
 
         Page<CreditApplication> applicationsPage = creditApplicationRepository.findAll(spec, pageable);
 
