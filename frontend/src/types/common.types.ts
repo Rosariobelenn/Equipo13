@@ -8,7 +8,7 @@ export interface ActionButtonProps {
 
 export interface SectionHeaderBadge {
   text: string;
-  variant?: "yellow" | "green" | "blue" | "red" | "gray";
+  variant?: "yellow" | "gray";
 }
 
 export interface SectionHeaderActionButton {
@@ -45,9 +45,8 @@ export interface StatusCardProps {
 }
 
 export interface CurrentStatusBannerProps {
-  title: string;
-  description: string;
-  icon?: React.ReactNode;
+  progress: number;
+  status: string;
 }
 
 export interface Tab {
@@ -59,4 +58,20 @@ export interface TabsNavigationProps {
   activeTab: RequestDetailsTabs;
   onTabChange: (tab: RequestDetailsTabs) => void;
   tabs: Tab[];
+}
+
+export interface OperatorProps {
+  fullName: string;
+  position: string;
+  email: string;
+  phoneNumber: string;
+}
+
+export interface OperatorItemProps {
+  assignedOperator: OperatorProps;
+}
+
+export interface RequestsDataErrorProps {
+  title: string;
+  onRetry?: () => void;
 }

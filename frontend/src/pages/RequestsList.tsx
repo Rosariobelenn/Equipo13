@@ -1,12 +1,26 @@
+import { Plus } from "lucide-react";
 import SectionHeader from "../components/ui/SectionHeader";
 import StatusCard from "../components/ui/StatusCard";
 import ApplicationListItem from "../components/ui/ApplicationListItem";
 import HelpSection from "../components/ui/HelpSection";
-import { statusItems } from "../data/statusItems";
-import { applications } from "../data/applications";
-import { Plus } from "lucide-react";
+import { useCreditApplications } from "../hooks/useCreditApplications";
+import { useStatusItems } from "../hooks/useStatusItems";
+import RequestsListSkeleton from "../components/ui/RequestsListSkeleton";
+import RequestsListError from "../components/ui/RequestsListError";
 
 function RequestsList() {
+  const { applications, isLoading, error, refetch } = useCreditApplications();
+  const statusItems = useStatusItems(applications);
+
+  if (isLoading) return <RequestsListSkeleton />;
+  if (error)
+    return (
+      <RequestsListError
+        title="No pudimos cargar tus solicitudes"
+        onRetry={refetch}
+      />
+    );
+
   return (
     <section className="bg-gray-50 p-6" id="requests-list">
       <article className="max-w-5xl mx-auto">
@@ -39,14 +53,13 @@ function RequestsList() {
         </section>
 
         <section className="space-y-4">
-          {applications.map((application) => (
+          {applications?.map((application) => (
             <ApplicationListItem
               key={application.id}
               application={application}
             />
           ))}
         </section>
-
         <HelpSection />
       </article>
     </section>

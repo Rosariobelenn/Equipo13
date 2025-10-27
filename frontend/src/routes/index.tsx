@@ -23,28 +23,26 @@ import Myloginkeythree from "../pages/Myloginkeythree";
 import Loginkeyfour from "../pages/Myloginkeyfour";
 import Proceso from "../pages/Proceso";
 
-
-
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path='/' element={<Mylogin />} />
-      <Route path='/register' element={<Register />} />
-      <Route path='/registerFlow' element={<RegisterFlow />} />
-      <Route path='/EmailVerification' element={<EmailVerification />} />
-      <Route path='/EmailVerified' element={<EmailVerified />} />
-      <Route path='/MyLoginOperator' element={<MyLoginOperator />} />
-      <Route path='/dashboard' element={<Dashboard />} />
-      <Route path='/requests-list' element={<RequestsList />} />
- <Route path='/request-details/:id' element={<RequestDetails />} />
+      <Route path="/" element={<Mylogin />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/registerFlow" element={<RegisterFlow />} />
+      <Route path="/EmailVerification" element={<EmailVerification />} />
+      <Route path="/EmailVerified" element={<EmailVerified />} />
+      <Route path="/MyLoginOperator" element={<MyLoginOperator />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/requests-list" element={<RequestsList />} />
+      <Route path="/request-details/:id" element={<RequestDetails />} />
       <Route
-        path='/DigitalSignatureContract'
+        path="/DigitalSignatureContract"
         element={<DigitalSignatureContract />}
       />
       <Route
-        path='/operator'
+        path="/operator"
         element={
-          <ProtectedRoute requiredRole='ADMIN'>
+          <ProtectedRoute requiredRole="ADMIN">
             <RequestPanel />
           </ProtectedRoute>
         }
@@ -58,25 +56,16 @@ export default function AppRoutes() {
       <Route path="/Loginkeytwo" element={<Loginkeytwo />} />
       <Route path="/Myloginkeythree" element={<Myloginkeythree />} />
       <Route path="/Loginkeyfour" element={<Loginkeyfour />} />
-      
-      
-      
 
       <Route
-        path='/request-detail/:id'
+        path="/request-detail/:id"
         element={
-          <ProtectedRoute requiredRole='ADMIN'>
+          <ProtectedRoute requiredRole="ADMIN">
             <SolicDet />
           </ProtectedRoute>
         }
       />
-
-      <Route path='/ApplicationCredit' element={<ApplicationCredit />} />
-      <Route path='/RequestSent' element={<RequestSent />} />
-      <Route path='/ApplicationSummary' element={<ApplicationSummary />} />
-      <Route path='/DocumentList' element={<DocumentList />} />
-      <Route path='/Proceso' element={<Proceso step={1} />} />
-      
+      <Route path="/Proceso" element={<Proceso step={1} />} />
     </Routes>
   );
 }

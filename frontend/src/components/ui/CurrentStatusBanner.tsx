@@ -1,20 +1,22 @@
 import type { CurrentStatusBannerProps } from "../../types/common.types";
+import { getStatusLabel } from "../../lib/utils/getStatusLabel";
 
-function CurrentStatusBanner({
-  title,
-  description,
-  icon,
-}: CurrentStatusBannerProps) {
+function CurrentStatusBanner({ progress, status }: CurrentStatusBannerProps) {
   return (
-    <section className="bg-white rounded-xl p-4 md:p-6 my-4 md:my-8 border border-gray-200 flex items-center gap-4">
-      <figure className="flex-shrink-0 w-11 h-11 bg-blue-100 rounded-full flex items-center justify-center">
-        {icon}
-      </figure>
-
-      <aside>
-        <h2 className="text-lg text-gray-900 mb-1">{title}</h2>
-        <p className="text-gray-600 text-sm md:text-base">{description}</p>
-      </aside>
+    <section className="bg-white rounded-xl p-4 md:p-6 border border-gray-200 mb-4">
+      <header className="flex justify-between items-center mb-2">
+        <h2 className="text-sm text-gray-700">Progreso del proceso</h2>
+        <span className="text-sm text-gray-900">{progress}%</span>
+      </header>
+      <div className="w-full bg-gray-100 rounded-full h-2 mb-3">
+        <div
+          className="bg-blue-800 h-2 rounded-full transition-all duration-300"
+          style={{ width: `${progress}%` }}
+        ></div>
+      </div>
+      <p className="font-semibold text-sm text-gray-900">
+        {getStatusLabel(status)}
+      </p>
     </section>
   );
 }
