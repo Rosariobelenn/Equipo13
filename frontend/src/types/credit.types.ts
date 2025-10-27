@@ -1,0 +1,39 @@
+export interface CreditApplication {
+  id: number;
+  amount: number;
+  status: "pending_review" | "under_review" | "approved" | "rejected";
+  company_name: string;
+  company_id: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CreditRequest {
+  credit_amount: number;
+  credit_installment_count: number;
+  bank_name: string;
+  bank_type: string;
+  bank_cbu_cvu: string;
+  bank_holder_name: string;
+  document_financial_statements: string;
+  document_gross_income_certificate: string;
+  document_statement_file: string;
+}
+
+export interface RequestedBy {
+  id: number;
+  name: string;
+  email: string;
+}
+
+export interface Document {
+  id: number;
+  name: string;
+  type: string;
+  url: string;
+}
+
+export interface CreditApplicationById extends CreditApplication {
+  requested_by: RequestedBy;
+  documents: Document[];
+}
