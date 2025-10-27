@@ -6,7 +6,7 @@ const getStatusBadge = (status: string) => {
   let label = "";
 
   switch (status) {
-    case "ready":
+    case "approved":
       label = "Listo para firmar";
       break;
     case "pending_review":
@@ -17,6 +17,9 @@ const getStatusBadge = (status: string) => {
       break;
     case "completed":
       label = "Aprobado - Desembolsado";
+      break;
+    case "rejected":
+      label = "Rechazada";
       break;
     default:
       label = "Estado desconocido";
