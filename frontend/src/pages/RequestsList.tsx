@@ -3,17 +3,23 @@ import SectionHeader from "../components/ui/SectionHeader";
 import StatusCard from "../components/ui/StatusCard";
 import ApplicationListItem from "../components/ui/ApplicationListItem";
 import HelpSection from "../components/ui/HelpSection";
-import { applications as creditApplications } from "../data/applications"; // TODO eliminar esto
 import { useCreditApplications } from "../hooks/useCreditApplications";
 import { useStatusItems } from "../hooks/useStatusItems";
+import RequestsListSkeleton from "../components/ui/RequestsListSkeleton";
+import RequestsListError from "../components/ui/RequestsListError";
 
 function RequestsList() {
-  const { applications, isLoading, error } = useCreditApplications();
+  const { applications, isLoading, error, refetch } = useCreditApplications();
   const statusItems = useStatusItems(applications);
-  // console.log(applications);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading applications</div>;
+  if (isLoading) return <RequestsListSkeleton />;
+  if (error)
+    return (
+      <RequestsListError
+        title="No pudimos cargar tus solicitudes"
+        onRetry={refetch}
+      />
+    );
 
   return (
     <section className="bg-gray-50 p-6" id="requests-list">
@@ -54,16 +60,6 @@ function RequestsList() {
             />
           ))}
         </section>
-
-        <section className="space-y-4">
-          {creditApplications?.map((application) => (
-            <ApplicationListItem
-              key={application.id}
-              application={application}
-            />
-          ))}
-        </section>
-
         <HelpSection />
       </article>
     </section>
