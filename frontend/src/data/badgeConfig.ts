@@ -1,7 +1,7 @@
-import { CircleCheckBig, PenTool, Upload, Clock } from "lucide-react";
+import { CircleCheckBig, PenTool, Upload, Clock, XCircle } from "lucide-react";
 
 export const badgeConfig = {
-  ready: {
+  approved: {
     icon: PenTool,
     className: "bg-blue-50 text-blue-700 border border-blue-200",
   },
@@ -16,5 +16,9 @@ export const badgeConfig = {
   completed: {
     icon: CircleCheckBig,
     className: "bg-green-50 text-green-700 border border-green-200",
+  },
+  rejected: {
+    icon: XCircle,
+    className: "bg-red-50 text-red-700 border border-red-200",
   },
 };
