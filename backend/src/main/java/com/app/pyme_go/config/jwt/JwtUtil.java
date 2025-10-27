@@ -2,6 +2,7 @@ package com.app.pyme_go.config.jwt;
 
 
 import java.util.Date;
+import java.util.Base64;
 
 import javax.crypto.SecretKey;
 
@@ -31,7 +32,16 @@ public class JwtUtil {
 
     @PostConstruct
     public void init() {
-        this.key = Keys.hmacShaKeyFor(secretKey.getBytes());
+        // Ensure we have at least 256 bits (32 bytes) for HMAC-SHA256
+        byte[] keyBytes;
+        if (secretKey.length() < 32) {
+            // If the key is too short, pad it or use a secure default
+            keyBytes = Keys.secretKeyFor(SignatureAlgorithm.HS256).getEncoded();
+        } else {
+            // Use the first 32 bytes of the secret key
+            keyBytes = secretKey.substring(0, 32).getBytes();
+        }
+        this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 
     public String generateToken(Authentication authentication) {

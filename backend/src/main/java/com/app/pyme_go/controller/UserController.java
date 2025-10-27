@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.pyme_go.model.dto.user.AuthResponseDto;
 import com.app.pyme_go.model.dto.user.UserLoginDto;
 import com.app.pyme_go.model.dto.user.RegisterDto;
+import org.springframework.security.core.AuthenticationException;
 import com.app.pyme_go.service.AuthService;
 
 import jakarta.validation.Valid;
@@ -32,8 +33,13 @@ public class UserController {
     @Operation(summary = "Iniciar sesión", description = "Autentica a un usuario con su email y contraseña, devolviendo un token de acceso.")
     @PostMapping("/login")
     public ResponseEntity<AuthResponseDto> login(@Valid @RequestBody UserLoginDto loginUserDto) {
-        AuthResponseDto response = authService.autenticateUser(loginUserDto);
-        return ResponseEntity.ok(response);
+        try {
+            AuthResponseDto response = authService.autenticateUser(loginUserDto);
+            return ResponseEntity.ok(response);
+        } catch (AuthenticationException e) {
+            // Captura la excepción de autenticación y devuelve un 401 con un mensaje detallado
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new AuthResponseDto(null, null, null, e.getMessage()));
+        }
     }
 
     @Operation(summary = "Registrar nuevo usuario", description = "Registra un nuevo usuario junto con su empresa y datos de representante legal en un solo paso.")

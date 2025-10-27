@@ -24,7 +24,6 @@ import com.app.pyme_go.model.dto.user.RegisterDto;
 import com.app.pyme_go.model.dto.user.UserLoginDto;
 import com.app.pyme_go.model.dto.user.UserRegisterDto;
 import com.app.pyme_go.model.dto.user.UserResponseDto;
-import com.app.pyme_go.exception.UserAlreadyExistsException;
 import com.app.pyme_go.model.entity.Company;
 import com.app.pyme_go.model.entity.Document;
 import com.app.pyme_go.model.entity.LegalRepresentative;
@@ -93,7 +92,7 @@ public class AuthServiceimpl implements AuthService {
         CompanyDto company = registerDto.getCompany();
 
         if (userService.existsByGmail(user.getGmail())) {
-            throw new UserAlreadyExistsException("El correo electrónico '" + user.getGmail() + "' ya está en uso.");
+            new RuntimeException("Usuario ya existe");
         }
 
         String roleName = "USER";
