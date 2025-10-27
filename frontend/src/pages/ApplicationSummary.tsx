@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ApplicationSummary.css";
 import { CheckCircle, XCircle, Clock } from "lucide-react";
 
@@ -10,7 +10,7 @@ interface Documento {
   estado: "Aprobada" | "Faltante" | "Pendiente de revisión";
 }
 
-const documentos: Documento[] = [
+const initialDocumentos: Documento[] = [
   {
     nombre: "Acta Constitutiva",
     archivo: "acta_constitutiva.pdf",
@@ -42,6 +42,16 @@ const documentos: Documento[] = [
 ];
 
 const ApplicationSummary: React.FC = () => {
+  const [documentos, setDocumentos] = useState<Documento[]>(initialDocumentos);
+
+  const handleEstadoChange = (index: number, nuevoEstado: Documento["estado"]) => {
+    const nuevosDocs = [...documentos];
+    nuevosDocs[index].estado = nuevoEstado;
+    setDocumentos(nuevosDocs);
+  };
+
+  const mostrarAlertaContable = documentos.some(doc => doc.estado !== "Aprobada");
+
   return (
     <div className="solicitud-card">
       <h3 className="solicitud-titulo">Solicitud ME-00001232</h3>
@@ -51,10 +61,8 @@ const ApplicationSummary: React.FC = () => {
         <div key={i} className="doc-item">
           <div className="doc-info">
             {doc.estado === "Aprobada" && <CheckCircle className="icon verde" />}
-            {doc.estado === "Faltante" && <XCircle className="icon rojo" />}
-            {doc.estado === "Pendiente de revisión" && (
-              <Clock className="icon amarillo" />
-            )}
+            {doc.estado === "Faltante" && <XCircle className="iconr rojo" />}
+            {doc.estado === "Pendiente de revisión" && <Clock className="icon amarillo" />}
             <div>
               <p className="doc-nombre">{doc.nombre}</p>
               {doc.archivo && (
@@ -68,7 +76,7 @@ const ApplicationSummary: React.FC = () => {
           <div className="doc-acciones">
             <select
               value={doc.estado}
-              onChange={() => {}}
+              onChange={(e) => handleEstadoChange(i, e.target.value as Documento["estado"])}
               className={`estado ${doc.estado.toLowerCase().replace(/ /g, "-")}`}
             >
               <option>Aprobada</option>
@@ -76,23 +84,24 @@ const ApplicationSummary: React.FC = () => {
               <option>Faltante</option>
             </select>
 
-            {doc.archivo && (
-              <button className="btn-adjunto">Ver adjunto</button>
-            )}
+            {doc.archivo && <button className="btn-adjunto">Ver adjunto</button>}
           </div>
         </div>
       ))}
 
-      <div className="estado-contable-alerta">
-        <XCircle className="icon rojo" />
-        <p>
-          <strong>Estado Contable Actualizado</strong>
-          <br />
-          Solicitar estado contable con fecha posterior a abril de 2025
-        </p>
-      </div>
+      {mostrarAlertaContable && (
+        <div className="estado-contable-alerta">
+          <XCircle className="iconr rojo" />
+          <p>
+            <strong>Estado Contable Actualizado</strong>
+            <br />
+            Solicitar estado contable con fecha posterior a abril de 2025
+          </p>
+        </div>
+      )}
     </div>
   );
 };
 
 export default ApplicationSummary;
+

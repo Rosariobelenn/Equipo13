@@ -4,7 +4,7 @@
   padding: 1.5rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 600px;
+  max-width: 1000px;
   margin: 1rem auto;
   font-family: "Inter", sans-serif;
 }
@@ -30,6 +30,8 @@
   margin-bottom: 0.8rem;
 }
 
+
+
 .doc-info {
   display: flex;
   align-items: flex-start;
@@ -47,8 +49,14 @@
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
+}
+
+
+.iconr {
+  width: 40px;
+  height: 40px;
 }
 
 .verde {
@@ -77,24 +85,24 @@
 }
 
 .estado.aprobada {
-  background: #dcfce7;
-  color: #166534;
+  background: white;
+  color: black;
 }
 
 .estado.pendiente-de-revisión {
-  background: #fef9c3;
-  color: #854d0e;
+  background: white;
+  color: black;
 }
 
 .estado.faltante {
-  background: #fee2e2;
-  color: #991b1b;
+  background: white;
+  color: black;
 }
 
 .btn-adjunto {
   background: none;
   border: none;
-  color: #2563eb;
+  color: black;
   font-weight: 500;
   cursor: pointer;
 }
