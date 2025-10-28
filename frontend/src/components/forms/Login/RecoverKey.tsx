@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./RecoverKey.css";
-
+import { Link } from "react-router-dom";
 
 const RecuperoClave: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -35,9 +35,12 @@ const RecuperoClave: React.FC = () => {
             required
             className="recupero-input"
           />
-          <button  type="submit" className="recupero-button">
-            CONTINUAR
-          </button>
+          
+
+          <Link to="/Loginkeytwo" className="recupero-button">
+          CONTINUAR
+        </Link>
+
         </form>
       </div>
     </div>

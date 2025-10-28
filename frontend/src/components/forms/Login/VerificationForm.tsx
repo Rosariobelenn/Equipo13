@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./VerificationForm.css";
+import { Link } from "react-router-dom";
 
 const Verificacion: React.FC = () => {
   const [code, setCode] = useState(["", "", "", ""]);
@@ -42,9 +43,14 @@ const Verificacion: React.FC = () => {
               />
             ))}
           </div>
-          <button type="submit" className="btn-continuar">
-            CONTINUAR
-          </button>
+          
+
+        <Link to="/Myloginkeythree" type="submit" className="btn-continuar">
+          CONTINUAR
+        </Link>
+
+
+
         </form>
         <p className="reenviar-text">
           Si no recibiste el código hace clic en <span className="reenviar-link">Reenviar</span>
