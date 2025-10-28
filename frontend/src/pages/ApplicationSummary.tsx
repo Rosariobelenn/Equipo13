@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ApplicationSummary.css";
 import { CheckCircle, XCircle, Clock } from "lucide-react";
-import { updateCreditStatus } from "../services/creditApplication.service";
+import { updateCreditStatus } from "../services/status..service";
 
 interface Documento {
   id: number;
