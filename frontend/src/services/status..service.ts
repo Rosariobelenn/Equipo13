@@ -2,12 +2,14 @@
 
 // 📡 URL base del backend (ajustala según tu entorno)
 //const BASE_URL = "https://tu-backend.com/api"; 
+
+// src/services/api.ts
 const API_BASE_URL = "https://pymego.onrender.com/v1/api";
 
 /**
- * Actualiza el estado de un documento en el servidor.
+ * Actualiza el estado de una solicitud de crédito (solo admin)
  * 
- * @param id - ID del documento a actualizar
+ * @param id - ID de la solicitud
  * @param estado - Estado nuevo ("approved" | "rejected" | "pending_review")
  * @param comentario - Texto opcional con el motivo o nota de actualización
  */
@@ -17,14 +19,16 @@ export const updateCreditStatus = async (
   comentario: string
 ): Promise<void> => {
   try {
-    const response = await fetch(`${API_BASE_URL}/documentos/${id}/estado`, {
+    const response = await fetch(`${API_BASE_URL}/v1/api/admin/credit-applications/${id}/status`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        // Agregá el token si tu backend requiere autenticación:
+        // "Authorization": `Bearer ${token}`,
       },
       body: JSON.stringify({
-        estado,
-        comentario,
+        status: estado,      // 👈 el campo puede llamarse "status" según el backend
+        comment: comentario, // 👈 si el backend espera "comment"
       }),
     });
 
@@ -32,12 +36,9 @@ export const updateCreditStatus = async (
       throw new Error(`Error ${response.status}: ${response.statusText}`);
     }
 
-    // (Opcional) Si el backend devuelve datos
-    const data = await response.json();
-    console.log("✅ Estado actualizado correctamente:", data);
-
+    console.log("✅ Estado actualizado correctamente");
   } catch (error) {
     console.error("❌ Error al actualizar el estado:", error);
-    throw error; // vuelve a lanzar para que el componente pueda mostrar el mensaje de error
+    throw error;
   }
 };
