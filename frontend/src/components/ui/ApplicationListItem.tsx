@@ -4,6 +4,7 @@ import getStatusBadge from "../../lib/utils/getStatusBadge";
 import {
   formatAmount,
   formatDate,
+  formatId,
   getRequiredActionText,
   getStatusMessage,
 } from "../../lib/utils/utils";
@@ -23,7 +24,7 @@ function ApplicationListItem({
       <main className="md:col-span-2">
         <header className="flex flex-col sm:flex-row md:items-center gap-3 mb-2">
           <h3 className="text-xl font-semibold text-gray-900">
-            Solicitud ME-0000{application.id}
+            Solicitud ME-{formatId(application.id)}
           </h3>
           {getStatusBadge(application.status)}
         </header>
