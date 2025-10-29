@@ -37,3 +37,16 @@ export interface CreditApplicationById extends CreditApplication {
   requested_by: RequestedBy;
   documents: Document[];
 }
+
+export interface DocumentInputProps {
+  field: "financial_statements" | "gross_income" | "bank_statement";
+  documentField: keyof CreditRequest;
+  label: string;
+  inputId: string;
+  mode: "url" | "file";
+  file: File | null;
+  urlValue: string;
+  onToggleMode: () => void;
+  onUrlChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
