@@ -49,3 +49,7 @@ export function getRequiredActionText(status: string): string {
       return "Estado desconocido. Por favor, contacta con soporte.";
   }
 }
+
+export function formatId(id: number) {
+  return id.toString().padStart(4, "0");
+}

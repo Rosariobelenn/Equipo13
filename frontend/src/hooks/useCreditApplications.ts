@@ -66,5 +66,6 @@ export const useCreateCreditApplication = () => {
     isSuccess: mutation.isSuccess,
     isError: mutation.isError,
     error: mutation.error,
+    data: mutation.data,
   };
 };

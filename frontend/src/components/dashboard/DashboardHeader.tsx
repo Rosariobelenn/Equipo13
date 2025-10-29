@@ -1,4 +1,5 @@
 import { Building2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function DashboardHeader() {
   return (
@@ -9,10 +10,13 @@ function DashboardHeader() {
         </h1>
         <p className="text-gray-600">Panel de control - Mi empresa S.R.L</p>
       </header>
-      <button className="bg-primary hover:bg-blue-800 text-white w-full md:w-fit md:px-22 py-2 rounded-lg flex items-center justify-center gap-2 transition-colors cursor-pointer">
+      <Link
+        to="/new-request"
+        className="bg-primary hover:bg-blue-800 text-white w-full md:w-fit md:px-22 py-2 rounded-lg flex items-center justify-center gap-2 transition-colors cursor-pointer"
+      >
         <Building2 className="w-5 h-5" />
         Nueva solicitud
-      </button>
+      </Link>
     </section>
   );
 }

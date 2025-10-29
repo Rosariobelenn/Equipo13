@@ -22,6 +22,8 @@ import Loginkeytwo from "../pages/Myloginkeytwo";
 import Myloginkeythree from "../pages/Myloginkeythree";
 import Loginkeyfour from "../pages/Myloginkeyfour";
 import Proceso from "../pages/Proceso";
+import NewRequest from "../pages/NewRequest";
+import SuccessfulRequest from "../pages/SuccessfulRequest";
 
 export default function AppRoutes() {
   return (
@@ -35,6 +37,8 @@ export default function AppRoutes() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/requests-list" element={<RequestsList />} />
       <Route path="/request-details/:id" element={<RequestDetails />} />
+      <Route path="/new-request" element={<NewRequest />} />
+      <Route path="successful-request" element={<SuccessfulRequest />} />
       <Route
         path="/DigitalSignatureContract"
         element={<DigitalSignatureContract />}
