@@ -19,9 +19,9 @@ function EmptyStateItem() {
 
         <Link
           to="/new-request"
-          className="inline-flex items-center gap-2 bg-primary hover:bg-blue-800 text-white font-medium px-6 py-3 rounded-sm transition-colors"
+          className="inline-flex text-sm md:text-base items-center gap-1 md:gap-2 bg-primary hover:bg-blue-800 text-white font-medium px-6 py-3 rounded-sm transition-colors"
         >
-          <Plus className="w-5 h-5" />
+          <Plus className="w-4 h-4 md:w-5 md:h-5" />
           Crear mi primera solicitud
         </Link>
       </article>
