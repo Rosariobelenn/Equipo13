@@ -8,8 +8,8 @@ import {
   Banknote,
 } from "lucide-react";
 import { useCreateCreditApplication } from "../hooks/useCreditApplications";
-import type { CreditRequest } from "../types/credit.types";
 import DocumentInput from "../components/ui/DocumentInput";
+import type { CreditRequest } from "../types/credit.types";
 
 function NewRequest() {
   const navigate = useNavigate();
@@ -176,7 +176,6 @@ function NewRequest() {
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6 max-w-3xl mx-auto">
-            {/* Monto y Condiciones */}
             <section className="bg-white border border-gray-300 rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Calculator className="w-5 h-5 text-teal-600" />
@@ -231,7 +230,6 @@ function NewRequest() {
               </div>
             </section>
 
-            {/* Cuenta para Depósito */}
             <section className="bg-white border border-gray-300 rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-4">
                 <CreditCard className="w-5 h-5 text-blue-500" />
@@ -316,7 +314,6 @@ function NewRequest() {
               </div>
             </section>
 
-            {/* Documentación Requerida */}
             <section>
               <div className="flex items-center gap-2 mb-4">
                 <FileText className="w-5 h-5 text-purple-600" />
@@ -344,7 +341,6 @@ function NewRequest() {
                     )
                   }
                 />
-
                 <DocumentInput
                   field="gross_income"
                   documentField="document_gross_income_certificate"
@@ -367,7 +363,6 @@ function NewRequest() {
                     )
                   }
                 />
-
                 <DocumentInput
                   field="bank_statement"
                   documentField="document_statement_file"
