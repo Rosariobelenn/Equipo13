@@ -94,6 +94,7 @@ const SolicDet: React.FC = () => {
     );
   if (!data)
     return <div style={{ padding: 24 }}>No se encontró la solicitud #{id}</div>;
+  console.log(data);
 
   return <SolicitudDetalle data={data} />;
 };

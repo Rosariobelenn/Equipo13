@@ -28,13 +28,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [token, setToken] = useState<string | null>(
     localStorage.getItem("token")
   );
-
   const login = async (email: string, password: string) => {
     const response = await fetch("https://pymego.onrender.com/v1/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        gmail: email, 
+        gmail: email,
         password: password,
       }),
     });
@@ -45,15 +44,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       throw new Error(data.message || "Error al iniciar sesión");
     }
 
+    // 🔹 El backend devuelve el token en 'access_token'
     const token = data.access_token;
     const user = data.user;
 
     setToken(token);
     setUser(user);
 
+    // Guardar en localStorage
     localStorage.setItem("token", token);
     localStorage.setItem("userData", JSON.stringify(user));
-
 
     console.log("✅ Usuario autenticado:", {
       token,

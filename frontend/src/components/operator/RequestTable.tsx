@@ -34,7 +34,6 @@ export default function RequestsTable({
             <th className='py-2 px-3 text-left'>Empresa</th>
             <th className='py-2 px-3 text-left'>Monto</th>
             <th className='py-2 px-3 text-left'>Estado</th>
-            <th className='py-2 px-3 text-left'>Score</th>
             <th className='py-2 px-3 text-left'>Asignado</th>
             <th className='py-2 px-3 text-left'>Fecha</th>
             <th className='py-2 px-3'></th>
@@ -45,11 +44,13 @@ export default function RequestsTable({
             resultados.map((r) => (
               <tr
                 key={r.id}
-                className='border-b last:border-none hover:bg-gray-50 transition'
+                className='border border-gray-200 font-bold  last:border-none hover:bg-gray-50 transition'
               >
-                <td className='py-2 px-3'>{r.id}</td>
+                <td className='py-2 px-3'>{`Solicitud ME-${r.id
+                  .toString()
+                  .padStart(6, "0")}`}</td>
                 <td className='py-2 px-3'>{r.empresa}</td>
-                <td className='py-2 px-3'>{r.monto}</td>
+                <td className='py-2 px-3'>{`$ ${r.monto}`}</td>
                 <td className='py-2 px-3'>
                   <div
                     className={` py-0.5 flex justify-center  rounded-full text-xs font-medium ${
@@ -59,7 +60,6 @@ export default function RequestsTable({
                     {r.estado}
                   </div>
                 </td>
-                <td className='py-2 px-3'>{r.score || "-"}</td>
                 <td className='py-2 px-3'>{r.asignado}</td>
                 <td className='py-2 px-3'>{r.fecha}</td>
                 <td

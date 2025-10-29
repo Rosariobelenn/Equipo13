@@ -11,10 +11,9 @@ export async function apiFetch<T>(
     ...options,
     headers: {
       "Content-Type": "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ... { Authorization: `Bearer ${token}` },
       ...options.headers,
     },
-    credentials: "include", 
   });
 
   if (!response.ok) {

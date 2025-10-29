@@ -22,3 +22,4 @@ export interface ActivityItemProps {
   title: string;
   timestamp: string;
 }
+
