@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
 
 <div>
        <SolicDettwo/>
-       <Procesotwo step={1} />
+       <Procesotwo step={2} />
         
 
     <footer className="footer">

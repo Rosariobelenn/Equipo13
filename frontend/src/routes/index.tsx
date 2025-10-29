@@ -65,7 +65,11 @@ export default function AppRoutes() {
           </ProtectedRoute>
         }
       />
-      <Route path="/Proceso" element={<Proceso step={1} />} />
+      <Route path="/Proceso" element={<Proceso step={1} />} /> 
+      <Route path="/SolicDet" element={<SolicDet />} /> 
+      <Route path="/ApplicationSummary" element={<ApplicationSummary />} /> 
+      
     </Routes>
   );
+  
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./NewKey.css";
 import { Eye, EyeOff } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const NuevaClave: React.FC = () => {
   const [password, setPassword] = useState("");
@@ -65,9 +66,14 @@ const NuevaClave: React.FC = () => {
             </div>
           </div>
 
-          <button type="submit" className="btn-actualizar">
-            ACTUALIZAR CONTRASEÑA
-          </button>
+        
+
+        
+        <Link to="/Loginkeyfour" type="submit" className="btn-actualizar">
+          ACTUALIZAR CONTRASEÑA
+        </Link>
+
+
         </form>
       </div>
     </div>

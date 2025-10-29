@@ -53,7 +53,7 @@ const DocumentList: React.FC = () => {
         <div key={doc.id} className="documento-card">
           <div className="documento-info">
             {doc.estado === "completo" && <CheckCircle className="icono verde" />}
-            {doc.estado === "faltante" && <XCircle className="icono rojo" />}
+            {doc.estado === "faltante" && <XCircle className="iconor rojo" />}
             {doc.estado === "pendiente" && <Clock className="icono naranja" />}
 
             <div>

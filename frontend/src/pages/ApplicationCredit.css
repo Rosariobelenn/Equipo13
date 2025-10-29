@@ -131,3 +131,9 @@
   align-items: center;
   margin-bottom: 5%;
 }
+
+.archivo-cargado {
+  color: #0b8a2d;
+  font-weight: 600;
+  margin-top: 8px;
+}
