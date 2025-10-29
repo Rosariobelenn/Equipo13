@@ -75,3 +75,9 @@ export interface RequestsDataErrorProps {
   title: string;
   onRetry?: () => void;
 }
+
+export type StepItemProps = {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+};
