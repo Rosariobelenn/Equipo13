@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import SectionHeader from "../components/ui/SectionHeader";
-import { formatAmount } from "../lib/utils/utils";
+import { formatAmount, formatId } from "../lib/utils/utils";
 import CurrentStatusBanner from "../components/ui/CurrentStatusBanner";
 import { useCreditApplication } from "../hooks/useCreditApplications";
 import { getProgressPercentage } from "../lib/utils/getProgressPercentage";
@@ -35,7 +35,7 @@ function RequestDetails() {
               path: "/requests-list",
               text: "Volver a mis solicitudes",
             }}
-            title={`Solicitud ME-0000${application.id}`}
+            title={`Solicitud ME-${formatId(application.id)}`}
             subtitle={`Monto: ${formatAmount(application.amount)}`}
             badge={getHeaderBadge(application.status)}
           />
