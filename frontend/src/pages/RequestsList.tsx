@@ -34,7 +34,7 @@ function RequestsList() {
           actionButton={{
             text: "Nueva solicitud",
             icon: <Plus className="w-4 h-4" />,
-            href: "/solicitudes/nueva",
+            href: "/new-request",
             variant: "primary",
           }}
         />
