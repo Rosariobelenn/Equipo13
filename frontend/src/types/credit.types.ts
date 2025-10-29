@@ -50,3 +50,15 @@ export interface DocumentInputProps {
   onUrlChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onFileChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
+export interface Company {
+  business_name: string;
+  tax_id: string;
+  company_type: string;
+}
+
+export interface ApplicationSummaryItemProps {
+  application: CreditApplicationById;
+  company: Company;
+  referenceNumber: number;
+}
