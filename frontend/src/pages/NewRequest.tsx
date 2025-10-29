@@ -1,18 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
-  Upload,
   FileText,
   CreditCard,
   Calculator,
   Banknote,
-  Link2,
 } from "lucide-react";
 import { useCreateCreditApplication } from "../hooks/useCreditApplications";
 import type { CreditRequest } from "../types/credit.types";
+import DocumentInput from "../components/ui/DocumentInput";
 
-const NewRequest = () => {
+function NewRequest() {
   const navigate = useNavigate();
   const { createApplication, isCreating, isSuccess, data, isError } =
     useCreateCreditApplication();
@@ -142,95 +141,17 @@ const NewRequest = () => {
     createApplication(formData);
   };
 
-  if (isSuccess && data) {
-    navigate("/successful-request", {
-      state: {
-        summary: {
-          referenceNumber: data.credit_application.id,
+  useEffect(() => {
+    if (isSuccess && data) {
+      navigate("/successful-request", {
+        state: {
+          summary: {
+            referenceNumber: data.credit_application_id,
+          },
         },
-      },
-    });
-  }
-
-  const renderDocumentInput = (
-    field: keyof typeof uploadMode,
-    documentField: keyof CreditRequest,
-    label: string,
-    inputId: string
-  ) => {
-    const mode = uploadMode[field];
-    const file = files[field];
-    const urlValue = formData[documentField] as string;
-
-    return (
-      <div>
-        <div className="flex items-center justify-between mb-2">
-          <label className="block text-sm font-medium text-gray-700">
-            {label} *
-          </label>
-          <button
-            type="button"
-            onClick={() => toggleUploadMode(field)}
-            className="text-xs text-teal-600 hover:text-teal-700 flex items-center gap-1"
-          >
-            {mode === "url" ? (
-              <>
-                <Upload className="w-3 h-3" />
-                Subir archivo
-              </>
-            ) : (
-              <>
-                <Link2 className="w-3 h-3" />
-                Usar URL
-              </>
-            )}
-          </button>
-        </div>
-
-        {mode === "url" ? (
-          <div className="relative mb-2">
-            <Link2 className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
-            <input
-              type="url"
-              value={urlValue}
-              onChange={(e) => handleUrlChange(e, documentField)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent"
-              placeholder="https://ejemplo.com/documento.pdf"
-              required
-            />
-            <p className="text-xs text-gray-500 mt-1">
-              Pega la URL del documento almacenado
-            </p>
-          </div>
-        ) : (
-          <div className="bg-gray-200/30 border-2 border-gray-300 rounded-lg p-6 text-center hover:border-teal-500 transition-colors mb-6">
-            <input
-              type="file"
-              accept=".pdf,.jpg,.jpeg,.png"
-              onChange={(e) => handleFileChange(e, field, documentField)}
-              className="hidden"
-              id={inputId}
-            />
-            <label htmlFor={inputId} className="cursor-pointer">
-              <Upload className="w-8 h-8 text-gray-500 mx-auto mb-2" />
-              <p className="text-sm text-gray-600">
-                {file ? (
-                  file.name
-                ) : (
-                  <>
-                    <strong>Haz clic para subir</strong> o arrastra aquí
-                  </>
-                )}
-              </p>
-              <p className="text-xs text-gray-500 mt-1">
-                PDF o imagen (máx. 5MB)
-              </p>
-            </label>
-          </div>
-        )}
-      </div>
-    );
-  };
+      });
+    }
+  }, [isSuccess, data, navigate]);
 
   return (
     <section className="bg-gray-50 p-6">
@@ -402,32 +323,74 @@ const NewRequest = () => {
                 <h2 className="text-lg">Documentación Requerida</h2>
               </div>
 
-              {/* Nuevo codigo */}
               <div className="space-y-4">
-                {renderDocumentInput(
-                  "financial_statements",
-                  "document_financial_statements",
-                  "Estados contables (últimos 2 meses)",
-                  "financial-statements"
-                )}
+                <DocumentInput
+                  field="financial_statements"
+                  documentField="document_financial_statements"
+                  label="Estados contables (últimos 2 meses)"
+                  inputId="financial-statements"
+                  mode={uploadMode.financial_statements}
+                  file={files.financial_statements}
+                  urlValue={formData.document_financial_statements as string}
+                  onToggleMode={() => toggleUploadMode("financial_statements")}
+                  onUrlChange={(e) =>
+                    handleUrlChange(e, "document_financial_statements")
+                  }
+                  onFileChange={(e) =>
+                    handleFileChange(
+                      e,
+                      "financial_statements",
+                      "document_financial_statements"
+                    )
+                  }
+                />
 
-                {renderDocumentInput(
-                  "gross_income",
-                  "document_gross_income_certificate",
-                  "Certificado de Ingresos Brutos",
-                  "gross-income"
-                )}
+                <DocumentInput
+                  field="gross_income"
+                  documentField="document_gross_income_certificate"
+                  label="Certificado de Ingresos Brutos"
+                  inputId="gross-income"
+                  mode={uploadMode.gross_income}
+                  file={files.gross_income}
+                  urlValue={
+                    formData.document_gross_income_certificate as string
+                  }
+                  onToggleMode={() => toggleUploadMode("gross_income")}
+                  onUrlChange={(e) =>
+                    handleUrlChange(e, "document_gross_income_certificate")
+                  }
+                  onFileChange={(e) =>
+                    handleFileChange(
+                      e,
+                      "gross_income",
+                      "document_gross_income_certificate"
+                    )
+                  }
+                />
 
-                {renderDocumentInput(
-                  "bank_statement",
-                  "document_statement_file",
-                  "Extracto bancario (último mes)",
-                  "bank-statement"
-                )}
+                <DocumentInput
+                  field="bank_statement"
+                  documentField="document_statement_file"
+                  label="Extracto bancario (último mes)"
+                  inputId="bank-statement"
+                  mode={uploadMode.bank_statement}
+                  file={files.bank_statement}
+                  urlValue={formData.document_statement_file as string}
+                  onToggleMode={() => toggleUploadMode("bank_statement")}
+                  onUrlChange={(e) =>
+                    handleUrlChange(e, "document_statement_file")
+                  }
+                  onFileChange={(e) =>
+                    handleFileChange(
+                      e,
+                      "bank_statement",
+                      "document_statement_file"
+                    )
+                  }
+                />
               </div>
             </section>
 
-            {/* Mensajes de estado */}
             {isError && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-4">
                 <p className="text-red-800 text-sm">
@@ -436,15 +399,6 @@ const NewRequest = () => {
               </div>
             )}
 
-            {isSuccess && (
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <p className="text-green-800 text-sm">
-                  ¡Solicitud enviada exitosamente! Redirigiendo...
-                </p>
-              </div>
-            )}
-
-            {/* Botón de envío */}
             <button
               type="submit"
               disabled={isCreating}
@@ -467,7 +421,6 @@ const NewRequest = () => {
       </article>
     </section>
   );
-};
+}
 
 export default NewRequest;
-// export default CreditApplicationForm;
