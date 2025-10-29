@@ -1,25 +1,41 @@
 package com.app.pyme_go.service.impl;
 
-import com.app.pyme_go.model.dto.credit.*;
-import com.app.pyme_go.model.entity.*;
-import com.app.pyme_go.repository.*;
-import com.app.pyme_go.service.CreditApplicationService;
-
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.app.pyme_go.model.dto.credit.AdminCreditApplicationDetailDto;
+import com.app.pyme_go.model.dto.credit.AdminCreditApplicationResponseDto;
+import com.app.pyme_go.model.dto.credit.CreditApplicationDetailDto;
+import com.app.pyme_go.model.dto.credit.CreditApplicationRequestDto;
+import com.app.pyme_go.model.dto.credit.CreditApplicationResponseDto;
+import com.app.pyme_go.model.dto.credit.UpdateStatusRequestDto;
+import com.app.pyme_go.model.entity.BankAccount;
+import com.app.pyme_go.model.entity.Company;
+import com.app.pyme_go.model.entity.CreditApplication;
+import com.app.pyme_go.model.entity.Document;
+import com.app.pyme_go.model.entity.LegalRepresentative;
+import com.app.pyme_go.model.entity.User;
+import com.app.pyme_go.repository.BankAccountRepository;
+import com.app.pyme_go.repository.CompanyRepository;
+import com.app.pyme_go.repository.CreditApplicationRepository;
+import com.app.pyme_go.repository.DocumentRepository;
+import com.app.pyme_go.repository.LegalRepresentativeRepository;
+import com.app.pyme_go.repository.UserRepository;
+import com.app.pyme_go.service.CreditApplicationService;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class CreditApplicationServiceImpl implements CreditApplicationService {
@@ -56,12 +72,24 @@ public class CreditApplicationServiceImpl implements CreditApplicationService {
         Company company = companyRepository.findByLegalRepresentative(legalRepresentative)
                 .orElseThrow(() -> new IllegalArgumentException("El representante legal no tiene una empresa asociada."));
 
+        /*
         BankAccount bankAccount = new BankAccount();
         bankAccount.setCompany(company);
         bankAccount.setBankName(requestDto.getBank_name());
         bankAccount.setAccountType(requestDto.getBank_type());
         bankAccount.setCbuCvu(requestDto.getBank_cbu_cvu());
         bankAccountRepository.save(bankAccount);
+        */
+        final BankAccount bankAccount = bankAccountRepository.findByCbuCvu(requestDto.getBank_cbu_cvu())
+        .orElseGet(() -> {
+            BankAccount newAccount = new BankAccount();
+            newAccount.setCompany(company);
+            newAccount.setBankName(requestDto.getBank_name());
+            newAccount.setAccountType(requestDto.getBank_type());
+            newAccount.setCbuCvu(requestDto.getBank_cbu_cvu());
+            return bankAccountRepository.save(newAccount);
+        });
+
 
         // 2. Crear la solicitud de crédito
         CreditApplication creditApplication = new CreditApplication();
