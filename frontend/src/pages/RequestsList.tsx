@@ -7,6 +7,7 @@ import { useCreditApplications } from "../hooks/useCreditApplications";
 import { useStatusItems } from "../hooks/useStatusItems";
 import RequestsListSkeleton from "../components/ui/RequestsListSkeleton";
 import RequestsListError from "../components/ui/RequestsListError";
+import EmptyStateItem from "../components/ui/EmptyStateItem";
 
 function RequestsList() {
   const { applications, isLoading, error, refetch } = useCreditApplications();
@@ -20,6 +21,8 @@ function RequestsList() {
         onRetry={refetch}
       />
     );
+
+  const hasApplications = applications && applications.length > 0;
 
   return (
     <section className="bg-gray-50 p-6" id="requests-list">
@@ -39,27 +42,34 @@ function RequestsList() {
           }}
         />
 
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-4">
-          {statusItems.map((status) => (
-            <StatusCard
-              key={status.label}
-              icon={status.icon}
-              iconColor={status.iconColor}
-              bgColor={status.bgColor}
-              label={status.label}
-              value={status.value}
-            />
-          ))}
-        </section>
+        {hasApplications ? (
+          <>
+            <section className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-4">
+              {statusItems.map((status) => (
+                <StatusCard
+                  key={status.label}
+                  icon={status.icon}
+                  iconColor={status.iconColor}
+                  bgColor={status.bgColor}
+                  label={status.label}
+                  value={status.value}
+                />
+              ))}
+            </section>
 
-        <section className="space-y-4">
-          {applications?.map((application) => (
-            <ApplicationListItem
-              key={application.id}
-              application={application}
-            />
-          ))}
-        </section>
+            <section className="space-y-4">
+              {applications.map((application) => (
+                <ApplicationListItem
+                  key={application.id}
+                  application={application}
+                />
+              ))}
+            </section>
+          </>
+        ) : (
+          <EmptyStateItem />
+        )}
+
         <HelpSection />
       </article>
     </section>
