@@ -17,7 +17,7 @@ export default function FilterBar({
 }: FilterBarProps) {
   return (
     <div className='flex flex-wrap items-center gap-3 justify-between bg-white  shadow-sm rounded-xl p-4'>
-      <div className='flex flex-wrap gap-2 bg-[#F1F5F9] p-2'>
+      <div className='flex flex-wrap gap-2 rounded-2xl bg-[#F1F5F9] p-2'>
         {filtros.map((f) => (
           <button
             key={f}

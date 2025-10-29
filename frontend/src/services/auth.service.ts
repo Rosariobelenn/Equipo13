@@ -33,4 +33,5 @@ export const AuthService = {
       method: "POST",
       body: JSON.stringify(credentials),
     }),
+    
 };

@@ -115,7 +115,12 @@ export default function RegisterFlow() {
                 ← Anterior
               </button>
             ) : (
-              <div />
+              <button
+                onClick={() => navigate(-1)}
+                className='px-4 py-2 border rounded-md text-gray-600 hover:bg-gray-100'
+              >
+                ← Volver
+              </button>
             )}
 
             {step < 4 ? (
