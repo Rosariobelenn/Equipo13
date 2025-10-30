@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext"; // ajusta la ruta según tu estructura
+import { useAuth } from "../context/AuthContext";
 
 interface ProtectedRouteProps {
-  children: JSX.Element;
+  children: React.ReactNode;
   requiredRole?: string;
 }
 
