@@ -17,7 +17,6 @@ export default function ProtectedRoute({
   }
 
   if (requiredRole) {
- 
     const userRole = user.role?.toLowerCase();
     const required = requiredRole.toLowerCase();
 

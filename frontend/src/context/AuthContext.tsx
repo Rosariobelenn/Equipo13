@@ -3,7 +3,8 @@ import { createContext, useContext, useState } from "react";
 interface User {
   id: number;
   name: string;
-  email: string;
+  email?: string;
+  gmail?: string;
   role: string;
 }
 

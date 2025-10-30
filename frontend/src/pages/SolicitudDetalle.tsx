@@ -58,7 +58,7 @@ interface Props {
 }
 
 const SolicitudDetalle: React.FC<Props> = ({ data }) => {
-  const { company, legal_representative, amount, company_type, status } = data;
+  const { company, legal_representative, amount, status } = data;
   const progress = getProgressPercentage(data.status);
   return (
     <div className='p-8 bg-gray-50 min-h-screen'>
