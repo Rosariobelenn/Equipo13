@@ -62,3 +62,9 @@ export interface ApplicationSummaryItemProps {
   company: Company;
   referenceNumber: number;
 }
+
+export interface GetCompanyByUserIdResponse {
+  id: number;
+  email: string;
+  company: Company;
+}
