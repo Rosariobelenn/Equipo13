@@ -189,7 +189,7 @@ export default function RequestPanel() {
         <button
           disabled={currentPage === 1}
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-          className='px-3 py-1 border rounded disabled:opacity-50'
+          className='px-3 py-1 border rounded disabled:opacity-50 cursor-pointer'
         >
           Anterior
         </button>
@@ -201,7 +201,7 @@ export default function RequestPanel() {
         <button
           disabled={currentPage === totalPages}
           onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
-          className='px-3 py-1 border rounded disabled:opacity-50'
+          className='px-3 py-1 border rounded disabled:opacity-50 cursor-pointer'
         >
           Siguiente
         </button>

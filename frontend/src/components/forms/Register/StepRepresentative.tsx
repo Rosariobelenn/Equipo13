@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface RepresentativeData {
   full_name: string;
   position: string;
@@ -16,8 +18,20 @@ export default function StepRepresentative({
   data,
   onChange,
 }: StepRepresentativeProps) {
+  const [errors, setErrors] = useState({ corporate_email: "" });
+
   const handleChange = (field: keyof RepresentativeData, value: string) => {
     onChange({ ...data, [field]: value });
+
+    if (field === "corporate_email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      setErrors((prev) => ({
+        ...prev,
+        corporate_email: !emailRegex.test(value)
+          ? "Ingresa un email válido"
+          : "",
+      }));
+    }
   };
 
   return (
@@ -93,8 +107,15 @@ export default function StepRepresentative({
           value={data.corporate_email}
           onChange={(e) => handleChange("corporate_email", e.target.value)}
           placeholder='Ej: juan.perez@miempresa.com'
-          className='w-full border border-gray-300 bg-[#F3F3F5] rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-primary'
+          className={`w-full border rounded-lg p-2 focus:outline-none focus:ring-2 ${
+            errors.corporate_email
+              ? "border-red-500 focus:ring-red-500"
+              : "border-gray-300 focus:ring-primary"
+          } bg-[#F3F3F5]`}
         />
+        {errors.corporate_email && (
+          <p className='text-red-500 text-sm mt-1'>{errors.corporate_email}</p>
+        )}
       </div>
 
       <div>

@@ -13,9 +13,28 @@ interface StepSecurityProps {
 
 export default function StepSecurity({ data, onChange }: StepSecurityProps) {
   const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({ gmail: "", password: "" });
 
   const handleChange = (field: keyof UserData, value: string) => {
     onChange({ ...data, [field]: value });
+
+    if (field === "password") {
+      let passwordError = "";
+      if (value.length < 6) {
+        passwordError = "La contraseña debe tener al menos 6 caracteres";
+      } else if (!/[A-Za-z]/.test(value)) {
+        passwordError = "La contraseña debe contener al menos una letra";
+      }
+      setErrors((prev) => ({ ...prev, password: passwordError }));
+    }
+
+    if (field === "gmail") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      setErrors((prev) => ({
+        ...prev,
+        gmail: !emailRegex.test(value) ? "Ingresa un email válido" : "",
+      }));
+    }
   };
 
   return (
@@ -34,8 +53,15 @@ export default function StepSecurity({ data, onChange }: StepSecurityProps) {
           value={data.gmail}
           onChange={(e) => handleChange("gmail", e.target.value)}
           placeholder='ejemplo@gmail.com'
-          className='w-full border border-gray-300 bg-[#F3F3F5] rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-primary'
+          className={`w-full border rounded-lg p-2 focus:outline-none focus:ring-2 ${
+            errors.gmail
+              ? "border-red-500 focus:ring-red-500"
+              : "border-gray-300 focus:ring-primary"
+          } bg-[#F3F3F5]`}
         />
+        {errors.gmail && (
+          <p className='text-red-500 text-sm mt-1'>{errors.gmail}</p>
+        )}
       </div>
 
       <div>
@@ -47,8 +73,12 @@ export default function StepSecurity({ data, onChange }: StepSecurityProps) {
             type={showPassword ? "text" : "password"}
             value={data.password}
             onChange={(e) => handleChange("password", e.target.value)}
-            placeholder='Mínimo 12 caracteres'
-            className='w-full border border-gray-300 bg-[#F3F3F5] rounded-lg p-2 pr-10 focus:outline-none focus:ring-2 focus:ring-primary'
+            placeholder='Mínimo 6 caracteres y 1 letra'
+            className={`w-full border rounded-lg p-2 pr-10 focus:outline-none focus:ring-2 ${
+              errors.password
+                ? "border-red-500 focus:ring-red-500"
+                : "border-gray-300 focus:ring-primary"
+            } bg-[#F3F3F5]`}
           />
           <div
             onClick={() => setShowPassword(!showPassword)}
@@ -57,6 +87,9 @@ export default function StepSecurity({ data, onChange }: StepSecurityProps) {
             {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
           </div>
         </div>
+        {errors.password && (
+          <p className='text-red-500 text-sm mt-1'>{errors.password}</p>
+        )}
       </div>
     </div>
   );
