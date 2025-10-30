@@ -24,6 +24,7 @@ export default function RequestsTable({
   const handleVerDetalles = (id: number) => {
     navigate(`/request-detail/${id}`);
   };
+  console.log(resultados);
 
   return (
     <div className='bg-white shadow rounded-xl overflow-hidden '>
