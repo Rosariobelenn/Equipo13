@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { AlertCircle } from "lucide-react";
 import getActionButton from "../../lib/utils/getActionButton";
 import getStatusBadge from "../../lib/utils/getStatusBadge";
@@ -8,7 +9,6 @@ import {
   getRequiredActionText,
   getStatusMessage,
 } from "../../lib/utils/utils";
-import { Link } from "react-router-dom";
 import type { CreditApplication } from "../../types/credit.types";
 
 function ApplicationListItem({
@@ -34,28 +34,36 @@ function ApplicationListItem({
             Monto: <strong>{formatAmount(application.amount)}</strong>
           </li>
           <li>Solicitado: {formatDate(application.created_at)}</li>
-          <li>Actualizado: {formatDate(application.updated_at)}</li>
+          <li>
+            Actualizado:{" "}
+            {application.status == "pending_review"
+              ? "Pendiente"
+              : formatDate(application.updated_at)}
+          </li>
         </ul>
 
         <p className="text-gray-700 text-sm mb-4 bg-gray-100/50 p-3 rounded-lg ml-2">
           {getStatusMessage(application.status)}
         </p>
 
-        {application.status != "pending_review" &&
-          application.status != "rejected" && (
-            <ul className="flex items-center gap-2 text-sm ml-2">
-              <li>
-                <AlertCircle className="w-4 h-4 text-amber-600" />
-              </li>
-              <li className="text-gray-600">Acción requerida:</li>
-              <li className="text-orange-600 font-medium">
-                {getRequiredActionText(application.status)}
-              </li>
-            </ul>
-          )}
+        {application.status != "pending_review" && (
+          <ul className="flex items-center gap-2 text-sm ml-2">
+            <li>
+              <AlertCircle className="w-4 h-4 text-amber-600" />
+            </li>
+            <li className="text-gray-600">
+              {application.status == "rejected"
+                ? "Para mas información:"
+                : "Acción requerida:"}
+            </li>
+            <li className="text-orange-600 font-medium">
+              {getRequiredActionText(application.status)}
+            </li>
+          </ul>
+        )}
       </main>
       <aside className="flex md:flex-col justify-evenly md:justify-center items-center gap-3 mt-4 md:mt-0 md:col-span-1">
-        {getActionButton(application.status)}
+        {getActionButton(application.status, application.amount)}
         <Link
           to={`/request-details/${application.id}`}
           className="text-sm text-gray-900 hover:text-gray-600 underline transition-colors cursor-pointer"
