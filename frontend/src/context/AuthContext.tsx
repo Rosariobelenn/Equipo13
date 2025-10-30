@@ -10,6 +10,7 @@ interface User {
 interface AuthContextType {
   user: User | null;
   token: string | null;
+  loginTime: string | null;
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
 }
@@ -17,6 +18,7 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType>({
   user: null,
   token: null,
+  loginTime: null,
   login: async () => {},
   logout: () => {},
 });
@@ -27,6 +29,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   );
   const [token, setToken] = useState<string | null>(
     localStorage.getItem("token")
+  );
+  const [loginTime, setLoginTime] = useState<string | null>(
+    localStorage.getItem("loginTime")
   );
   const login = async (email: string, password: string) => {
     const response = await fetch("https://pymego.onrender.com/v1/api/login", {
@@ -54,6 +59,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // Guardar en localStorage
     localStorage.setItem("token", token);
     localStorage.setItem("userData", JSON.stringify(user));
+    const now = new Date().toISOString();
+    setLoginTime(now);
+    localStorage.setItem("loginTime", now);
 
     console.log("✅ Usuario autenticado:", {
       token,
@@ -68,10 +76,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setToken(null);
     localStorage.removeItem("token");
     localStorage.removeItem("userData");
+    localStorage.removeItem("loginTime");
+    setLoginTime(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout }}>
+    <AuthContext.Provider value={{ user, token, loginTime, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

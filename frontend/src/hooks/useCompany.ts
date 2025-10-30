@@ -14,3 +14,17 @@ export const useCompany = (id: number) => {
     error,
   };
 };
+
+export const useCompanyByUserId = (userId: number) => {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["companyByUserId", userId],
+    queryFn: () => companyService.getCompanyByUserId(userId),
+    enabled: !!userId,
+  });
+
+  return {
+    company: data,
+    isLoading,
+    error,
+  };
+};

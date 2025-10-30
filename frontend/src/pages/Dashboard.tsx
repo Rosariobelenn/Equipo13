@@ -4,15 +4,44 @@ import ActionCard from "../components/dashboard/ActionCard";
 import HelpSection from "../components/dashboard/HelpSection";
 import StatusCard from "../components/ui/StatusCard";
 import RecentActivity from "../components/dashboard/RecentActivity";
-import { ACTIVITIES } from "../data/activities";
 import HeaderDashboard from "../components/dashboard/HeaderDashboard";
+import { useCreditApplications } from "../hooks/useCreditApplications";
+import RequestsDataError from "../components/ui/RequestsListError";
+import DashboardSkeleton from "../components/dashboard/DashboardSkeleton";
+import { useCompanyByUserId } from "../hooks/useCompany";
 
 function Dashboard() {
+  const { applications, isLoading, error, refetch } = useCreditApplications();
+  const user = JSON.parse(localStorage.getItem("userData") || "null");
+  const userId = user?.id;
+  const {
+    company,
+    isLoading: companyLoading,
+    error: companyError,
+  } = useCompanyByUserId(userId);
+
+  if (isLoading || companyLoading) return <DashboardSkeleton />;
+  if (error)
+    return (
+      <RequestsDataError
+        title="No pudimos cargar tus solicitudes"
+        onRetry={refetch}
+      />
+    );
+
+  if (companyError) {
+    return <RequestsDataError title="No pudimos cargar tu empresa" />;
+  }
+
+  if (!company) {
+    return <RequestsDataError title="No pudimos cargar tu empresa" />;
+  }
+
   return (
     <section className="bg-gray-50 p-6">
       <article className="max-w-5xl mx-auto">
         <HeaderDashboard />
-        <DashboardHeader />
+        <DashboardHeader company={company} />
 
         <main className="grid md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-10">
           <ActionCard
@@ -46,12 +75,12 @@ function Dashboard() {
             iconColor="text-orange-600"
             bgColor="bg-orange-100"
             label="Acciones pendientes"
-            value="2 requieren acción"
+            applications={applications}
           />
         </article>
 
         <footer className="grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-18">
-          <RecentActivity activities={ACTIVITIES} />
+          <RecentActivity activitiesData={applications || []} />
           <HelpSection />
         </footer>
       </article>
