@@ -17,9 +17,10 @@ export type HelpItemProps = {
   subtitle: string;
 };
 
+export type ActivityColor = "green" | "red" | "blue" | "yellow" | "purple";
+
 export interface ActivityItemProps {
-  color: string;
+  color: ActivityColor;
   title: string;
   timestamp: string;
 }
-
