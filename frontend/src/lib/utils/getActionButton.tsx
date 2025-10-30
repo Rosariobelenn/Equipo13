@@ -1,16 +1,11 @@
-import { Eye, PenTool, Upload } from "lucide-react";
+import { Eye, Upload } from "lucide-react";
 import ActionButton from "../../components/ui/Button/ActionButton";
+import ActionButtonWithModal from "../../components/ui/Button/ActionButtonWithModal";
 
-const getActionButton = (status: string) => {
+const getActionButton = (status: string, amount: number) => {
   switch (status) {
     case "approved":
-      return (
-        <ActionButton
-          icon={PenTool}
-          text="Firmar contrato"
-          className="bg-blue-600 text-white hover:bg-blue-700"
-        />
-      );
+      return <ActionButtonWithModal amount={amount} />;
     case "pending_documents":
       return (
         <ActionButton

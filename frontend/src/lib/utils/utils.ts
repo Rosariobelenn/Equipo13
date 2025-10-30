@@ -45,6 +45,8 @@ export function getRequiredActionText(status: string): string {
       return "Cargar documentos";
     case "pending_approval":
       return "Análisis crediticio";
+    case "rejected":
+      return "Contactar a soporte";
     default:
       return "Estado desconocido. Por favor, contacta con soporte.";
   }
@@ -53,3 +55,24 @@ export function getRequiredActionText(status: string): string {
 export function formatId(id: number) {
   return id.toString().padStart(4, "0");
 }
+
+export const calculateLoanPayment = (
+  principal: number,
+  annualRate: number,
+  months: number
+) => {
+  const monthlyRate = annualRate / 12 / 100;
+  const payment =
+    (principal * (monthlyRate * Math.pow(1 + monthlyRate, months))) /
+    (Math.pow(1 + monthlyRate, months) - 1);
+  return payment;
+};
+
+export const formatModalSignatureAmount = (amount: number) => {
+  return new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(amount);
+};
