@@ -2,6 +2,6 @@
 import { apiFetch } from "./api";
 
 export const CreditService = {
-  getAll: () => apiFetch("/credit_applications"),
-  getById: (id: number) => apiFetch(`/credit_applications/${id}`),
+  getAll: () => apiFetch("/admin/credit-applications"),
+  getById: (id: number) => apiFetch(`/admin/credit-applications/${id}`),
 };

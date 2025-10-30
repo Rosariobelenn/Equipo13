@@ -6,6 +6,7 @@ interface FilterBarProps {
   setFiltroEstado: (estado: string) => void;
   busqueda: string;
   setBusqueda: (valor: string) => void;
+  conteos: Record<string, number>;
 }
 
 export default function FilterBar({
@@ -14,21 +15,31 @@ export default function FilterBar({
   setFiltroEstado,
   busqueda,
   setBusqueda,
+  conteos,
 }: FilterBarProps) {
   return (
-    <div className='flex flex-wrap items-center gap-3 justify-between bg-white  shadow-sm rounded-xl p-4'>
+    <div className='flex flex-wrap items-center gap-3 justify-between bg-white  shadow-sm rounded-2xl p-4'>
       <div className='flex flex-wrap gap-2 rounded-2xl bg-[#F1F5F9] p-2'>
         {filtros.map((f) => (
           <button
             key={f}
             onClick={() => setFiltroEstado(f)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium  transition ${
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition ${
               filtroEstado === f
                 ? "bg-white text-primary shadow border-white"
-                : " text-gray-600 hover:bg-gray-100"
+                : "text-gray-600 hover:bg-gray-100"
             }`}
           >
-            {f}
+            <span>{f}</span>
+            <span
+              className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
+                filtroEstado === f
+                  ? "bg-primary text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+            >
+              {conteos[f] ?? 0}
+            </span>
           </button>
         ))}
       </div>
