@@ -22,7 +22,12 @@ export default function RegisterFlow() {
       corporate_email: "",
       contact_phone: "",
     },
+    documents: [
+      { documentType: "RUT", url: "https://example.com/rut.pdf" },
+      { documentType: "Cámara de Comercio", url: "https://example.com/cc.pdf" },
+    ],
   });
+
   const nextStep = () => setStep((s) => Math.min(s + 1, 4));
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
@@ -30,6 +35,10 @@ export default function RegisterFlow() {
 
   const handleSubmit = async () => {
     try {
+      console.log(
+        "📨 Body que se va a enviar:",
+        JSON.stringify(formData, null, 2)
+      );
       await auth.register(formData);
       alert("Registro completado ✅");
       navigate("/");
@@ -38,6 +47,7 @@ export default function RegisterFlow() {
       alert("Hubo un error al registrar ❌");
     }
   };
+
   return (
     <div className='min-h-screen flex flex-col bg-gray-50'>
       <div className='flex-grow flex flex-col items-center justify-center w-full'>

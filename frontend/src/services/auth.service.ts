@@ -26,12 +26,11 @@ export const AuthService = {
     apiFetch("/register", {
       method: "POST",
       body: JSON.stringify(data),
-    }),
+    }, false),
 
   login: (credentials: { gmail: string; password: string }) =>
     apiFetch("/login", {
       method: "POST",
       body: JSON.stringify(credentials),
-    }),
-    
+    }, false), 
 };

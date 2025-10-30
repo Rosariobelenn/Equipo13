@@ -2,18 +2,25 @@ const API_BASE_URL = "https://pymego.onrender.com/v1/api";
 
 export async function apiFetch<T>(
   endpoint: string,
-  options: RequestInit = {}
+  options: RequestInit = {},
+  requiresAuth = true // ✅ parámetro para controlar si envía token
 ): Promise<T> {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+
+if (requiresAuth) {
   const token = localStorage.getItem("token");
-  console.log("📨 Token enviado en header:", token);
+  if (token && token !== "null") {
+    console.log("📨 Token enviado en header:", token);
+    headers.Authorization = `Bearer ${token}`;
+  } else {
+    console.log("📨 No se envía token (público)");
+  }
+}
+
 
   const response = await fetch(`${API_BASE_URL}${endpoint}`, {
     ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ... { Authorization: `Bearer ${token}` },
-      ...options.headers,
-    },
+    headers: { ...headers, ...options.headers },
   });
 
   if (!response.ok) {

@@ -1,5 +1,4 @@
 // src/services/credit.service.ts
-import type { CreditApplication } from "../types/credit.types";
 import { apiFetch } from "./api";
 
 interface GetAllParams {
