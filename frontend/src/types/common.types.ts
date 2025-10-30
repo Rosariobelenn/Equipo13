@@ -5,6 +5,7 @@ export interface ActionButtonProps {
   icon: React.ElementType;
   text: string;
   className: string;
+  onClick?: () => void;
 }
 
 export interface SectionHeaderBadge {
@@ -83,3 +84,13 @@ export type StepItemProps = {
   title: string;
   description: string;
 };
+
+export interface DigitalSignatureModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  amount: number;
+}
+
+export interface ActionButtonWithModalProps {
+  amount: number;
+}
