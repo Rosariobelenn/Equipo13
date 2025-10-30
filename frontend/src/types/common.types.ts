@@ -1,3 +1,4 @@
+import type { CreditApplication } from "./credit.types";
 import type { RequestDetailsTabs } from "./request.types";
 
 export interface ActionButtonProps {
@@ -41,7 +42,8 @@ export interface StatusCardProps {
   iconColor: string;
   bgColor: string;
   label: string;
-  value: string;
+  value?: string;
+  applications?: CreditApplication[];
 }
 
 export interface CurrentStatusBannerProps {
