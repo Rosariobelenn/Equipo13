@@ -11,8 +11,13 @@ export const useStatusItems = (applications?: CreditApplication[]) => {
 
     const total = applications.length;
 
-    const pendingStatuses = ["pending_review", "pending_approval", "pending"];
-    const completedStatuses = ["approved", "completed", "disbursed"];
+    const pendingStatuses = ["pending_approval", "pending", "approved"];
+    const completedStatuses = [
+      "approved",
+      "completed",
+      "disbursed",
+      "rejected",
+    ];
 
     const pending = applications.filter((app) =>
       pendingStatuses.includes(app.status)
