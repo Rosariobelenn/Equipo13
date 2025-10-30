@@ -7,7 +7,6 @@ import { FileDown } from "lucide-react";
 import { CreditService } from "../services/credit.service";
 import { formatDate } from "../lib/utils/utils";
 
-// Tipos para los datos del backend
 interface CreditApplication {
   id: number;
   amount: number;
@@ -16,10 +15,9 @@ interface CreditApplication {
   company?: {
     business_name?: string;
   };
-  assigned_to?: string;
+  assigned_to?: string | null;
 }
 
-// Tipos para los datos adaptados que usa el frontend
 interface AdaptedRequest {
   id: number;
   monto: number;
@@ -29,7 +27,6 @@ interface AdaptedRequest {
   fecha: string;
 }
 
-// Filtros y colores
 const filtros = [
   "Todas",
   "En evaluación",
@@ -55,14 +52,15 @@ export default function RequestPanel() {
   const [requests, setRequests] = useState<AdaptedRequest[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // 👇 Cargar datos reales desde la API
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage = 10;
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await CreditService.getAll();
+        const response = await CreditService.getAll({ limit: 100, page: 1 });
         const data: CreditApplication[] = response.credit_applications;
 
-        // Adaptar la estructura al formato del frontend
         const adaptado: AdaptedRequest[] = data.map((r) => ({
           id: r.id,
           monto: r.amount,
@@ -94,7 +92,6 @@ export default function RequestPanel() {
     fetchData();
   }, []);
 
-  // 👇 Filtro y búsqueda
   const resultados = useMemo(() => {
     return requests.filter((item) => {
       const coincideEstado =
@@ -109,8 +106,15 @@ export default function RequestPanel() {
       return coincideEstado && coincideBusqueda;
     });
   }, [requests, filtroEstado, busqueda]);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filtroEstado, busqueda]);
 
-  // 👇 Estadísticas
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const resultadosPaginados = resultados.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(resultados.length / itemsPerPage);
+
   const total = requests.length;
   const pendientes = requests.filter((r) =>
     [
@@ -119,12 +123,13 @@ export default function RequestPanel() {
       "Revisión de documentos",
     ].includes(r.estado)
   ).length;
-  const enRevision = requests.filter((r) =>
-    ["Documentos pendientes"].includes(r.estado)
+  const enRevision = requests.filter(
+    (r) => r.estado === "Documentos pendientes"
   ).length;
   const aprobadas = requests.filter((r) => r.estado === "Aprobado").length;
   const rechazadas = requests.filter((r) => r.estado === "Rechazado").length;
-  // 👇 Conteos por estado para mostrar en el FilterBar
+
+  // Conteos por estado para el FilterBar
   const conteos: Record<string, number> = {
     Todas: total,
     "En evaluación": requests.filter((r) => r.estado === "En evaluación")
@@ -147,7 +152,7 @@ export default function RequestPanel() {
     );
 
   return (
-    <div className='p-6  min-h-screen space-y-6 max-w-6xl mx-auto'>
+    <div className='p-6 min-h-screen space-y-6 max-w-6xl mx-auto'>
       <HeaderPanel />
 
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4'>
@@ -176,7 +181,30 @@ export default function RequestPanel() {
       </div>
 
       <div className='bg-white shadow rounded-xl overflow-hidden border'>
-        <RequestsTable resultados={resultados} colores={colores} />
+        <RequestsTable resultados={resultadosPaginados} colores={colores} />
+      </div>
+
+      {/* Paginación */}
+      <div className='flex justify-center items-center gap-2 mt-4'>
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+          className='px-3 py-1 border rounded disabled:opacity-50'
+        >
+          Anterior
+        </button>
+
+        <span className='text-sm text-gray-600'>
+          Página {currentPage} de {totalPages}
+        </span>
+
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages))}
+          className='px-3 py-1 border rounded disabled:opacity-50'
+        >
+          Siguiente
+        </button>
       </div>
     </div>
   );
