@@ -9,6 +9,8 @@ import com.app.pyme_go.model.entity.Company;
 import com.app.pyme_go.repository.CompanyRepository;
 import com.app.pyme_go.service.CompanyService;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class CompanyServiceImpl implements CompanyService{
 
@@ -36,6 +38,12 @@ public class CompanyServiceImpl implements CompanyService{
 
         return Optional.ofNullable(companyInfo);
 
+    }
+
+    @Override 
+    public Company getCompanyByUserId(Long userId) {
+        return companyRepository.findByLegalRepresentative_User_Id(userId)
+            .orElseThrow(() -> new EntityNotFoundException("No se encontró empresa para el usuario ID " + userId));
     }
     
 }

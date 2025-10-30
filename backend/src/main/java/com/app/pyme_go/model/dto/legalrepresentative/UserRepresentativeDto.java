@@ -1,10 +1,6 @@
 package com.app.pyme_go.model.dto.legalrepresentative;
 
 
-import java.util.Optional;
-
-import com.app.pyme_go.model.entity.User;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

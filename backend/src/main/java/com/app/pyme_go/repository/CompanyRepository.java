@@ -8,4 +8,5 @@ import com.app.pyme_go.model.entity.LegalRepresentative;
 
 public interface CompanyRepository extends JpaRepository<Company, Long> {
     Optional<Company> findByLegalRepresentative(LegalRepresentative legalRepresentative);
+    Optional<Company> findByLegalRepresentative_User_Id(Long userId);
 }

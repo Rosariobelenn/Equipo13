@@ -53,7 +53,6 @@ public class LegalRepresentativeController {
             }
 
             Long id_user = authenticatedUser.getId();
-        
             Optional<UserRepresentativeDto> representativeOptional = legalRepresentativeService.findById(id_user);
 
             return representativeOptional
