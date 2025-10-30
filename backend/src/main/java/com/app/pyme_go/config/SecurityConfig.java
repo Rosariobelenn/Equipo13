@@ -40,7 +40,8 @@ public class SecurityConfig {
                                                 "/webjars/**",
                                                 "/v1/api/login",
                                                 "/v1/api/register", 
-                                                "/"   
+                                                "/"   ,
+                                                "/v1/api/open/credit-applications"
                                                 ).permitAll()
                                                 .requestMatchers("/v1/api/admin/**").hasRole("ADMIN")
                                                 .anyRequest().authenticated()

@@ -106,6 +106,28 @@ public class CreditApplicationController {
         return ResponseEntity.ok(response);
     }
 
+
+    // Temporal. 
+    
+       @GetMapping("/open/credit-applications")
+    public ResponseEntity<?> getAllCreditApplicationsOpen(
+            @Parameter(description = "Filtra por estado: all, pending, under_review, approved, rejected") @RequestParam(value = "status", required = false, defaultValue = "all") String status,
+            @Parameter(description = "Si es true, devuelve solo las solicitudes asignadas al operador autenticado") @RequestParam(value = "assigned_to_me", required = false) Boolean assignedToMe,
+            @RequestParam(value = "page", defaultValue = "1") int page,
+            @RequestParam(value = "limit", defaultValue = "20") int limit) {
+
+        Page<AdminCreditApplicationResponseDto> applicationsPage = creditApplicationService.getAllCreditApplications(status, assignedToMe, page, limit);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("credit_applications", applicationsPage.getContent());
+        response.put("page", applicationsPage.getNumber() + 1);
+        response.put("limit", applicationsPage.getSize());
+        response.put("total", applicationsPage.getTotalElements());
+        return ResponseEntity.ok(response);
+    }
+
+
+
     @Tag(name = "Credit Applications (Admin)")
     @Operation(summary = "Ver una solicitud de crédito en detalle (Admin)",
             description = "Recupera la información detallada completa de una solicitud de crédito específica. Requiere autenticación y privilegios de administrador.",
