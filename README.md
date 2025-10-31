@@ -52,10 +52,10 @@ Las PYMES enfrentan desafíos constantes al buscar financiación:
 
 ## 🖼️ Screenshots
 
-![](./assets/login.jpg)
-![](./assets/dashboard.jpg)
-![](./assets/request-list.jpg)
-![](./assets/request.jpg)
+<img src="./assets/login.jpg" width="400" />
+<img src="./assets/dashboard.jpg" width="400" />
+<img src="./assets/request-list.jpg" width="400" />
+<img src="./assets/request.jpg" width="400" />
 
 ---
 
@@ -171,7 +171,7 @@ pyme-go/
 
 ### 🎨 UX/UI Design
 
-![](./assets/rosario.png)
+<img src="./assets/rosario.png" width="240" />
 
 **Tareas:**
 
@@ -184,7 +184,7 @@ pyme-go/
 
 ### ⚙️ Backend Development
 
-![](./assets/caleb.png)
+<img src="./assets/caleb.png" width="240" />
 
 **Tareas:**
 
@@ -199,9 +199,9 @@ pyme-go/
 
 ### 💻 Frontend Development
 
-![](./assets/camilo.png)
-![](./assets/fede.png)
-![](./assets/emmanuel.png)
+<img src="./assets/camilo.png" width="240" />
+<img src="./assets/fede.png" width="240" />
+<img src="./assets/emmanuel.png" width="240" />
 
 **Tareas:**
 
@@ -217,7 +217,7 @@ pyme-go/
 
 ### 🧪 QA & Testing
 
-![](./assets/bibiana.png)
+<img src="./assets/bibiana.png" width="240" />
 
 **Tareas:**
 
