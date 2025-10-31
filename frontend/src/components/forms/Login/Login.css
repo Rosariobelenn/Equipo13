@@ -1,0 +1,303 @@
+/* Ocupa 50% de la pantalla y se pega a la derecha */
+.login-form {
+  position: fixed;       /* se fija en la pantalla */
+  top: 0;                /* pegado arriba */
+  right: 0;              /* pegado al borde derecho */
+  bottom: 0;             /* pegado abajo */
+  width: 50vw;           /* ocupa la mitad del ancho */
+  background-color: #001f3f;
+  margin: 0;             /* sin margen */
+  padding: 0;            /* sin padding extra */
+  
+  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;  /* centra horizontalmente */
+  align-items: center;      /* centra verticalmente */
+  color: white;
+}
+
+
+
+.login-container2{
+   position: fixed;       /* se fija en la pantalla */
+  top: 0;                /* pegado arriba */
+  left: 0;              /* pegado al borde derecho */
+  bottom: 0;             /* pegado abajo */
+  width: 50vw;           /* ocupa la mitad del ancho */
+  background-color: #0ba1d8;
+  margin: 0;             /* sin margen */
+  padding: 0;     
+}
+
+
+/*///////////////////////////////////////////*/
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 14px;
+  color: #b0b0b0;
+  padding-right: 320px;
+}
+
+.remember-me .botton[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+/*///////////////////////////////////////////*/
+
+.tituloform{
+  text-align: center;
+  margin: 0;
+  font-size: 28px;
+}
+
+
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.labelonne{
+  font-size: 16px;
+  color: #ebecea;
+  
+}
+
+.input-group .botton {
+  padding: 15px;
+  width: 400px; /* o el tamaño que quierass */
+  border-radius: 8px;
+  border: none;
+  background-color: #f5f5f5;
+  font-size: 14px;
+  color: #000;
+}
+
+.input-group .botton::placeholder {
+  color: #a0a0a0;
+}
+
+
+
+.extra-class {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #00a4e4;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  width: 200px; /* o el tamaño que quieras */
+  font-weight: bold; 
+}
+
+.extra-class:hover{
+  background-color: #0b5e80;
+  
+}
+
+.register-text {
+  text-align: center;
+  font-size: 14px;
+  color: #b0b0b0;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+  
+  
+}
+
+.register-text .strg {
+  color: white;
+}
+
+
+
+.register-text .texxto {
+  /*color: #007bff;*/
+  color: #b0b0b0;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.register-text .texxto:hover {
+  text-decoration: underline;
+}
+
+.subtituloform{
+  font-size: 16px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+  margin-top: 0; /* asegura que no tenga margen arriba */
+  text-align: center;
+}
+
+.tituloform{
+  font-size: 50px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+  margin-bottom: 5px; /* espacio pequeño debajo del h2 */
+  font-weight: bold;
+}
+
+.conteinertituloform{
+  margin-bottom: 50px;
+}
+
+.label2 {
+  color: #b0b0b0;
+  margin-left: 2px;   /* separa un poco del checkbox */
+  font-size: 14px;    /* opcional, tamaño de letra */
+  vertical-align: middle; /* alinea con el checkbox */
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+
+
+/* Contenedor que ubica el toggle al borde derecho */
+.toggle-container {
+  position: absolute;
+  top: 20px;      /* distancia desde la parte superior del formulario */
+  left: 40px;    /* pegado al borde derecho del formulario */
+}
+
+/* Tu estilo existente (sin modificar tus colores) */
+
+
+.toggle-btn.active {
+  background-color: white;
+  color: #14233b;
+}
+
+
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper .botton {
+ /* width: 100%;*/
+  padding-right: 40px; /* espacio para el ícono */
+}
+
+.show-password-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+
+.log{
+ /* background-color: aqua;*/
+  width: 50px;
+  height: 50px;
+  color: rgb(5, 5, 134);
+}
+
+.login-container{
+  width: 90px;
+  height: 80px;
+  background-color:rgb(225, 248, 252);
+   display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;     /* centra verticalmente */
+  margin-bottom: 50px;
+  border-radius: 50% ;
+  padding: 20px;
+}
+
+
+/**/
+.toggle-tabs {
+  display: flex;
+  background-color: #a2b4da;
+  border-radius: 40px;
+  margin-bottom: 40px;
+}
+
+.toggle-tab {
+  background: transparent;
+  border: none;
+  color: #000000;
+  padding: 8px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.active-tab {
+  background-color: #ffffff;
+  color: #1e293b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.inactive-tab {
+  background-color: transparent;
+  color: #475569;
+}
+
+.inactive-tab:hover {
+  color: #1e293b;
+}
+
+
+
+@media (max-width: 768px) {
+  /* Ocupa la mitad superior de la pantalla */
+.login-form {
+  position: fixed;         /* se fija en la pantalla */
+  top: 0;                 /* pegado arriba */
+  left: 0;                 /* desde el borde izquierdo */
+  right: 0;                /* hasta el borde derecho */
+  height: 50vh;            /* ocupa la mitad del alto de la pantalla */
+  width: 100%;
+  background-color:#001f3f;
+  margin: 0;               /* sin margen */
+  margin-bottom: 60vh;
+  padding-bottom: 70vh; 
+  padding-top: 30vh;             /* sin padding */
+  
+}
+
+
+.login-container2 {
+  position: fixed;
+  top: 70vh; 
+  bottom: 60vh;              /* empieza desde la mitad de la pantalla */
+  left: 0;
+  right: 0;
+  height: 50vh;            /* ocupa la mitad inferior */
+  width: 100%;
+  background-color: rgb(23, 108, 165);
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.input-group .botton {
+  width: 400px; /* o el tamaño que quieras */
+   max-width: 400px; /* límite de ancho */
+}
+
+.conteinertituloform{
+  margin-top: 120px;
+  
+}
+
+
+
+
+
+
+}
+

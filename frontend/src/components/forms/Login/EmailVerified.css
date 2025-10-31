@@ -1,0 +1,185 @@
+.verified-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fafafa;
+  font-family: "Inter", sans-serif;
+}
+
+.verified-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  width: 500px;
+  text-align: center;
+}
+
+.icon-circle.success {
+  color: #1a9c46;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 16px auto;
+  font-size: 32px;
+  
+}
+
+.icon-circle.successs {
+  color: #1a9c46;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 16px auto;
+  font-size: 102px;
+  
+}
+
+.logo-circle {
+   width: 150px ;  /* ancho del círculo */
+  height: 80px ;   /* altura igual al ancho */
+  background-color: #e9fbe7;  /* fondo amarillo */
+  border-radius: 50%;         /* círculo perfecto */
+  display: flex;
+  justify-content: center;    /* centra el SVG horizontalmente */
+  align-items: center;        /* centra el SVG verticalmente */
+  
+}
+
+.logo-svg {
+  width: 80%;   /* tamaño relativo dentro del círculo */
+  height: 80%;
+}
+
+
+.icon-circlee.success {
+  color: #1a9c46;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 16px auto;
+  font-size: 32px;
+  
+}
+
+.letter {  
+  font-size: 22px;
+  margin-bottom: 28px;
+  color: #111;
+}
+
+.pair { 
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 54px;
+}
+
+.verified-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  background-color: #e9fbe7;
+  border: 1px solid #b2e3a7;
+  border-radius: 8px;
+  padding: 3px;
+  color: #117a37;
+  font-size: 14px;
+  margin-bottom: 24px;
+  
+}
+
+.email {
+  font-weight: 500;
+  color: #117a37;
+  margin-bottom: 15px;
+  padding-left:10px;
+}
+
+.access-btn {
+  width: 100%;
+  background-color: #1a3f8b;
+  color: white;
+  font-size: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.access-btn:hover {
+  background-color: #142e64;
+}
+
+
+
+
+/*.circlee{
+  background-color:#def6e8;
+  width: 30px;
+  height: 40px;
+  
+}*/
+
+
+.logo-circlee { 
+  width: 40px;
+  height: 40px;
+  background-color: #def6e8; /* 💧 color agua claro */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /*padding: 3px;  menos padding */
+  
+}
+
+.conteiner-verl{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 40px;
+}
+
+.very{
+  margin-bottom: 15px;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .verified-card {
+    width: 360px;
+  }
+
+  .letter{  
+    margin-bottom: 8px;
+  }
+
+  .pair{  
+      margin-bottom: 24px;
+  }
+
+  .verified-box{
+    padding: 12px;
+  }
+
+  .conteiner-verl{
+    padding-left: 5vh;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,42 @@
+.solicitud-header-container {
+  display: flex;
+  flex-direction: row;
+  /*align-items: flex-start;*/
+   justify-content: space-between; /* separa los elementos al máximo */
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #f9fafb;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #4b5563;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+.solicitud-info .hone {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.solicitud-info .pone {
+  margin: 0;
+  color: #6b7280;
+  font-size: 1rem;
+  
+}
+
+/**/
+.btt{
+  display:flex ;
+  gap: 2rem;
+}
